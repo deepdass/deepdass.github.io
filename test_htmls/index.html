@@ -12,34 +12,20 @@
   --blue: #1a4fd6; --panel: #2D2D2D; --yellow: #ffe94a; --white: #ffffff;
   --shadow: 4px 4px 0px var(--ink); --shadow-lg: 6px 6px 0px var(--ink);
 }
-html {
-  overflow-x: hidden;
-}
+html { scroll-behavior: smooth; }
 body {
   background: var(--paper);
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(0,0,0,.06) 31px, rgba(0,0,0,.06) 32px),
     repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(0,0,0,.04) 31px, rgba(0,0,0,.04) 32px);
-  color: var(--ink); font-family: 'Comic Neue', cursive; font-size: 16px;
-  overflow-x: hidden;
+  color: var(--ink); font-family: 'Comic Neue', cursive; font-size: 16px; overflow-x: hidden;
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23e63030' stroke='%231a1008' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  
-}
-body::-webkit-scrollbar {
-  display: none;
 }
 body::before {
   content: ''; position: fixed; inset: 0;
   background-image: radial-gradient(circle, rgba(0,0,0,.08) 1px, transparent 1px);
   background-size: 6px 6px; pointer-events: none; z-index: 0;
 }
-
-#app-wrapper {
-  width: 1080px;
-  transform-origin: top left;
-}
-
 @keyframes wiggle { 0%,100%{transform:rotate(-0.4deg)} 25%{transform:rotate(0.4deg)} 50%{transform:rotate(-0.4deg) translateY(-0.5px)} 75%{transform:rotate(0.4deg)} }
 @keyframes wiggle-slow { 0%,100%{transform:rotate(-0.3deg)} 50%{transform:rotate(0.3deg) translateY(-1px)} }
 @keyframes float { 0%,100%{transform:translateY(0px) rotate(var(--base-rot,0deg))} 50%{transform:translateY(-6px) rotate(var(--base-rot,0deg))} }
@@ -87,6 +73,7 @@ nav {
 .btn-red  { background:var(--red);  color:var(--white); }
 .btn-dark { background:var(--panel); color:var(--paper); }
 
+/* ── COLLAGE ──────────────────────────────────────────────── */
 .hero-collage { flex-shrink:0; width:420px; height:480px; position:relative; transform: scale(1.18);}
 .collage-panel {
   position:absolute; border:4px solid var(--ink); overflow:hidden;
@@ -213,7 +200,6 @@ footer span { color:var(--red); }
 </head>
 <body>
 
-<div id="app-wrapper">
 <nav>
   <a href="#hero" class="nav-logo wiggle-slow">DD</a>
   <ul class="nav-links">
@@ -532,131 +518,54 @@ footer span { color:var(--red); }
 
 <footer><p>MADE WITH L<span>♥</span>ve - DEEP DAS</p></footer>
 
-</div>
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ4WVRYJ69"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-VZ4WVRYJ69');
 </script>
 <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "whxigj4tpt");
-</script>
-
-<script>
-
-const DESIGN_WIDTH = 1411;
-const wrapper = document.getElementById('app-wrapper');
-
-function scaleToFit() {
-  if (window.innerWidth < 768) {
-    wrapper.style.transform = 'none';
-    wrapper.style.width = '100%';
-    document.body.style.height = '';
-    document.documentElement.style.height = '';
-    return;
-  }
-
-  const scale = window.innerWidth / DESIGN_WIDTH;
-
-  wrapper.style.width = DESIGN_WIDTH + 'px';
-  wrapper.style.transform = `scale(${scale})`;
-  wrapper.style.transformOrigin = 'top left';
-
-  requestAnimationFrame(() => {
-    const scaledHeight = wrapper.offsetHeight * scale;
-    document.body.style.height = scaledHeight + 'px';
-    document.documentElement.style.height = scaledHeight + 'px';
-  });
-}
-
-scaleToFit();
-window.addEventListener('resize', scaleToFit);
-window.addEventListener('load', scaleToFit);
-window.addEventListener('load', () => {
-  setTimeout(scaleToFit, 300);
-  setTimeout(scaleToFit, 1000);
-});
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "whxigj4tpt");
 </script>
 
 <script>
 document.querySelectorAll('.game-photos').forEach(carousel => {
-  const slides = carousel.querySelectorAll('.photo-slide');
-  const dots   = carousel.querySelectorAll('.dot');
-  const count  = carousel.querySelector('.photo-count');
-  const prev   = carousel.querySelector('.carousel-prev');
-  const next   = carousel.querySelector('.carousel-next');
-  const total  = slides.length;
-  let current  = 0;
-
-  if (total <= 1) {
-    if (prev) prev.style.display = 'none';
-    if (next) next.style.display = 'none';
+  const slides=carousel.querySelectorAll('.photo-slide'),dots=carousel.querySelectorAll('.dot'),
+    count=carousel.querySelector('.photo-count'),prev=carousel.querySelector('.carousel-prev'),
+    next=carousel.querySelector('.carousel-next'),total=slides.length;
+  let current=0;
+  if(total<=1){if(prev)prev.style.display='none';if(next)next.style.display='none';}
+  function goTo(n){
+    slides[current].classList.remove('active');dots[current]?.classList.remove('active');
+    current=(n+total)%total;
+    slides[current].classList.add('active');dots[current]?.classList.add('active');
+    if(count)count.textContent=`${current+1} / ${total}`;
   }
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dots[current]?.classList.remove('active');
-    current = (n + total) % total;
-    slides[current].classList.add('active');
-    dots[current]?.classList.add('active');
-    if (count) count.textContent = `${current + 1} / ${total}`;
-  }
-
-  prev?.addEventListener('click', e => { e.stopPropagation(); goTo(current - 1); });
-  next?.addEventListener('click', e => { e.stopPropagation(); goTo(current + 1); });
-  dots.forEach((dot, i) => dot.addEventListener('click', e => { e.stopPropagation(); goTo(i); }));
-
-  let touchStartX = 0;
-  carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  carousel.addEventListener('touchend',   e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
-  });
+  prev?.addEventListener('click',e=>{e.stopPropagation();goTo(current-1);});
+  next?.addEventListener('click',e=>{e.stopPropagation();goTo(current+1);});
+  dots.forEach((dot,i)=>dot.addEventListener('click',e=>{e.stopPropagation();goTo(i);}));
+  let touchStartX=0;
+  carousel.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
+  carousel.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>40)goTo(diff>0?current+1:current-1);});
 });
 
-document.querySelectorAll('.collage-panel').forEach(p =>
-  p.addEventListener('click', () => document.getElementById('games')?.scrollIntoView({ behavior: 'smooth' }))
-);
+document.querySelectorAll('.collage-panel').forEach(p=>p.addEventListener('click',()=>document.getElementById('games')?.scrollIntoView({behavior:'smooth'})));
 
-const revealEls = document.querySelectorAll('.reveal');
-const observer  = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
+const revealEls=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.12});
+revealEls.forEach(el=>observer.observe(el));
 
-document.querySelectorAll('.game-card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.style.animation = 'shake 0.4s ease-in-out';
-    setTimeout(() => card.style.animation = '', 400);
-  });
-});
+document.querySelectorAll('.game-card').forEach(card=>{card.addEventListener('click',()=>{card.style.animation='shake 0.4s ease-in-out';setTimeout(()=>card.style.animation='',400);});});
 
-document.querySelectorAll('.section-num').forEach(el => {
-  const target = parseInt(el.textContent);
-  if (isNaN(target)) return;
-  const obs = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) {
-      let n = 0;
-      const iv = setInterval(() => {
-        n++;
-        el.textContent = String(n).padStart(2, '0');
-        if (n >= target) clearInterval(iv);
-      }, 60);
-      obs.unobserve(el);
-    }
-  });
+document.querySelectorAll('.section-num').forEach(el=>{
+  const target=parseInt(el.textContent);if(isNaN(target))return;
+  const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){let n=0;const iv=setInterval(()=>{n++;el.textContent=String(n).padStart(2,'0');if(n>=target)clearInterval(iv);},60);obs.unobserve(el);}});
   obs.observe(el);
 });
 </script>
