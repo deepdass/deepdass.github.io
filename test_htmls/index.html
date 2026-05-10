@@ -11,6 +11,8 @@
   --ink: #1a1008; --paper: #f5eedc; --gold: #DFC78F; --red: #e63030;
   --blue: #1a4fd6; --panel: #2D2D2D; --yellow: #ffe94a; --white: #ffffff;
   --shadow: 4px 4px 0px var(--ink); --shadow-lg: 6px 6px 0px var(--ink);
+  --hero-design-w: 1200;
+  --hero-design-h: 900;
 }
 html { scroll-behavior: smooth; }
 body {
@@ -33,6 +35,7 @@ body::before {
 @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-4px) rotate(-1deg)} 40%{transform:translateX(4px) rotate(1deg)} 60%{transform:translateX(-3px)} 80%{transform:translateX(3px)} }
 @keyframes burst { 0%{transform:scale(0) rotate(0deg);opacity:0} 60%{transform:scale(1.2) rotate(8deg);opacity:1} 100%{transform:scale(1) rotate(5deg)} }
 @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+@keyframes pop { 0%{transform:scale(1);} 50%{transform:scale(1.03);} 100%{transform:scale(1.02);} }
 .wiggle { display:inline-block; animation:wiggle 1.5s ease-in-out infinite; }
 .wiggle-slow { display:inline-block; animation:wiggle-slow 3s ease-in-out infinite; }
 .ink-box { border:3px solid var(--ink); box-shadow:var(--shadow); }
@@ -50,20 +53,15 @@ nav {
 .nav-links a:hover { color:var(--gold); }
 .nav-links a:hover::after { width:100%; }
 
-#hero {
-  min-height:100vh; display:flex; align-items:center; justify-content:center;
-  padding:100px 24px 60px; position:relative; overflow:hidden;
-}
-#hero::before {
-  content:''; position:absolute; top:-10%; left:-5%; width:65%; height:120%;
-  background:var(--panel); transform:skewX(-6deg); z-index:0;
-}
+#hero { position:relative; overflow:hidden; width:100%; display:flex; align-items:center; justify-content:center; }
+#hero::before { content:''; position:absolute; top:-10%; left:-5%; width:65%; height:120%; background:var(--panel); transform:skewX(-6deg); z-index:0; }
+.hero-scale-root { width:1200px; height:780px; position:relative; flex-shrink:0; transform-origin:center; z-index:1; }
 .star { position:absolute; font-size:1.5rem; animation:float 3s ease-in-out infinite; z-index:1; pointer-events:none; }
-.hero-inner { position:relative; z-index:2; display:flex; align-items:center; gap:48px; max-width:1100px; width:100%; }
+.hero-inner { position:absolute; inset:0; display:flex; align-items:center; padding:0 60px; gap:48px; padding-top:70px; transform:scale(1.39); }
 .hero-text { flex:1; min-width:0; }
 .hero-eyebrow { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:6px; color:var(--gold); background:var(--red); display:inline-block; padding:4px 14px; margin-bottom:12px; border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink); transform:rotate(-1deg); }
-.hero-name { font-family:'Bangers',cursive; font-size:clamp(4rem,10vw,8rem); line-height:0.9; color:var(--white); text-shadow:5px 5px 0 var(--gold),9px 9px 0 var(--ink); margin-bottom:16px; letter-spacing:4px; }
-.hero-title { font-family:'Permanent Marker',cursive; font-size:clamp(1.2rem,3vw,2rem); color:var(--yellow); text-shadow:2px 2px 0 var(--ink); margin-bottom:28px; transform:rotate(-1.5deg); display:inline-block; }
+.hero-name { font-family:'Bangers',cursive; font-size:8rem; line-height:0.9; color:var(--white); text-shadow:5px 5px 0 var(--gold),9px 9px 0 var(--ink); margin-bottom:16px; letter-spacing:4px; }
+.hero-title { font-family:'Permanent Marker',cursive; font-size:2rem; color:var(--yellow); text-shadow:2px 2px 0 var(--ink); margin-bottom:28px; transform:rotate(-1.5deg); display:block; width:640px; }
 .hero-desc { font-size:1.05rem; line-height:1.7; color:var(--paper); max-width:480px; font-weight:700; }
 .hero-links { display:flex; gap:14px; margin-top:28px; flex-wrap:wrap; }
 .btn { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:2px; padding:10px 24px; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); cursor:pointer; text-decoration:none; display:inline-block; transition:transform .1s,box-shadow .1s; }
@@ -73,18 +71,11 @@ nav {
 .btn-red  { background:var(--red);  color:var(--white); }
 .btn-dark { background:var(--panel); color:var(--paper); }
 
-.hero-collage { flex-shrink:0; width:420px; height:480px; position:relative; transform: scale(1.18);}
-.collage-panel {
-  position:absolute; border:4px solid var(--ink); overflow:hidden;
-  cursor:pointer; transition:transform 0.2s,box-shadow 0.2s,z-index 0s;
-}
+.hero-collage { flex-shrink:0; width:420px; height:480px; position:relative; transform:scale(1.2); left:14px; }
+.collage-panel { position:absolute; border:4px solid var(--ink); overflow:hidden; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s,z-index 0s; }
 .collage-panel img { width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
 .collage-panel:hover { z-index:20!important; transform:scale(1.06) rotate(0deg)!important; box-shadow:8px 8px 0 var(--ink)!important; }
-.collage-label {
-  position:absolute; bottom:0; left:0; right:0; background:var(--ink);
-  font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; color:var(--gold);
-  padding:4px 8px; text-align:center; transform:translateY(100%); transition:transform 0.18s ease;
-}
+.collage-label { position:absolute; bottom:0; left:0; right:0; background:var(--ink); font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; color:var(--gold); padding:4px 8px; text-align:center; transform:translateY(100%); transition:transform 0.18s ease; }
 .collage-panel:hover .collage-label { transform:translateY(0); }
 .cp-1 { --base-rot:3deg; width:220px; height:155px; top:8px; left:32px; transform:rotate(-3deg); box-shadow:5px 5px 0 var(--ink); animation:float 3.8s ease-in-out infinite; z-index:4; }
 .cp-2 { --base-rot:-4deg; width:168px; height:190px; top:14px; right:-10px; transform:rotate(4deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 4.2s ease-in-out infinite; z-index:3; }
@@ -92,16 +83,7 @@ nav {
 .cp-4 { --base-rot:5deg; width:148px; height:140px; top:202px; right:4px; transform:rotate(5deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 3.5s ease-in-out infinite; z-index:3; }
 .cp-5 { --base-rot:2deg; width:200px; height:140px; bottom:15px; left:50px; transform:rotate(2deg); box-shadow:5px 5px 0 var(--ink); animation:float 4.5s ease-in-out infinite; z-index:4; }
 .cp-6 { --base-rot:-4deg; width:155px; height:120px; bottom:15px; right:4px; transform:rotate(-4deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 5.2s ease-in-out infinite; z-index:3; }
-.collage-burst {
-  position:absolute; top:148px; left:194px;
-  width:76px; height:76px; background:var(--yellow);
-  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:1px; text-align:center; color:var(--ink);
-  border:2px solid var(--ink);
-  animation:burst 0.7s 0.3s cubic-bezier(.36,.07,.19,.97) both, wiggle-slow 2.5s 1s ease-in-out infinite;
-  z-index:10; pointer-events:none;
-}
+.collage-burst { position:absolute; top:140px; left:200px; width:76px; height:76px; background:var(--yellow); clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); display:flex; align-items:center; justify-content:center; font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:1px; text-align:center; color:var(--ink); border:2px solid var(--ink); animation:burst 0.7s 0.3s cubic-bezier(.36,.07,.19,.97) both, wiggle-slow 2.5s 1s ease-in-out infinite; z-index:10; pointer-events:none; }
 
 .ticker-wrap { background:var(--red); border-top:4px solid var(--ink); border-bottom:4px solid var(--ink); overflow:hidden; white-space:nowrap; padding:10px 0; position:relative; z-index:10; }
 .ticker-track { display:inline-block; animation:ticker 22s linear infinite; }
@@ -123,11 +105,6 @@ section { position:relative; z-index:1; }
 .games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; }
 .game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; }
 .game-card:hover { animation:pop .14s ease forwards; transform:translate(-4px,-4px) rotate(-0.5deg); box-shadow:10px 10px 0 rgba(0,0,0,.5); }
-@keyframes pop {
-  0%{transform:scale(1);}
-  50%{transform:scale(1.03);}
-  100%{transform:scale(1.02);}
-}
 .game-card:hover .game-title { animation:wiggle 1.5s ease-in-out infinite; }
 .game-corner { position:absolute; top:-14px; right:16px; font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; background:var(--red); color:var(--white); padding:3px 12px; border:2px solid var(--ink); box-shadow:2px 2px 0 var(--ink); }
 .game-photos { position:relative; width:100%; aspect-ratio:16/9; background:var(--panel); border-bottom:3px solid var(--gold); overflow:hidden; }
@@ -162,6 +139,109 @@ section { position:relative; z-index:1; }
 .game-btn-yt { background:var(--yellow); color:var(--ink); border:2px dashed var(--ink); box-shadow:none; letter-spacing:2px; flex-shrink:0; white-space:nowrap; align-self:flex-end; transform:rotate(-1.5deg); }
 .game-btn-yt:hover { transform:rotate(0deg) translate(-2px,-2px); box-shadow:3px 3px 0 var(--ink); }
 
+
+#art { background: var(--panel); }
+#art .section-num  { color: var(--panel); -webkit-text-stroke-color: var(--gold); }
+#art .section-title { color: var(--gold); }
+#art .section-title::after { background: var(--gold); }
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 28px;
+}
+
+.art-card-wide {
+  grid-column: span 2;
+}
+.art-card-narrow {
+  grid-column: span 1;
+}
+
+.art-card {
+  background: #1a1a1a;
+  border: 4px solid var(--gold);
+  box-shadow: 6px 6px 0 rgba(0,0,0,.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform .15s, box-shadow .15s;
+  overflow: visible;
+}
+.art-card:hover {
+  animation: pop .14s ease forwards;
+  transform: translate(-4px,-4px) rotate(-0.5deg);
+  box-shadow: 10px 10px 0 rgba(0,0,0,.5);
+}
+.art-card:hover .art-card-title { animation: wiggle 1.5s ease-in-out infinite; }
+
+
+.art-photos {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--card-ratio, 16 / 9);
+  background: #111;
+  border-bottom: 3px solid var(--gold);
+  overflow: hidden;
+}
+.art-photos .photo-slide { position:absolute; inset:0; opacity:0; transition:opacity .35s ease; }
+.art-photos .photo-slide.active { opacity:1; }
+.art-photos .photo-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+
+.art-tag {
+  position:absolute; top:10px; right:10px;
+  font-family:'Bangers',cursive; font-size:0.72rem; letter-spacing:1.5px;
+  background:rgba(10,6,2,.75); color:var(--gold);
+  padding:2px 9px; border:1.5px solid var(--gold);
+  z-index:3; pointer-events:none;
+}
+
+.art-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,6,2,.92) 0%, rgba(10,6,2,.3) 50%, transparent 75%);
+  opacity: 0; transition: opacity .22s ease;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 16px;
+  pointer-events: none;
+  z-index: 5;
+}
+.art-card:hover .art-overlay { opacity: 1; }
+.art-card-title {
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem; letter-spacing: 2px;
+  color: var(--gold); line-height: 1.1;
+}
+.art-card-meta {
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--paper); opacity: .7;
+  margin-top: 3px;
+}
+
+.art-cta {
+  margin-top: 40px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.art-cta-label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.1rem; color: var(--gold);
+  transform: rotate(-1deg); display: inline-block;
+}
+
+.art-photos .carousel-btn {
+  top: auto;
+  bottom: 10px;
+  transform: none;
+}
+
+.art-photos .carousel-btn:hover ~ .art-overlay {
+  opacity: 0;
+}
+.art-photos .carousel-dots:hover ~ .art-overlay {
+  opacity: 0;
+}
+
 #skills { background:var(--paper); }
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px; }
 .skill-panel { background:var(--white); border:3px solid var(--ink); box-shadow:5px 5px 0 var(--ink); padding:20px; transition:transform .15s,box-shadow .15s; }
@@ -184,16 +264,14 @@ section { position:relative; z-index:1; }
 footer { background:var(--ink); border-top:5px solid var(--gold); padding:32px 24px; text-align:center; }
 footer p { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:3px; color:var(--gold); }
 footer span { color:var(--red); }
+
 .reveal { opacity:0; transform:translateY(30px) rotate(-1deg); transition:opacity .5s,transform .5s; }
 .reveal.visible { opacity:1; transform:translateY(0) rotate(0deg); }
-@media (max-width:900px) {
-  .hero-inner { flex-direction:column; text-align:center; }
-  .hero-desc { margin:0 auto; }
-  .hero-links { justify-content:center; }
-  .hero-collage { width:100%; max-width:420px; height:380px; }
-  .about-inner { grid-template-columns:1fr; }
+
+@media (max-width:600px) {
   nav { padding:10px 16px; }
   .nav-links { gap:14px; }
+  .about-inner { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -203,60 +281,41 @@ footer span { color:var(--red); }
   <a href="#hero" class="nav-logo wiggle-slow">DD</a>
   <ul class="nav-links">
     <li><a href="#games">GAMES</a></li>
+    <li><a href="#art">ART</a></li>
     <li><a href="#skills">SKILLS</a></li>
     <li><a href="#about">CONTACT</a></li>
   </ul>
 </nav>
 
 <section id="hero">
-  <div class="star" style="top:63.5%;left:77.3%; animation-delay:.3s">★</div>
+  <div class="star" style="top:63.5%;left:77.3%;animation-delay:.3s">★</div>
   <div class="star" style="top:85%;left:59%;animation-delay:1s;font-size:1.4rem">✦</div>
   <div class="star" style="top:10%;left:64%;animation-delay:1.8s;font-size:2rem">✶</div>
   <div class="star" style="top:12%;left:90%;animation-delay:2s;font-size:1.2rem">★</div>
   <div class="star" style="top:66%;left:95%;animation-delay:.7s">✶</div>
   <div class="star" style="top:90%;left:88%;animation-delay:2s;font-size:1.2rem">★</div>
-
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-eyebrow">GAMEPLAY PROGRAMMER</div>
-      <h1 class="hero-name">DEEP DAS</h1>
-      <p class="hero-title wiggle-slow">Love Creating Experience. Love Making Games.</p>
-      <p class="hero-desc">
-        Heya, I'm Deep, a game developer who loves building, shipping and loves to prototype with different game ideas across Unreal Engine 5, Godot, and Unity. I love to learn new skills and iterate on the games I build till they feel satisfying.
-      </p>
-      <div class="hero-links">
-        <a href="https://github.com/deepdass" target="_blank" class="btn btn-gold">&lt;/&gt; GITHUB</a>
-        <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red">▶ ITCH.IO</a>
-        <a href="#games" class="btn btn-dark">↓ MY GAMES</a>
+  <div class="hero-scale-root" id="heroCanvas">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">GAMEPLAY PROGRAMMER</div>
+        <h1 class="hero-name">DEEP DAS</h1>
+        <p class="hero-title wiggle-slow">Love Creating Experiences. Love Making Games.</p>
+        <p class="hero-desc">Heya, I'm Deep, a game developer who loves building, shipping and loves to prototype with different game ideas across Unreal Engine 5, Godot, and Unity. I love to learn new skills and iterate on the games I build till they feel satisfying.</p>
+        <div class="hero-links">
+          <a href="https://github.com/deepdass" target="_blank" class="btn btn-gold">&lt;/&gt; GITHUB</a>
+          <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red">▶ ITCH.IO</a>
+          <a href="#games" class="btn btn-dark">↓ MY GAMES</a>
+        </div>
       </div>
-    </div>
-
-    <div class="hero-collage">
-      <div class="collage-panel cp-1">
-        <img src="GameImgs/Tokyodrift/img1.png" alt="Tokyo Drift">
-        <div class="collage-label">TOKYO DRIFT</div>
+      <div class="hero-collage">
+        <div class="collage-panel cp-1"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift"><div class="collage-label">TOKYO DRIFT</div></div>
+        <div class="collage-panel cp-2"><img src="GameImgs/Noroi/1.png" alt="noroi"><div class="collage-label">Noroi</div></div>
+        <div class="collage-panel cp-3"><img src="GameImgs/Skullward/1.png" alt="SkullWard"><div class="collage-label">SKULLWARD</div></div>
+        <div class="collage-panel cp-4"><img src="GameImgs/GaspFornow/3.png" alt="Gaspfornow"><div class="collage-label">GASPFORNOW</div></div>
+        <div class="collage-panel cp-5"><img src="GameImgs/RuinKingdom/1.png" alt="Ruin Kingdom"><div class="collage-label">RUIN KINGDOM</div></div>
+        <div class="collage-panel cp-6"><img src="GameImgs/IslandofDead/1.png" alt="Island of Dead"><div class="collage-label">ISLAND OF DEAD</div></div>
+        <div class="collage-burst">5+<br>GAMES<br>MADE</div>
       </div>
-      <div class="collage-panel cp-2">
-        <img src="GameImgs/RetroHorror/1.png" alt="retrohorror">
-        <div class="collage-label">RETROHORROR</div>
-      </div>
-      <div class="collage-panel cp-3">
-        <img src="GameImgs/Skullward/1.png" alt="SkullWard">
-        <div class="collage-label">SKULLWARD</div>
-      </div>
-      <div class="collage-panel cp-4">
-        <img src="GameImgs/GaspFornow/3.png" alt="Gaspfornow">
-        <div class="collage-label">GASPFORNOW</div>
-      </div>
-      <div class="collage-panel cp-5">
-        <img src="GameImgs/RuinKingdom/1.png" alt="Ruin Kingdom">
-        <div class="collage-label">RUIN KINGDOM</div>
-      </div>
-      <div class="collage-panel cp-6">
-        <img src="GameImgs/IslandofDead/1.png" alt="Island of Dead">
-        <div class="collage-label">ISLAND OF DEAD</div>
-      </div>
-      <div class="collage-burst">6+<br>GAMES<br>SHIPPED</div>
     </div>
   </div>
 </section>
@@ -264,11 +323,12 @@ footer span { color:var(--red); }
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
-    <span class="ticker-item">RETROHORROR</span><span class="ticker-item">GASPFORNOW</span>
+    <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
     <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
     <span class="ticker-item">UNREAL ENGINE 5</span><span class="ticker-item">GODOT 4</span><span class="ticker-item">UNITY</span>
+    <span class="ticker-item">BLENDER</span><span class="ticker-item">SUBSTANCE PAINTER</span>
     <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
-    <span class="ticker-item">RETROHORROR</span><span class="ticker-item">GASPFORNOW</span>
+    <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
     <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
   </div>
 </div>
@@ -285,7 +345,7 @@ footer span { color:var(--red); }
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
-          <div class="photo-slide active"><img src="GameImgs/Tokyodrift/img1.png" alt="screenshot"></div>
+          <div class="photo-slide active"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="screenshot"></div>
           <div class="photo-slide"><img src="GameImgs/Tokyodrift/img2.jpg" alt="screenshot"></div>
           <div class="photo-slide"><img src="GameImgs/Tokyodrift/img3.png" alt="screenshot"></div>
           <button class="carousel-btn carousel-prev">‹</button>
@@ -307,20 +367,20 @@ footer span { color:var(--red); }
           </div>
         </div>
       </div>
-
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
-          <div class="photo-slide active"><img src="GameImgs/RetroHorror/1.png" alt="screenshot"></div>
-          <div class="photo-slide"><img src="GameImgs/RetroHorror/2.png" alt="screenshot"></div>
-          <div class="photo-slide"><img src="GameImgs/RetroHorror/3.png" alt="screenshot"></div>
+          <div class="photo-slide active"><img src="GameImgs/Noroi/1.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/Noroi/2.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/Noroi/3.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/Noroi/4.png" alt="screenshot"></div>
           <button class="carousel-btn carousel-prev">‹</button>
           <button class="carousel-btn carousel-next">›</button>
-          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
-          <div class="photo-count">1 / 3</div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
-          <div class="game-title">retrohorror</div>
+          <div class="game-title">Noroi</div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
           <div class="game-links">
@@ -353,7 +413,7 @@ footer span { color:var(--red); }
         <div class="game-body">
           <div class="game-title">SkullWard</div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
-          <p class="game-desc">Pixelated 3D roguelike dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at HackClub Shiba (Tokyo) in a physical arcade cabinet!</p>
+          <p class="game-desc">Pixelated 3D roguelike dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba (Tokyo) in a physical arcade cabinet!</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/skullward" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -364,7 +424,6 @@ footer span { color:var(--red); }
           </div>
         </div>
       </div>
-
       <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
@@ -391,17 +450,17 @@ footer span { color:var(--red); }
           </div>
         </div>
       </div>
-
       <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/FpsLearn/3.png" alt="screenshot"></div>
           <div class="photo-slide"><img src="GameImgs/FpsLearn/1.jpg" alt="screenshot"></div>
           <div class="photo-slide"><img src="GameImgs/FpsLearn/2.jpg" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/FpsLearn/blender.png" alt="screenshot"></div>
           <button class="carousel-btn carousel-prev">‹</button>
           <button class="carousel-btn carousel-next">›</button>
-          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
-          <div class="photo-count">1 / 3</div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
           <div class="game-title">FPS LEARN</div>
@@ -446,7 +505,6 @@ footer span { color:var(--red); }
           </div>
         </div>
       </div>
-
       <div class="game-card reveal">
         <div class="game-corner">2024</div>
         <div class="game-photos">
@@ -475,10 +533,137 @@ footer span { color:var(--red); }
   </div>
 </section>
 
-<section id="skills">
+<section id="art">
   <div class="section-wrap">
     <div class="section-header reveal">
       <span class="section-num">02</span>
+      <h2 class="section-title">3D ART &amp; RENDERS</h2>
+    </div>
+
+    <div class="art-grid">
+
+      <div class="art-card reveal art-card-wide">
+        <div class="game-corner">2024</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/akm/magcloseup1.jpg" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/akm/1front.jpg" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/akm/2back.jpg" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/akm/3tableone.jpg" alt="screenshot"></div>
+          <button class="carousel-btn carousel-prev">‹</button>
+          <button class="carousel-btn carousel-next">›</button>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
+          <div class="art-overlay"><div class="art-card-title">Game-ready AKM</div><div class="art-card-meta">Blender · Substance Painter · GIMP · Pure Ref</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal art-card-wide">
+        <div class="game-corner">2024</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/PipeeWrench/1Front.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/PipeeWrench/2Front_closeupFront.jpg" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/PipeeWrench/ClothFront.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/PipeeWrench/WrenchNoBlood.png" alt="screenshot"></div>
+          <button class="carousel-btn carousel-prev">‹</button>
+          <button class="carousel-btn carousel-next">›</button>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
+          <div class="art-overlay"><div class="art-card-title">Makeshift Pipe Wrench</div><div class="art-card-meta">Blender · Substance Painter · GIMP · Pure Ref</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2025</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/eggdrill(WIP)/Screenshot 2026-03-10 025827.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="3D Models/eggdrill(WIP)/Screenshot 2026-03-10 025952.png" alt="screenshot"></div>
+          <button class="carousel-btn carousel-prev">‹</button>
+          <button class="carousel-btn carousel-next">›</button>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
+          <div class="art-tag">WIP</div>
+          <div class="art-overlay"><div class="art-card-title">eggdrill</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal art-card-narrow ">
+        <div class="game-corner">2024</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/cannon.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">Speed build Cannon</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal art-card-narrow">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/donutfinal.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">famous donuts</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/candy jar 1.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">candy jar</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2024</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/hardsurface.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">ROBU</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/ballgif.gif" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">LOOP</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/wineglass.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">Wine Glass</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/ICECREAM.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">mystical <br> ice cream</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" style="--card-ratio: 9/12;">
+        <div class="game-corner">2023</div>
+        <div class="art-photos">
+          <div class="photo-slide active"><img src="3D Models/someblends/low poly2.png" alt="screenshot"></div>
+          <div class="art-overlay"><div class="art-card-title">Low Poly character</div><div class="art-card-meta">Blender</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="art-cta reveal">
+      <span class="art-cta-label">See everything on →</span>
+      <a href="https://artstation.com/deepdasscg" target="_blank" class="btn btn-gold">◈ ARTSTATION</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
       <h2 class="section-title">SKILLS &amp; EXPERIENCES</h2>
     </div>
     <div class="skills-grid">
@@ -493,19 +678,19 @@ footer span { color:var(--red); }
 <section id="about">
   <div class="section-wrap">
     <div class="section-header reveal">
-      <span class="section-num" style="-webkit-text-stroke-color:var(--ink)">03</span>
+      <span class="section-num" style="-webkit-text-stroke-color:var(--ink)">04</span>
       <h2 class="section-title">ABOUT &amp; CONTACT</h2>
     </div>
     <div class="about-inner">
       <div class="about-text reveal">
-        <p>Self-taught and Self-driven game developer who builds, ships and prototypes with different game ideas across Unreal Engine 5, Godot, and Unity. I love to learn new pipelines, workflows and tools that improve my games and skills. I enjoy exploring both the technical and creative sides of building projects.</p>
+        <p>Self-taught and Self-motivated game developer who builds, ships and prototypes with different game ideas across Unreal Engine 5, Godot, and Unity. I love to learn new pipelines, workflows and tools that improve my games and skills. I enjoy exploring both the technical and creative sides of building projects.</p>
         <p>I like experimenting with new ideas, building projects from scratch, learning new things, solving problems and seeing ideas come to life. I also love helping people and sharing what I learn with others.</p>
-        <p>Currently graduated from school, I was and am shipping games in my spare time and loving every second of it.</p>
+        <p>Recently graduated from school, I was and am shipping games in my spare time and loving every second of it.</p>
         <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red" style="margin-top:12px">▶ PLAY MY GAMES</a>
       </div>
       <div class="contact-card reveal ink-box-lg">
         <div class="contact-title">GET IN TOUCH</div>
-        <div class="contact-row"><div class="contact-icon">@</div><a href="mailto:deepdas26052008@gmail.com">deepdas26052008@gmail.com</a></div>
+        <div class="contact-row"><div class="contact-icon">@</div><a href="mailto:deepdass.dev@gmail.com">deepdass.dev@gmail.com</a></div>
         <div class="contact-row"><div class="contact-icon">GIT</div><a href="https://github.com/deepdass" target="_blank">github.com/deepdass</a></div>
         <div class="contact-row"><div class="contact-icon">IT</div><a href="https://deepdass.itch.io" target="_blank">deepdass.itch.io</a></div>
         <div class="contact-row"><div class="contact-icon">AS</div><a href="https://artstation.com/deepdasscg" target="_blank">artstation.com/deepdasscg</a></div>
@@ -522,49 +707,93 @@ footer span { color:var(--red); }
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-VZ4WVRYJ69');
 </script>
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "whxigj4tpt");
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "whxigj4tpt");
 </script>
 
 <script>
-document.querySelectorAll('.game-photos').forEach(carousel => {
-  const slides=carousel.querySelectorAll('.photo-slide'),dots=carousel.querySelectorAll('.dot'),
-    count=carousel.querySelector('.photo-count'),prev=carousel.querySelector('.carousel-prev'),
-    next=carousel.querySelector('.carousel-next'),total=slides.length;
-  let current=0;
-  if(total<=1){if(prev)prev.style.display='none';if(next)next.style.display='none';}
-  function goTo(n){
-    slides[current].classList.remove('active');dots[current]?.classList.remove('active');
-    current=(n+total)%total;
-    slides[current].classList.add('active');dots[current]?.classList.add('active');
-    if(count)count.textContent=`${current+1} / ${total}`;
+(function() {
+  const DESIGN_W = 1200, DESIGN_H = 900, NAV_H = 64;
+  const canvas  = document.getElementById('heroCanvas');
+  const section = document.getElementById('hero');
+  function scaleHero() {
+    const scale = Math.min(window.innerWidth / DESIGN_W, (window.innerHeight - NAV_H) / DESIGN_H, 1);
+    canvas.style.transform = `scale(${scale})`;
+    canvas.style.transformOrigin = 'top center';
+    section.style.height    = (DESIGN_H * scale + NAV_H) + 'px';
+    section.style.paddingTop = NAV_H + 'px';
+    section.style.alignItems = 'flex-start';
   }
-  prev?.addEventListener('click',e=>{e.stopPropagation();goTo(current-1);});
-  next?.addEventListener('click',e=>{e.stopPropagation();goTo(current+1);});
-  dots.forEach((dot,i)=>dot.addEventListener('click',e=>{e.stopPropagation();goTo(i);}));
-  let touchStartX=0;
-  carousel.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;},{passive:true});
-  carousel.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>40)goTo(diff>0?current+1:current-1);});
+  scaleHero();
+  window.addEventListener('resize', scaleHero);
+})();
+
+document.querySelectorAll('.game-photos, .art-photos').forEach(carousel => {
+  const slides = carousel.querySelectorAll('.photo-slide');
+  const dots   = carousel.querySelectorAll('.dot');
+  const count  = carousel.querySelector('.photo-count');
+  const prev   = carousel.querySelector('.carousel-prev');
+  const next   = carousel.querySelector('.carousel-next');
+  const total  = slides.length;
+  let current  = 0;
+  if (total <= 1) { if (prev) prev.style.display='none'; if (next) next.style.display='none'; }
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current]?.classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    dots[current]?.classList.add('active');
+    if (count) count.textContent = `${current+1} / ${total}`;
+  }
+  prev?.addEventListener('click', e => { e.stopPropagation(); goTo(current-1); });
+  next?.addEventListener('click', e => { e.stopPropagation(); goTo(current+1); });
+  dots.forEach((dot,i) => dot.addEventListener('click', e => { e.stopPropagation(); goTo(i); }));
+  let tx = 0;
+  carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+  carousel.addEventListener('touchend',   e => { const d = tx - e.changedTouches[0].clientX; if (Math.abs(d)>40) goTo(d>0?current+1:current-1); });
 });
 
-document.querySelectorAll('.collage-panel').forEach(p=>p.addEventListener('click',()=>document.getElementById('games')?.scrollIntoView({behavior:'smooth'})));
+document.querySelectorAll('.collage-panel').forEach(p =>
+  p.addEventListener('click', () => document.getElementById('games')?.scrollIntoView({behavior:'smooth'}))
+);
 
-const revealEls=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}});},{threshold:0.12});
-revealEls.forEach(el=>observer.observe(el));
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, {threshold:0.12});
+revealEls.forEach(el => revealObserver.observe(el));
 
-document.querySelectorAll('.game-card').forEach(card=>{card.addEventListener('click',()=>{card.style.animation='shake 0.4s ease-in-out';setTimeout(()=>card.style.animation='',400);});});
+document.querySelectorAll('.game-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.style.animation = 'shake 0.4s ease-in-out';
+    setTimeout(() => card.style.animation = '', 400);
+  });
+});
 
-document.querySelectorAll('.section-num').forEach(el=>{
-  const target=parseInt(el.textContent);if(isNaN(target))return;
-  const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){let n=0;const iv=setInterval(()=>{n++;el.textContent=String(n).padStart(2,'0');if(n>=target)clearInterval(iv);},60);obs.unobserve(el);}});
+document.querySelectorAll('.section-num').forEach(el => {
+  const target = parseInt(el.textContent);
+  if (isNaN(target)) return;
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      let n = 0;
+      const iv = setInterval(() => {
+        n++; el.textContent = String(n).padStart(2,'0');
+        if (n >= target) clearInterval(iv);
+      }, 60);
+      obs.unobserve(el);
+    }
+  });
   obs.observe(el);
 });
 </script>

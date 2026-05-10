@@ -10,11 +10,61 @@
 :root {
   --ink: #1a1008; --paper: #f5eedc; --gold: #DFC78F; --red: #e63030;
   --blue: #1a4fd6; --panel: #2D2D2D; --yellow: #ffe94a; --white: #ffffff;
-  --shadow: 4px 4px 0px var(--ink); --shadow-lg: 6px 6px 0px var(--ink);
-  --hero-design-w: 1200;
-  --hero-design-h: 900;
+  --shadow-lg: 6px 6px 0px var(--ink);
 }
 html { scroll-behavior: smooth; }
+
+::-webkit-scrollbar { width: 18px; }
+::-webkit-scrollbar-track {
+  background: var(--ink);
+  border-left: 3px solid var(--gold);
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent, transparent 10px,
+      rgba(223,199,143,0.08) 10px, rgba(223,199,143,0.08) 11px
+    );
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.25), inset -2px -2px 0 rgba(0,0,0,0.35);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent, transparent 4px,
+      rgba(26,16,8,0.12) 4px, rgba(26,16,8,0.12) 5px
+    );
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yellow);
+  border-color: var(--ink);
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--red);
+  border-color: var(--ink);
+}
+::-webkit-scrollbar-button {
+  display: block;
+  height: 18px;
+  background: var(--ink);
+  border: 3px solid var(--gold);
+}
+::-webkit-scrollbar-button:vertical:decrement {
+  background-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpolygon points='6,0 12,8 0,8' fill='%23DFC78F' stroke='%231a1008' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+::-webkit-scrollbar-button:vertical:increment {
+  background-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpolygon points='6,8 12,0 0,0' fill='%23DFC78F' stroke='%231a1008' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+* { scrollbar-width: thin; scrollbar-color: var(--gold) var(--ink); }
 body {
   background: var(--paper);
   background-image:
@@ -36,9 +86,12 @@ body::before {
 @keyframes burst { 0%{transform:scale(0) rotate(0deg);opacity:0} 60%{transform:scale(1.2) rotate(8deg);opacity:1} 100%{transform:scale(1) rotate(5deg)} }
 @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
 @keyframes pop { 0%{transform:scale(1);} 50%{transform:scale(1.03);} 100%{transform:scale(1.02);} }
-.wiggle { display:inline-block; animation:wiggle 1.5s ease-in-out infinite; }
+@keyframes modalIn { 0%{opacity:0;transform:scale(0.92) rotate(-1deg)} 100%{opacity:1;transform:scale(1) rotate(0deg)} }
+@keyframes backdropIn { 0%{opacity:0} 100%{opacity:1} }
+@keyframes panelReveal { 0%{opacity:0;transform:translateY(20px) rotate(-1deg)} 100%{opacity:1;transform:translateY(0) rotate(0deg)} }
+@keyframes halftone-pulse { 0%,100%{opacity:.07} 50%{opacity:.12} }
+
 .wiggle-slow { display:inline-block; animation:wiggle-slow 3s ease-in-out infinite; }
-.ink-box { border:3px solid var(--ink); box-shadow:var(--shadow); }
 .ink-box-lg { border:4px solid var(--ink); box-shadow:var(--shadow-lg); }
 
 nav {
@@ -102,7 +155,7 @@ section { position:relative; z-index:1; }
 #games .section-title { color:var(--gold); }
 #games .section-title::after { background:var(--gold); }
 .year-divider { font-family:'Permanent Marker',cursive; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; padding:6px 20px; border:3px solid var(--gold); box-shadow:4px 4px 0 rgba(0,0,0,.4); margin-bottom:24px; margin-top:40px; transform:rotate(-1.5deg); }
-.games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; }
+.games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; overflow:visible; padding-bottom:48px; }
 .game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; }
 .game-card:hover { animation:pop .14s ease forwards; transform:translate(-4px,-4px) rotate(-0.5deg); box-shadow:10px 10px 0 rgba(0,0,0,.5); }
 .game-card:hover .game-title { animation:wiggle 1.5s ease-in-out infinite; }
@@ -139,101 +192,90 @@ section { position:relative; z-index:1; }
 .game-btn-yt { background:var(--yellow); color:var(--ink); border:2px dashed var(--ink); box-shadow:none; letter-spacing:2px; flex-shrink:0; white-space:nowrap; align-self:flex-end; transform:rotate(-1.5deg); }
 .game-btn-yt:hover { transform:rotate(0deg) translate(-2px,-2px); box-shadow:3px 3px 0 var(--ink); }
 
+.game-card-clickable {
+  cursor: pointer;
+  position: relative;
+}
+.card-click-hint {
+  position: absolute;
+  bottom: -38px;
+  left: 18px;        
+  right: auto;       
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.game-card-clickable:hover .card-click-hint,
+.game-card-clickable:focus .card-click-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-click-hint-text {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 0.88rem;
+  color: var(--yellow);
+  text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+  white-space: nowrap;
+}
+
+.card-click-hint-arrow {
+  width: 28px;
+  height: 22px;
+  flex-shrink: 0;
+
+  animation: arrowBounce 1s ease-in-out infinite;
+
+  filter: invert(1) sepia(1) saturate(15)
+          hue-rotate(5deg) brightness(1.1);
+}
+
+@keyframes arrowBounce {
+  0%,100% {
+    transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(2.5px);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(4px);
+  }
+}
+.game-card-clickable::after {
+  content: '';
+  position: absolute; inset: -4px;
+  border: 3px solid var(--yellow);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.game-card-clickable:hover::after { opacity: 0.6; }
 
 #art { background: var(--panel); }
 #art .section-num  { color: var(--panel); -webkit-text-stroke-color: var(--gold); }
 #art .section-title { color: var(--gold); }
 #art .section-title::after { background: var(--gold); }
-
-.art-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 28px;
-}
-
-.art-card-wide {
-  grid-column: span 2;
-}
-.art-card-narrow {
-  grid-column: span 1;
-}
-
-.art-card {
-  background: #1a1a1a;
-  border: 4px solid var(--gold);
-  box-shadow: 6px 6px 0 rgba(0,0,0,.5);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: transform .15s, box-shadow .15s;
-  overflow: visible;
-}
-.art-card:hover {
-  animation: pop .14s ease forwards;
-  transform: translate(-4px,-4px) rotate(-0.5deg);
-  box-shadow: 10px 10px 0 rgba(0,0,0,.5);
-}
+.art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 28px; }
+.art-card-wide { grid-column: span 2; }
+.art-card-narrow { grid-column: span 1; }
+.art-card { background: #1a1a1a; border: 4px solid var(--gold); box-shadow: 6px 6px 0 rgba(0,0,0,.5); position: relative; display: flex; flex-direction: column; transition: transform .15s, box-shadow .15s; overflow: visible; }
+.art-card:hover { animation: pop .14s ease forwards; transform: translate(-4px,-4px) rotate(-0.5deg); box-shadow: 10px 10px 0 rgba(0,0,0,.5); }
 .art-card:hover .art-card-title { animation: wiggle 1.5s ease-in-out infinite; }
-
-
-.art-photos {
-  position: relative;
-  width: 100%;
-  aspect-ratio: var(--card-ratio, 16 / 9);
-  background: #111;
-  border-bottom: 3px solid var(--gold);
-  overflow: hidden;
-}
+.art-photos { position: relative; width: 100%; aspect-ratio: var(--card-ratio, 16 / 9); background: #111; border-bottom: 3px solid var(--gold); overflow: hidden; }
 .art-photos .photo-slide { position:absolute; inset:0; opacity:0; transition:opacity .35s ease; }
 .art-photos .photo-slide.active { opacity:1; }
 .art-photos .photo-slide img { width:100%; height:100%; object-fit:cover; display:block; }
-
-.art-tag {
-  position:absolute; top:10px; right:10px;
-  font-family:'Bangers',cursive; font-size:0.72rem; letter-spacing:1.5px;
-  background:rgba(10,6,2,.75); color:var(--gold);
-  padding:2px 9px; border:1.5px solid var(--gold);
-  z-index:3; pointer-events:none;
-}
-
-.art-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10,6,2,.92) 0%, rgba(10,6,2,.3) 50%, transparent 75%);
-  opacity: 0; transition: opacity .22s ease;
-  display: flex; flex-direction: column;
-  justify-content: flex-end;
-  padding: 14px 16px;
-  pointer-events: none;
-  z-index: 5;
-}
+.art-tag { position:absolute; top:10px; right:10px; font-family:'Bangers',cursive; font-size:0.72rem; letter-spacing:1.5px; background:rgba(10,6,2,.75); color:var(--gold); padding:2px 9px; border:1.5px solid var(--gold); z-index:3; pointer-events:none; }
+.art-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,6,2,.92) 0%, rgba(10,6,2,.3) 50%, transparent 75%); opacity: 0; transition: opacity .22s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px; pointer-events: none; z-index: 5; }
 .art-card:hover .art-overlay { opacity: 1; }
-.art-card-title {
-  font-family: 'Bangers', cursive;
-  font-size: 1.5rem; letter-spacing: 2px;
-  color: var(--gold); line-height: 1.1;
-}
-.art-card-meta {
-  font-family: 'Comic Neue', cursive;
-  font-size: 0.8rem; font-weight: 700;
-  color: var(--paper); opacity: .7;
-  margin-top: 3px;
-}
-
-.art-cta {
-  margin-top: 40px;
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-}
-.art-cta-label {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.1rem; color: var(--gold);
-  transform: rotate(-1deg); display: inline-block;
-}
-
-.art-photos .carousel-btn {
-  top: auto;
-  bottom: 10px;
-  transform: none;
-}
+.art-card-title { font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); line-height: 1.1; }
+.art-card-meta { font-family: 'Comic Neue', cursive; font-size: 0.8rem; font-weight: 700; color: var(--paper); opacity: .7; margin-top: 3px; }
+.art-cta { margin-top: 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.art-cta-label { font-family: 'Permanent Marker', cursive; font-size: 1.1rem; color: var(--gold); transform: rotate(-1deg); display: inline-block; }
+.art-photos .carousel-btn { top: auto; bottom: 10px; transform: none; }
 
 .art-photos .carousel-btn:hover ~ .art-overlay {
   opacity: 0;
@@ -264,9 +306,262 @@ section { position:relative; z-index:1; }
 footer { background:var(--ink); border-top:5px solid var(--gold); padding:32px 24px; text-align:center; }
 footer p { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:3px; color:var(--gold); }
 footer span { color:var(--red); }
-
 .reveal { opacity:0; transform:translateY(30px) rotate(-1deg); transition:opacity .5s,transform .5s; }
 .reveal.visible { opacity:1; transform:translateY(0) rotate(0deg); }
+
+.breakdown-backdrop {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(10,6,2,0.82);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 24px 16px 24px;
+  overflow-y: auto;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+  backdrop-filter: blur(3px);
+}
+.breakdown-backdrop.open {
+  opacity: 1; pointer-events: all;
+  animation: backdropIn .25s ease forwards;
+}
+.breakdown-modal {
+  width: 100%; max-width: 980px;
+  background: var(--paper);
+  border: 5px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.93) rotate(-1deg);
+  transition: transform .3s cubic-bezier(.22,.7,.36,1);
+  margin: auto;
+}
+.breakdown-backdrop.open .breakdown-modal {
+  animation: modalIn .35s cubic-bezier(.22,.7,.36,1) forwards;
+}
+.breakdown-modal::before {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.12) 1px, transparent 1px);
+  background-size: 5px 5px;
+  animation: halftone-pulse 4s ease-in-out infinite;
+}
+
+.bd-header {
+  position: relative; overflow: hidden;
+  background: var(--ink);
+  padding: 0;
+  border-bottom: 5px solid var(--gold);
+  min-height: 220px;
+  display: flex; align-items: stretch;
+}
+.bd-header-bg {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255,255,255,.025) 8px, rgba(255,255,255,.025) 10px),
+    repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(255,255,255,.025) 8px, rgba(255,255,255,.025) 10px);
+  z-index: 0;
+}
+.bd-speedlines {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+}
+.bd-speedlines::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  width: 200%; height: 200%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg, rgba(223,199,143,.07) 2deg, transparent 4deg,
+    transparent 15deg, rgba(223,199,143,.07) 17deg, transparent 19deg,
+    transparent 30deg, rgba(223,199,143,.07) 32deg, transparent 34deg,
+    transparent 48deg, rgba(223,199,143,.07) 50deg, transparent 52deg,
+    transparent 65deg, rgba(223,199,143,.07) 67deg, transparent 69deg,
+    transparent 80deg, rgba(223,199,143,.07) 82deg, transparent 84deg,
+    transparent 100deg, rgba(223,199,143,.07) 102deg, transparent 104deg,
+    transparent 130deg, rgba(223,199,143,.07) 132deg, transparent 134deg,
+    transparent 160deg, rgba(223,199,143,.07) 162deg, transparent 164deg,
+    transparent 200deg, rgba(223,199,143,.07) 202deg, transparent 204deg,
+    transparent 240deg, rgba(223,199,143,.07) 242deg, transparent 244deg,
+    transparent 280deg, rgba(223,199,143,.07) 282deg, transparent 284deg,
+    transparent 310deg, rgba(223,199,143,.07) 312deg, transparent 314deg,
+    transparent 340deg, rgba(223,199,143,.07) 342deg, transparent 344deg
+  );
+}
+.bd-header-content {
+  position: relative; z-index: 2;
+  display: flex; align-items: stretch; width: 100%;
+}
+.bd-header-left {
+  flex: 1; padding: 36px 40px 36px 44px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.bd-eyebrow {
+  font-family: 'Bangers', cursive; font-size: 0.9rem; letter-spacing: 6px;
+  color: var(--ink); background: var(--gold);
+  display: inline-block; padding: 3px 12px;
+  border: 2px solid rgba(0,0,0,.3);
+  margin-bottom: 10px; transform: rotate(-1deg);
+  width: fit-content;
+}
+.bd-game-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.88;
+  color: var(--white);
+  text-shadow: 5px 5px 0 var(--gold), 9px 9px 0 rgba(0,0,0,.4);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+.bd-subtitle {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.1rem; color: var(--yellow);
+  text-shadow: 2px 2px 0 rgba(0,0,0,.5);
+  transform: rotate(-1.5deg); display: block;
+  margin-bottom: 20px;
+}
+.bd-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.bd-tag { font-family:'Bangers',cursive; font-size:0.78rem; letter-spacing:1.5px; background:transparent; color:var(--gold); padding:3px 10px; border:2px solid var(--gold); }
+.bd-header-right {
+  width: 220px; flex-shrink: 0;
+  border-left: 4px solid var(--gold);
+  background: rgba(0,0,0,.3);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px 16px; gap: 12px;
+}
+.bd-stat { text-align: center; }
+.bd-stat-val { font-family:'Bangers',cursive; font-size:2.2rem; color:var(--yellow); line-height:1; display:block; }
+.bd-stat-label { font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:2px; color:var(--gold); opacity:.7; display:block; }
+.bd-stat-divider { width:80%; height:2px; background:var(--gold); opacity:.3; }
+
+.bd-close {
+  position: absolute; top: 10px; right: 12px; z-index: 20;
+  font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 2px;
+  background: var(--red); color: var(--white);
+  border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+  padding: 4px 10px; cursor: pointer; line-height: 1.4;
+  transition: transform .1s, box-shadow .1s;
+}
+.bd-close:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+.bd-close:active { transform: translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+
+.bd-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  border-bottom: 4px solid var(--ink);
+}
+.bd-panel {
+  position: relative;
+  border: 3px solid var(--ink);
+  overflow: hidden;
+  background: #111;
+  animation: panelReveal .4s ease both;
+}
+.bd-panel img, .bd-panel video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.bd-panel-wide { grid-column: span 2; }
+
+.bd-speech-row {
+  display: flex; align-items: flex-start; gap: 0;
+  border-bottom: 4px solid var(--ink);
+  background: var(--white);
+}
+.bd-speaker-side {
+  width: 110px; flex-shrink: 0; background: var(--red);
+  border-right: 4px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px 10px;
+}
+.bd-speaker-text {
+  font-family: 'Bangers', cursive; font-size: 1.1rem; letter-spacing: 3px;
+  color: var(--white); writing-mode: vertical-rl;
+  text-orientation: mixed; transform: rotate(180deg);
+  text-shadow: 2px 2px 0 rgba(0,0,0,.3);
+}
+.bd-speech-bubble-wrap {
+  flex: 1; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px;
+}
+.bd-speech-bubble {
+  background: var(--white); border: 3px solid var(--ink);
+  padding: 16px 20px; position: relative;
+  font-size: 0.95rem; font-weight: 700; line-height: 1.6; color: var(--ink);
+}
+.bd-speech-bubble::before {
+  content: ''; position: absolute; left: -18px; top: 20px;
+  border-right: 18px solid var(--bubble-bg, var(--white)); border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  z-index: 1;
+}
+.bd-speech-bubble::after {
+  content: ''; position: absolute; left: -22px; top: 17px;
+  border-right: 22px solid var(--bubble-border, var(--ink)); border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  z-index: 0;
+}
+.bd-speech-bubble b { color: var(--red); }
+.bd-speech-bubble.yellow-bubble {
+  background: var(--yellow); border-color: var(--ink);
+  --bubble-bg: var(--yellow); --bubble-border: var(--ink);
+}
+
+.bd-yt-section {
+  border-bottom: 4px solid var(--ink);
+  background: var(--panel);
+  display: grid; grid-template-columns: 1fr 280px;
+}
+.bd-yt-embed-wrap {
+  position: relative; aspect-ratio: 16/9;
+  background: #000; border-right: 4px solid var(--gold);
+  overflow: hidden;
+}
+.bd-yt-embed-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+.bd-yt-sidebar {
+  padding: 28px 24px;
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
+}
+.bd-yt-label {
+  font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 3px;
+  color: var(--gold); display: flex; align-items: center; gap: 10px;
+}
+.bd-yt-label span { color: var(--red); font-size: 1.8rem; }
+.bd-yt-desc {
+  font-size: 0.85rem; font-weight: 700; color: var(--paper); line-height: 1.6;
+  opacity: .85;
+}
+.bd-yt-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 2px;
+  background: var(--yellow); color: var(--ink);
+  border: 2px dashed var(--ink); box-shadow: none;
+  padding: 10px 20px; text-decoration: none; cursor: pointer;
+  transition: transform .1s, box-shadow .1s;
+  width: fit-content; white-space: nowrap; transform: rotate(-1.5deg);
+}
+.bd-yt-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,.4); }
+
+.bd-footer-links {
+  background: var(--ink); padding: 24px 36px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  border-top: 4px solid var(--gold);
+}
+.bd-footer-title {
+  font-family: 'Bangers', cursive; font-size: 1.1rem; letter-spacing: 3px;
+  color: var(--gold); margin-right: 8px;
+}
+.bd-sfx {
+  position: absolute; z-index: 6; pointer-events: none;
+  font-family: 'Bangers', cursive; letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.3);
+  animation: burst .5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@media (max-width: 700px) {
+  .bd-panels { grid-template-columns: 1fr; }
+  .bd-panel-wide { grid-column: span 1; }
+  .bd-yt-section { grid-template-columns: 1fr; }
+  .bd-header-right { display: none; }
+  .bd-game-title { font-size: 3.5rem; }
+}
 
 @media (max-width:600px) {
   nav { padding:10px 16px; }
@@ -342,7 +637,9 @@ footer span { color:var(--red); }
 
     <div class="year-divider reveal">── 2026 ──</div>
     <div class="games-grid">
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Tokyo Drift breakdown" onclick="openBreakdown('tokyodrift')" onkeydown="if(event.key==='Enter')openBreakdown('tokyodrift')">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="screenshot"></div>
@@ -357,7 +654,7 @@ footer span { color:var(--red); }
           <div class="game-title">Tokyo Drift</div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
           <p class="game-desc">Physics-focused arcade drifting game inspired by Japanese car culture. Vehicle having car properties similar to their real like counterparts with matching real-world torque &amp; traction.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -366,8 +663,14 @@ footer span { color:var(--red); }
             <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Noroi breakdown" onclick="openBreakdown('noroi')" onkeydown="if(event.key==='Enter')openBreakdown('noroi')">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Noroi/1.png" alt="screenshot"></div>
@@ -383,7 +686,7 @@ footer span { color:var(--red); }
           <div class="game-title">Noroi</div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/retrohorror" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/retrohorror" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -392,12 +695,18 @@ footer span { color:var(--red); }
             <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
     </div>
 
     <div class="year-divider reveal" style="transform:rotate(1deg)">── 2025 ──</div>
     <div class="games-grid">
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open SkullWard breakdown" onclick="openBreakdown('skullward')" onkeydown="if(event.key==='Enter')openBreakdown('skullward')">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Skullward/1.png" alt="screenshot"></div>
@@ -414,7 +723,7 @@ footer span { color:var(--red); }
           <div class="game-title">SkullWard</div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
           <p class="game-desc">Pixelated 3D roguelike dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba (Tokyo) in a physical arcade cabinet!</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/skullward" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/shibagamee" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -423,8 +732,14 @@ footer span { color:var(--red); }
             <a href="https://www.youtube.com/watch?v=tDFwJAVSsbg" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Gaspfornow breakdown" onclick="openBreakdown('gaspfornow')" onkeydown="if(event.key==='Enter')openBreakdown('gaspfornow')">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/GaspFornow/3.png" alt="screenshot"></div>
@@ -440,7 +755,7 @@ footer span { color:var(--red); }
           <div class="game-title">Gaspfornow <span class="wip-badge">WIP</span></div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">GASP</span><span class="engine-tag">dream game ??</span></div>
           <p class="game-desc">First-person integration of Epic's GASP with Dual-mesh FPV system. Planning to make it into a fast-paced first-person zombie parkour game. With custom hero props made in Blender.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <span class="game-btn game-btn-soon">▶ SOON</span>
               <a href="https://github.com/deepdass/Gaspfornow" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -449,8 +764,14 @@ footer span { color:var(--red); }
             <a href="https://www.youtube.com/watch?v=Qs6ROI-gOcQ" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open FPS Learn breakdown" onclick="openBreakdown('fpslearn')" onkeydown="if(event.key==='Enter')openBreakdown('fpslearn')">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/FpsLearn/3.png" alt="screenshot"></div>
@@ -466,7 +787,7 @@ footer span { color:var(--red); }
           <div class="game-title">FPS LEARN</div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLENDER</span><span class="engine-tag">C++</span><span class="engine-tag">ANIMATIONS</span></div>
           <p class="game-desc">A Learning project that I made to teach myself about the Animation workflow in game dev and how to build a combat system using custom animations.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <span class="game-btn game-btn-soon">▶ SOON</span>
               <a href="https://github.com/deepdass/FPS--learn" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -475,12 +796,18 @@ footer span { color:var(--red); }
             <a href="https://www.youtube.com/watch?v=TjN6pr3wPRQ" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
     </div>
 
     <div class="year-divider reveal" style="transform:rotate(-2deg)">── 2024 ──</div>
     <div class="games-grid">
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Ruin Kingdom breakdown" onclick="openBreakdown('ruinkingdom')" onkeydown="if(event.key==='Enter')openBreakdown('ruinkingdom')">
         <div class="game-corner">2024</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/RuinKingdom/1.png" alt="screenshot"></div>
@@ -497,15 +824,21 @@ footer span { color:var(--red); }
           <div class="game-title">Ruin Kingdom</div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLUEPRINTS</span><span class="engine-tag">SET DRESSING</span></div>
           <p class="game-desc">Zone-based first-person RPG built to learn large-scale world design in UE5. Enemy AI, in-engine animations, custom shaders &amp; melee combat.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/ruin-kingdom" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/Ruin_Kingdom" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
             </div>
           </div>
         </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
       </div>
-      <div class="game-card reveal">
+
+      
+      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Island of Dead breakdown" onclick="openBreakdown('islandofdead')" onkeydown="if(event.key==='Enter')openBreakdown('islandofdead')">
         <div class="game-corner">2024</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/IslandofDead/1.png" alt="screenshot"></div>
@@ -521,12 +854,16 @@ footer span { color:var(--red); }
           <div class="game-title">Island of Dead</div>
           <div class="game-engine"><span class="engine-tag">UNITY</span><span class="engine-tag">C#</span><span class="engine-tag">PLOT TWIST</span></div>
           <p class="game-desc">My very first self-directed game - zero tutorials. Cute Chibi-style 2D zombie platformer with a companion character called ghosty. Where it all began.</p>
-          <div class="game-links">
+          <div class="game-links" onclick="event.stopPropagation()">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/island-of-dead" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/Island_of_Dead" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
             </div>
           </div>
+        </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
         </div>
       </div>
     </div>
@@ -601,7 +938,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">famous donuts</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal">
         <div class="game-corner">2023</div>
         <div class="art-photos">
@@ -609,7 +945,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">candy jar</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal">
         <div class="game-corner">2024</div>
         <div class="art-photos">
@@ -617,7 +952,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">ROBU</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal">
         <div class="game-corner">2023</div>
         <div class="art-photos">
@@ -625,7 +959,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">LOOP</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal">
         <div class="game-corner">2023</div>
         <div class="art-photos">
@@ -633,7 +966,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">Wine Glass</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal">
         <div class="game-corner">2023</div>
         <div class="art-photos">
@@ -641,7 +973,6 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">mystical <br> ice cream</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
       <div class="art-card reveal" style="--card-ratio: 9/12;">
         <div class="game-corner">2023</div>
         <div class="art-photos">
@@ -649,14 +980,11 @@ footer span { color:var(--red); }
           <div class="art-overlay"><div class="art-card-title">Low Poly character</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
-
     </div>
-
     <div class="art-cta reveal">
       <span class="art-cta-label">See everything on →</span>
       <a href="https://artstation.com/deepdasscg" target="_blank" class="btn btn-gold">◈ ARTSTATION</a>
     </div>
-
   </div>
 </section>
 
@@ -702,12 +1030,76 @@ footer span { color:var(--red); }
 
 <footer><p>MADE WITH L<span>♥</span>ve - DEEP DAS</p></footer>
 
+<div class="breakdown-backdrop" id="breakdown-tokyodrift" role="dialog" aria-modal="true" aria-label="Tokyo Drift Breakdown">
+  <div class="breakdown-modal">
+    <button class="bd-close" onclick="closeBreakdown('tokyodrift')" aria-label="Close">✕</button>
+    <div class="bd-header">
+      <div class="bd-header-bg"></div>
+      <div class="bd-speedlines"></div>
+      <div class="bd-header-content">
+        <div class="bd-header-left">
+          <div class="bd-eyebrow">GAME BREAKDOWN</div>
+          <h2 class="bd-game-title">TOKYO<br>DRIFT</h2>
+          <span class="bd-subtitle">Physics-focused Arcade Drifting in UE5</span>
+          <div class="bd-tags">
+            <span class="bd-tag">UE5</span><span class="bd-tag">Blueprint</span><span class="bd-tag">CHAOS PHYSICS</span><span class="bd-tag">ARCADE DRIFTING</span><span class="bd-tag">JAPANESE CAR CULTURE</span>
+          </div>
+        </div>
+        <div class="bd-header-right">
+          <div class="bd-stat"><span class="bd-stat-val">~50hr</span><span class="bd-stat-label">DEV TIME</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">BP + C++</span><span class="bd-stat-label">LANGUAGE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">UE5</span><span class="bd-stat-label">ENGINE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">SOLO</span><span class="bd-stat-label">TEAM SIZE</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bd-panels">
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift gameplay" loading="lazy">
+        <div class="bd-sfx" style="top:10px;right:12px;font-size:1.6rem;color:var(--yellow);transform:rotate(8deg);">VROOM!</div>
+      </div>
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/Tokyodrift/img2.jpg" alt="Tokyo Drift drift" loading="lazy">
+        <div class="bd-sfx" style="bottom:40px;right:12px;font-size:1.4rem;color:var(--red);transform:rotate(-6deg);">SKRRRT!</div>
+      </div>
+      <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
+        <img src="GameImgs/Tokyodrift/img3.png" alt="Tokyo Drift wide shot" loading="lazy" style="object-position:center 40%;">
+        <div class="bd-sfx" style="top:36px;left:60%;transform:translateX(-50%) rotate(-3deg);font-size:2rem;color:var(--gold);">Drift track</div>
+      </div>
+    </div>
+    <div class="bd-speech-row">
+      <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
+      <div class="bd-speech-bubble-wrap">
+        <div class="bd-speech-bubble">hahaha</div>
+        <div class="bd-speech-bubble yellow-bubble">gg <b>hehe</b> gg.</div>
+      </div>
+    </div>
+    <div class="bd-yt-section">
+      <div class="bd-yt-embed-wrap">
+        <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="Tokyo Drift gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="bd-yt-sidebar">
+        <div class="bd-yt-label">GAMEPLAY VIDEO</div>
+        <p class="bd-yt-desc">Gameplay footage showing the drift physics, car handling, environment and all the juicy effects and sound.</p>
+        <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="bd-yt-btn">▶ WATCH ON YOUTUBE</a>
+      </div>
+    </div><div class="bd-footer-links">
+      <span class="bd-footer-title">PLAY IT →</span>
+      <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+      <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
+      <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
+    </div>
+  </div>
+</div>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ4WVRYJ69"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VZ4WVRYJ69');
+  gtag('js', new Date()); gtag('config', 'G-VZ4WVRYJ69');
 </script>
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
@@ -718,6 +1110,7 @@ footer span { color:var(--red); }
 </script>
 
 <script>
+
 (function() {
   const DESIGN_W = 1200, DESIGN_H = 900, NAV_H = 64;
   const canvas  = document.getElementById('heroCanvas');
@@ -774,13 +1167,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, {threshold:0.12});
 revealEls.forEach(el => revealObserver.observe(el));
 
-document.querySelectorAll('.game-card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.style.animation = 'shake 0.4s ease-in-out';
-    setTimeout(() => card.style.animation = '', 400);
-  });
-});
-
 document.querySelectorAll('.section-num').forEach(el => {
   const target = parseInt(el.textContent);
   if (isNaN(target)) return;
@@ -795,6 +1181,36 @@ document.querySelectorAll('.section-num').forEach(el => {
     }
   });
   obs.observe(el);
+});
+
+function openBreakdown(id) {
+  const el = document.getElementById('breakdown-' + id);
+  if (!el) return;
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  el.scrollTop = 0;
+}
+function closeBreakdown(id) {
+  const el = document.getElementById('breakdown-' + id);
+  if (!el) return;
+  el.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.breakdown-backdrop').forEach(backdrop => {
+  backdrop.addEventListener('click', e => {
+    if (e.target === backdrop) {
+      const id = backdrop.id.replace('breakdown-', '');
+      closeBreakdown(id);
+    }
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.breakdown-backdrop.open').forEach(el => {
+      const id = el.id.replace('breakdown-', '');
+      closeBreakdown(id);
+    });
+  }
 });
 </script>
 </body>
