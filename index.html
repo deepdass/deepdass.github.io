@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Das - Portfolio</title>
+<title>Game Dev Portfolio - Deep Das</title>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -154,7 +154,7 @@ section { position:relative; z-index:1; }
 #games .section-num { color:var(--panel); -webkit-text-stroke-color:var(--gold); }
 #games .section-title { color:var(--gold); }
 #games .section-title::after { background:var(--gold); }
-.year-divider { font-family:'Permanent Marker',cursive; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; padding:6px 20px; border:3px solid var(--gold); box-shadow:4px 4px 0 rgba(0,0,0,.4); margin-bottom:24px; margin-top:40px; transform:rotate(-1.5deg); }
+.year-divider { font-family:'Permanent Marker',cursive; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; padding:6px 20px; border:3px solid var(--gold); box-shadow:4px 4px 0 rgba(0,0,0,.4); margin-bottom:24px; margin-top:30px; transform:rotate(-1.5deg); }
 .games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; overflow:visible; padding-bottom:48px; }
 .game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; }
 .game-card:hover { animation:pop .14s ease forwards; transform:translate(-4px,-4px) rotate(-0.5deg); box-shadow:10px 10px 0 rgba(0,0,0,.5); }
@@ -523,26 +523,18 @@ footer span { color:var(--red); }
   font-family: 'Bangers', cursive; font-size: 1.5rem; letter-spacing: 3px;
   color: var(--gold); display: flex; align-items: center; gap: 10px;
 }
-.bd-yt-label span { color: var(--red); font-size: 1.8rem; }
 .bd-yt-desc {
   font-size: 0.85rem; font-weight: 700; color: var(--paper); line-height: 1.6;
   opacity: .85;
 }
-.bd-yt-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 2px;
-  background: var(--yellow); color: var(--ink);
-  border: 2px dashed var(--ink); box-shadow: none;
-  padding: 10px 20px; text-decoration: none; cursor: pointer;
-  transition: transform .1s, box-shadow .1s;
-  width: fit-content; white-space: nowrap; transform: rotate(-1.5deg);
-}
-.bd-yt-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,.4); }
+
 
 .bd-footer-links {
   background: var(--ink); padding: 24px 36px;
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  border-top: 4px solid var(--gold);
+  border-top: 5px solid var(--gold);
+  box-shadow: 0 -4px 0 var(--gold);
+  position: relative;
 }
 .bd-footer-title {
   font-family: 'Bangers', cursive; font-size: 1.1rem; letter-spacing: 3px;
@@ -561,6 +553,274 @@ footer span { color:var(--red); }
   .bd-yt-section { grid-template-columns: 1fr; }
   .bd-header-right { display: none; }
   .bd-game-title { font-size: 3.5rem; }
+}
+
+.bd-section {
+  border-bottom: 4px solid var(--ink);
+  position: relative;
+}
+.bd-section-header {
+  display: flex; align-items: center; gap: 0;
+  border-bottom: 3px solid var(--ink);
+  background: var(--ink);
+}
+.bd-section-num {
+  font-family: 'Bangers', cursive; font-size: 2.8rem;
+  color: var(--gold); padding: 10px 22px;
+  border-right: 3px solid var(--gold);
+  line-height: 1; flex-shrink: 0;
+}
+.bd-section-title {
+  font-family: 'Bangers', cursive; font-size: 1.5rem;
+  letter-spacing: 4px; color: var(--paper);
+  padding: 0 24px; flex: 1;
+}
+.bd-section-title span { color: var(--gold); }
+.bd-section-body { padding: 28px 36px; }
+
+.bd-tech-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.bd-tech-card-label {
+  font-family: 'Bangers', cursive; font-size: 0.75rem;
+  letter-spacing: 3px; color: var(--white);
+  background: var(--red); display: inline-block;
+  padding: 2px 10px; margin-bottom: 8px;
+  border: 1.5px solid var(--ink);
+  transform: rotate(-1deg); position: relative; left: -4px;
+}
+.bd-tech-card-title {
+  font-family: 'Bangers', cursive; font-size: 1.3rem;
+  letter-spacing: 2px; color: var(--ink); margin-bottom: 6px;
+}
+.bd-tech-card-desc {
+  font-size: 0.85rem; font-weight: 700; line-height: 1.6;
+  color: #2a1f0a;
+}
+
+.bd-code-wrap {
+  border: 3px solid var(--ink); background: #1a1008;
+  box-shadow: 5px 5px 0 var(--ink); margin: 20px 0;
+  position: relative; overflow: hidden;
+}
+.bd-code-wrap:hover {
+transform: translate(-2px, -2px);
+box-shadow: 7px 7px 0 var(--ink);
+}
+
+.bd-code-bar {
+  background: var(--gold); border-bottom: 3px solid var(--ink);
+  padding: 6px 14px; display: flex; align-items: center; gap: 10px;
+}
+.bd-code-bar-title {
+  font-family: 'Bangers', cursive; font-size: 0.85rem;
+  letter-spacing: 2px; color: var(--ink); flex: 1;
+}
+.bd-code-bar-lang {
+  font-family: 'Bangers', cursive; font-size: 0.75rem;
+  letter-spacing: 2px; background: var(--ink); color: var(--gold);
+  padding: 2px 10px; border: 1.5px solid rgba(255,255,255,.2);
+}
+.bd-code-dots { display: flex; gap: 6px; }
+.bd-code-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid rgba(0,0,0,.3);
+}
+.bd-code-dot:nth-child(1) { background: #e63030; }
+.bd-code-dot:nth-child(2) { background: var(--yellow); }
+.bd-code-dot:nth-child(3) { background: #4caf50; }
+.bd-code-block {
+  padding: 20px 24px; overflow-x: auto;
+  font-family: 'Courier New', monospace; font-size: 0.82rem;
+  line-height: 1.7; color: #f5eedc;
+  margin: 0; white-space: pre;
+}
+.bd-code-comment { color: #6b8a6b; font-style: italic; }
+.bd-code-keyword { color: #DFC78F; font-weight: bold; }
+.bd-code-func { color: #ffe94a; }
+.bd-code-string { color: #e8a87c; }
+.bd-code-num { color: #7ec8e3; }
+.bd-code-caption {
+  font-size: 0.8rem; font-weight: 700; color: rgba(245,238,220,.5);
+  padding: 8px 24px 12px; border-top: 2px dashed rgba(223,199,143,.2);
+  font-style: italic;
+}
+
+.bd-before-after {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 0;
+  border: 4px solid var(--ink); 
+  margin: 20px 0; overflow: visible; position: relative;
+}
+.bd-before-after:hover { 
+  transform: translate(-3px,-3px); 
+  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
+}
+.bd-ba-side {
+  position: relative; display: flex; flex-direction: column;
+}
+.bd-ba-side.before { border-right: 4px solid var(--ink); }
+
+.bd-ba-arrow {
+  position: absolute;
+  top: 44%; left: 50.2%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: 64px; height: 64px;
+  pointer-events: none;
+  animation: ba-arrow-pulse 1s ease-in-out infinite;
+  filter: drop-shadow(3px 3px 0px #1a1008);
+}
+.bd-ba-arrow svg { width: 100%; height: 100%; display: block; }
+@keyframes ba-arrow-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);  }
+  50%       {transform: translate(-50%, -50%) scale(1.1);}
+}
+.bd-ba-img {
+  width: 100%; aspect-ratio: 16/9; background: #2D2D2D;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; flex-shrink: 0;
+}
+.bd-ba-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bd-ba-label {
+  position: absolute; top: 10px; z-index: 5;
+  font-family: 'Bangers', cursive; font-size: 0.85rem; letter-spacing: 3px;
+  padding: 4px 12px;
+  border: 2px solid var(--ink);
+  pointer-events: none;
+}
+.bd-ba-label.before {
+  left: 10px;
+  background: #e8e0ce; color: var(--ink);
+  transform: rotate(-2deg); box-shadow: -3px 3px 0 var(--ink);
+}
+.bd-ba-label.after {
+  right: 10px;
+  background: var(--gold); color: var(--ink);
+  transform: rotate(1.5deg); box-shadow: 3px 3px 0 var(--ink);
+}
+
+.bd-ba-caption {
+  font-size: 0.8rem; font-weight: 700; padding: 10px 14px;
+  background: var(--white); color: #2a1f0a;
+  line-height: 1.5; border-top: 3px solid var(--ink);
+  flex: 1; 
+}
+
+.bd-ba-captions { display: none; }
+
+.bd-gif-label {
+  font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 3px;
+  color: var(--yellow); background: var(--red);
+  padding: 4px 14px; border: 2px solid var(--gold);
+  position: relative; z-index: 1; transform: rotate(-1deg);
+}
+.bd-gif-hint {
+  font-family: 'Bangers', cursive; font-size: 0.75rem;
+  letter-spacing: 2px; color: rgba(223,199,143,.5);
+  position: relative; z-index: 1;
+}
+
+.bd-tech-card {
+  border: 3px solid var(--ink); background: var(--white);
+  padding: 16px 18px; position: relative;
+}
+.bd-tech-card:hover { 
+  transform: translate(-3px,-3px) rotate(0.4deg); 
+  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
+}
+
+.bd-challenge {
+  display: flex; gap: 0; border: 3px solid var(--ink);
+  overflow: visible; background: var(--white);
+}
+
+.bd-learn-card {
+  border: 3px solid var(--ink); background: var(--white);
+  padding: 16px 14px; position: relative;
+}
+.bd-learn-card:hover { 
+  transform: translate(-2px,-2px) rotate(0.5deg); 
+  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
+}
+
+.bd-diff-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  border: 3px solid var(--ink); background: var(--white);
+  padding: 14px 18px; box-shadow: 3px 3px 0 var(--ink);
+}
+
+.bd-diff-item:hover {
+transform: translate(-3px, -3px);
+box-shadow: 5px 5px 0 var(--ink);
+}
+.bd-challenge-num {
+  width: 56px; flex-shrink: 0;
+  background: var(--panel); color: var(--gold);
+  font-family: 'Bangers', cursive; font-size: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  border-right: 3px solid var(--ink);
+}
+.bd-challenge-body { padding: 16px 20px; flex: 1; }
+.bd-challenge-q {
+  font-family: 'Bangers', cursive; font-size: 1.05rem;
+  letter-spacing: 2px; color: var(--red); margin-bottom: 6px;
+}
+.bd-challenge-a {
+  font-size: 0.88rem; font-weight: 700; line-height: 1.65;
+  color: #2a1f0a; margin-bottom: 8px;
+}
+.bd-challenge-tag {
+  display: inline-block; font-family: 'Bangers', cursive; font-size: 0.72rem;
+  letter-spacing: 1.5px; background: var(--yellow); color: var(--ink);
+  padding: 2px 10px; border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink); transform: rotate(-1deg);
+}
+
+.bd-learned-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+
+.bd-learn-icon {
+  font-size: 1.6rem; margin-bottom: 8px; display: block;
+}
+.bd-learn-title {
+  font-family: 'Bangers', cursive; font-size: 1rem;
+  letter-spacing: 2px; color: var(--red); margin-bottom: 6px;
+}
+.bd-learn-desc {
+  font-size: 0.82rem; font-weight: 700;
+  line-height: 1.6; color: #2a1f0a;
+}
+
+.bd-diff-list { display: flex; flex-direction: column; gap: 12px; }
+.bd-diff-bullet {
+  font-family: 'Bangers', cursive; font-size: 1.1rem;
+  color: var(--white); background: var(--red);
+  width: 28px; height: 28px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--ink);
+}
+.bd-diff-text { font-size: 0.88rem; font-weight: 700; line-height: 1.65; color: #2a1f0a; }
+.bd-diff-text b { color: var(--red); }
+
+.bd-closing {
+  background: var(--panel); padding: 28px 36px;
+  border-bottom: 4px solid var(--gold);
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.bd-closing-text {
+  font-family: 'Permanent Marker', cursive; font-size: 1.1rem;
+  color: var(--yellow); text-shadow: 2px 2px 0 rgba(0,0,0,.4);
+  flex: 1; line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .bd-tech-grid { grid-template-columns: 1fr; }
+  .bd-before-after { grid-template-columns: 1fr 1fr; }
+  .bd-ba-caption { font-size: 0.72rem; }
+  .bd-learned-grid { grid-template-columns: 1fr 1fr; }
+  .bd-section-body { padding: 20px 18px; }
 }
 
 @media (max-width:600px) {
@@ -1030,6 +1290,8 @@ footer span { color:var(--red); }
 
 <footer><p>MADE WITH L<span>♥</span>ve - DEEP DAS</p></footer>
 
+
+
 <div class="breakdown-backdrop" id="breakdown-tokyodrift" role="dialog" aria-modal="true" aria-label="Tokyo Drift Breakdown">
   <div class="breakdown-modal">
     <button class="bd-close" onclick="closeBreakdown('tokyodrift')" aria-label="Close">✕</button>
@@ -1038,11 +1300,11 @@ footer span { color:var(--red); }
       <div class="bd-speedlines"></div>
       <div class="bd-header-content">
         <div class="bd-header-left">
-          <div class="bd-eyebrow">GAME BREAKDOWN</div>
+          <div class="bd-eyebrow">GAME BREAKDOWN <span style ="color: var(--red); font-size: 32px; ">But UNDER-CONSTRUCTION!!!</span></div>
           <h2 class="bd-game-title">TOKYO<br>DRIFT</h2>
           <span class="bd-subtitle">Physics-focused Arcade Drifting in UE5</span>
           <div class="bd-tags">
-            <span class="bd-tag">UE5</span><span class="bd-tag">Blueprint</span><span class="bd-tag">CHAOS PHYSICS</span><span class="bd-tag">ARCADE DRIFTING</span><span class="bd-tag">JAPANESE CAR CULTURE</span>
+            <span class="bd-tag">UE5</span><span class="bd-tag">Blueprint</span><span class="bd-tag">UE's Chaos Vehicles</span><span class="bd-tag">ARCADE DRIFTING</span><span class="bd-tag">JAPANESE CAR CULTURE</span>
           </div>
         </div>
         <div class="bd-header-right">
@@ -1067,16 +1329,19 @@ footer span { color:var(--red); }
       </div>
       <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
         <img src="GameImgs/Tokyodrift/img3.png" alt="Tokyo Drift wide shot" loading="lazy" style="object-position:center 40%;">
-        <div class="bd-sfx" style="top:36px;left:60%;transform:translateX(-50%) rotate(-3deg);font-size:2rem;color:var(--gold);">Drift track</div>
+        <div class="bd-sfx" style="top:36px;left:60%;transform:translateX(-50%) rotate(-3deg);font-size:2rem;color:var(--gold);">Drift track =)</div>
       </div>
     </div>
+    <!-- THE IDEA -->
     <div class="bd-speech-row">
       <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
       <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">hahaha</div>
-        <div class="bd-speech-bubble yellow-bubble">gg <b>hehe</b> gg.</div>
+        <div class="bd-speech-bubble">After coming back from Tokyo, I kept thinking about all the cool cars I saw there, and wanted to make a game about them. And since drifting originated in Japan, <b>so a game centered around Japanese car culture just made sense.</b> Then I thought about what would capture that feeling well, and based on what I saw and took photos off, I knew that I wanted a neon city with graffiti but haven't added it yet.. but for now I have a drift track with hills.</div>
+        <div class="bd-speech-bubble yellow-bubble">Also, before this <b>I wanted to make a drifting game</b> to see how I could build smooth drifting physics and how car physics actually work as I enjoyed playing these types of games. The drifting physics took a lot of iterations to make it feel right and to make it behave how a actual car would.</div>
       </div>
     </div>
+
+    <!-- GAMEPLAY VIDEO -->
     <div class="bd-yt-section">
       <div class="bd-yt-embed-wrap">
         <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="Tokyo Drift gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -1084,9 +1349,158 @@ footer span { color:var(--red); }
       <div class="bd-yt-sidebar">
         <div class="bd-yt-label">GAMEPLAY VIDEO</div>
         <p class="bd-yt-desc">Gameplay footage showing the drift physics, car handling, environment and all the juicy effects and sound.</p>
-        <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="bd-yt-btn">▶ WATCH ON YOUTUBE</a>
       </div>
-    </div><div class="bd-footer-links">
+    </div>
+
+    <!-- HOW IT WAS BUILT -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">01</div>
+        <div class="bd-section-title">WHAT'S UNDER THE <span>HOOD</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-tech-grid">
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">PHYSICS</div>
+            <div class="bd-tech-card-title">Vehicle Physics</div>
+            <div class="bd-tech-card-desc">The base vehicle simulation is handled by UE5's Chaos Vehicle physics system. So Car has custom engine, transmission, differential setups and the wheels with lateral slip curves, suspension, and torque configs similar to their real world counterparts.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">DRIFT SYSTEM</div>
+            <div class="bd-tech-card-title">Arcade drifting</div>
+            <div class="bd-tech-card-desc">I wanted the drift to feel arcadey, so that required a component on top of Chaos physics to reduce the realism and make it fast paced. This system has counter steering, applies drift force, adjust torque and angular damping to get the arcade feel.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">environment</div>
+            <div class="bd-tech-card-title">drift track</div>
+            <div class="bd-tech-card-desc">Drift track as the environment of the game - japan themed with kanji and hiragana markings with mountain and nature environment, then edit to sustained drift angles around corners with wide sand runoff zones and cones placement.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">scoring SYSTEM</div>
+            <div class="bd-tech-card-title">Score</div>
+            <div class="bd-tech-card-desc">The Scoring system is designed to reward controlled and dedicated drifts with different multiplier based on which gear the car is on, score points depending upon tilt of the car with continuous drift meter drain.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">CAMERA</div>
+            <div class="bd-tech-card-title">Dynamic Spring Arm</div>
+            <div class="bd-tech-card-desc">The camera tilts and lags based on MPH and drift angle, and FOV change ofcourse. When the car is in a drift, the spring arm rotates dynamically to capture the drift perfectly. Camera system to change perspective from behind car to driver or rear perspective.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">VFX & SFX</div>
+            <div class="bd-tech-card-title">Skid marks & Engine sound </div>
+            <div class="bd-tech-card-desc">Niagara particle systems on each wheel emit skid marks based on drift angle and speed. Meta-sound system for the engine and skid sound, which changes based on RPM, drift angle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGES & SOLUTIONS -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">02</div>
+        <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-challenge-list">
+
+          <div class="bd-challenge">
+            <div class="bd-challenge-num">01</div>
+            <div class="bd-challenge-body">
+              <div class="bd-challenge-q">Chaos Physics Fighting Me on Rear Traction</div>
+              <div class="bd-challenge-a">UE5's Chaos vehicle system isn't built for drifting. No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift. Chaos vehicle marks drifting as slip and reduces both lateral and sideways speed equally, resulting in dead drifts. After the physics tweak on top of the chaos physics and other tweaks inside chaos physics like center of mass, engine and wheel setup. </div>
+              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
+                <div class="bd-ba-side before">
+                  <div class="bd-ba-label before">BEFORE</div>
+                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift"></div>
+                  <div class="bd-ba-caption">Instant slowing down when entering drift, resulting in dead drift</div>
+                </div>
+                <div class="bd-ba-side after">
+                  <div class="bd-ba-label after">AFTER</div>
+                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/img2.jpg" alt="Tokyo Drift"></div>
+                  <div class="bd-ba-caption">Dynamically change angular damping and apply force for arcade feel and better drift.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bd-challenge">
+            <div class="bd-challenge-num">02</div>
+            <div class="bd-challenge-body">
+              <div class="bd-challenge-q">idk</div>
+              <div class="bd-challenge-a">remembering...</div>
+              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
+                <div class="bd-ba-side before">
+                  <div class="bd-ba-label before">BEFORE</div>
+                  <div class="bd-ba-img"></div>
+                  <div class="bd-ba-caption"></div>
+                </div>
+                <div class="bd-ba-side after">
+                  <div class="bd-ba-label after">AFTER</div>
+                  <div class="bd-ba-img"></div>
+                  <div class="bd-ba-caption"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT I LEARNED -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">03</div>
+        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-learned-grid">
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">ENGINE SOURCE DIVING</div>
+            <div class="bd-learn-desc">When the engine doesn't expose the parameters you need, you need to go read the source. Learned a lot about c++, how a big scalable system is build and to navigate UE5's souce code to find the files.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">BLUEPRINT's LIMITS</div>
+            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints. Next game in C++, Yeah.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">PARTICLE DETAIL MATTERS</div>
+            <div class="bd-learn-desc">Tying Niagara particle and engine sound intensity to game variables (slip angle, speed) made VFX and SFX feel reactive and alive. These effects should represent what's actually happening in gameplay.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">CHAOS VEHICLE NOT BUILD FOR DRIFT</div>
+            <div class="bd-learn-desc">No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift, unless you make your own function in C++. Chaos Vehicle shines for grip cars, suspension etc. Learned to build around that limitation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT I'D DO DIFFERENTLY -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">04</div>
+        <div class="bd-section-title">WHAT I'D DO <span>DIFFERENTLY</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-diff-list">
+          <div class="bd-diff-item">
+            <div class="bd-diff-bullet">1</div>
+            <div class="bd-diff-text"><b>Extend Chaos Vehicle properly,</b> with c++ and blueprint both. Use the Chaos Vehicle as the base for the animation, suspension and change the code that handles slip with my own in c++ and use blueprint for rapid iteration.</div>
+          </div>
+          <div class="bd-diff-item">
+            <div class="bd-diff-bullet">2</div>
+            <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
+          </div>
+          <div class="bd-diff-item">
+            <div class="bd-diff-bullet">3</div>
+            <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="bd-footer-links">
       <span class="bd-footer-title">PLAY IT →</span>
       <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
       <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
@@ -1214,4 +1628,4 @@ document.addEventListener('keydown', e => {
 });
 </script>
 </body>
-</html>
+</html> 
