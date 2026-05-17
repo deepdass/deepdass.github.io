@@ -173,7 +173,7 @@ section { position:relative; z-index:1; }
 .dot.active { background:var(--gold); }
 .photo-count { position:absolute; top:8px; left:8px; z-index:5; font-family:'Bangers',cursive; font-size:0.75rem; letter-spacing:1px; background:rgba(0,0,0,.6); color:var(--gold); padding:2px 8px; border:1px solid var(--gold); }
 .game-body { padding:20px 20px 0; flex:1; display:flex; flex-direction:column; }
-.game-title { font-family:'Bangers',cursive; font-size:2rem; letter-spacing:2px; color:var(--ink); line-height:1.1; margin-bottom:8px; display:inline-block; }
+.game-title { font-family:'Bangers',cursive; font-size:2rem; letter-spacing:2px; color:var(--ink); line-height:1.1; margin-bottom:2px; display:inline-block; }
 .game-engine { font-size:0.82rem; font-weight:700; margin-bottom:12px; display:flex; flex-wrap:wrap; gap:6px; }
 .engine-tag { background:var(--ink); color:var(--gold); padding:2px 9px; font-size:0.75rem; border:1.5px solid var(--gold); font-family:'Bangers',cursive; letter-spacing:1px; }
 .game-desc { font-size:0.92rem; line-height:1.65; color:#2a1f0a; font-weight:700; flex:1; margin-bottom:16px; }
@@ -192,15 +192,61 @@ section { position:relative; z-index:1; }
 .game-btn-yt { background:var(--yellow); color:var(--ink); border:2px dashed var(--ink); box-shadow:none; letter-spacing:2px; flex-shrink:0; white-space:nowrap; align-self:flex-end; transform:rotate(-1.5deg); }
 .game-btn-yt:hover { transform:rotate(0deg) translate(-2px,-2px); box-shadow:3px 3px 0 var(--ink); }
 
-.game-card-clickable {
-  cursor: pointer;
+.game-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
   position: relative;
+  flex-wrap: wrap;
 }
+.btn-breakdown {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  padding: 4px 7px;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform .1s, box-shadow .1s;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
+  background: var(--panel);
+  color: var(--gold);
+  transform: translate(3px, -5px);
+  position: relative;
+  border-radius: 8px
+}
+.btn-breakdown:hover {
+  transform: translate(1px, -7px);  
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn-breakdown .btn-text {
+  display: inline-block;
+  transform: rotate(-45deg); 
+  transform-origin: center;
+}
+
+.btn-breakdown:active {
+  transform: translate(5px, -3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.btn-breakdown::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+}
+
 .card-click-hint {
   position: absolute;
   bottom: -38px;
-  left: 18px;        
-  right: auto;       
+  left: 18px;
+  right: auto;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -210,8 +256,7 @@ section { position:relative; z-index:1; }
   transform: translateY(4px);
   transition: opacity .25s ease, transform .25s ease;
 }
-.game-card-clickable:hover .card-click-hint,
-.game-card-clickable:focus .card-click-hint {
+.game-card:has(.btn-breakdown:hover) .card-click-hint {
   opacity: 1;
   transform: translateY(0);
 }
@@ -222,37 +267,17 @@ section { position:relative; z-index:1; }
   text-shadow: 1px 1px 0 rgba(0,0,0,.5);
   white-space: nowrap;
 }
-
 .card-click-hint-arrow {
   width: 28px;
   height: 22px;
   flex-shrink: 0;
-
   animation: arrowBounce 1s ease-in-out infinite;
-
-  filter: invert(1) sepia(1) saturate(15)
-          hue-rotate(5deg) brightness(1.1);
+  filter: invert(1) sepia(1) saturate(15) hue-rotate(5deg) brightness(1.1);
 }
-
 @keyframes arrowBounce {
-  0%,100% {
-    transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(2.5px);
-  }
-
-  50% {
-    transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(4px);
-  }
+  0%,100% { transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(2.5px); }
+  50%      { transform: rotate(180deg) scale(1.55) scaleX(-1.1) translateX(4px); }
 }
-.game-card-clickable::after {
-  content: '';
-  position: absolute; inset: -4px;
-  border: 3px solid var(--yellow);
-  opacity: 0;
-  transition: opacity .2s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-.game-card-clickable:hover::after { opacity: 0.6; }
 
 #art { background: var(--panel); }
 #art .section-num  { color: var(--panel); -webkit-text-stroke-color: var(--gold); }
@@ -899,7 +924,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Tokyo Drift breakdown" onclick="openBreakdown('tokyodrift')" onkeydown="if(event.key==='Enter')openBreakdown('tokyodrift')">
+      <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="screenshot"></div>
@@ -911,10 +936,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 3</div>
         </div>
         <div class="game-body">
-          <div class="game-title">Tokyo Drift</div>
+          <div class="game-title-row">
+            <div class="game-title">Tokyo Drift</div>
+            <button class="btn-breakdown" onclick="openBreakdown('tokyodrift')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
           <p class="game-desc">Physics-focused arcade drifting game inspired by Japanese car culture. Vehicle having car properties similar to their real like counterparts with matching real-world torque &amp; traction.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -930,7 +958,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Noroi breakdown" onclick="openBreakdown('noroi')" onkeydown="if(event.key==='Enter')openBreakdown('noroi')">
+      <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Noroi/1.png" alt="screenshot"></div>
@@ -943,10 +971,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
-          <div class="game-title">Noroi</div>
+          <div class="game-title-row">
+            <div class="game-title">Noroi</div>
+            <button class="btn-breakdown" onclick="openBreakdown('noroi')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/retrohorror" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/retrohorror" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -966,7 +997,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open SkullWard breakdown" onclick="openBreakdown('skullward')" onkeydown="if(event.key==='Enter')openBreakdown('skullward')">
+      <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Skullward/1.png" alt="screenshot"></div>
@@ -980,10 +1011,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 5</div>
         </div>
         <div class="game-body">
-          <div class="game-title">SkullWard</div>
+          <div class="game-title-row">
+            <div class="game-title">SkullWard</div>
+            <button class="btn-breakdown" onclick="openBreakdown('skullward')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
           <p class="game-desc">Pixelated 3D roguelike dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba (Tokyo) in a physical arcade cabinet!</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/skullward" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/shibagamee" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -999,7 +1033,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Gaspfornow breakdown" onclick="openBreakdown('gaspfornow')" onkeydown="if(event.key==='Enter')openBreakdown('gaspfornow')">
+      <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/GaspFornow/3.png" alt="screenshot"></div>
@@ -1012,10 +1046,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
-          <div class="game-title">Gaspfornow <span class="wip-badge">WIP</span></div>
+          <div class="game-title-row">
+            <div class="game-title">Gaspfornow <span class="wip-badge">WIP</span></div>
+            <button class="btn-breakdown" onclick="openBreakdown('gaspfornow')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">GASP</span><span class="engine-tag">dream game ??</span></div>
           <p class="game-desc">First-person integration of Epic's GASP with Dual-mesh FPV system. Planning to make it into a fast-paced first-person zombie parkour game. With custom hero props made in Blender.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <span class="game-btn game-btn-soon">▶ SOON</span>
               <a href="https://github.com/deepdass/Gaspfornow" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -1031,7 +1068,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open FPS Learn breakdown" onclick="openBreakdown('fpslearn')" onkeydown="if(event.key==='Enter')openBreakdown('fpslearn')">
+      <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/FpsLearn/3.png" alt="screenshot"></div>
@@ -1044,10 +1081,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
-          <div class="game-title">FPS LEARN</div>
+          <div class="game-title-row">
+            <div class="game-title">FPS LEARN</div>
+            <button class="btn-breakdown" onclick="openBreakdown('fpslearn')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLENDER</span><span class="engine-tag">C++</span><span class="engine-tag">ANIMATIONS</span></div>
           <p class="game-desc">A Learning project that I made to teach myself about the Animation workflow in game dev and how to build a combat system using custom animations.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <span class="game-btn game-btn-soon">▶ SOON</span>
               <a href="https://github.com/deepdass/FPS--learn" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -1067,7 +1107,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Ruin Kingdom breakdown" onclick="openBreakdown('ruinkingdom')" onkeydown="if(event.key==='Enter')openBreakdown('ruinkingdom')">
+      <div class="game-card reveal">
         <div class="game-corner">2024</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/RuinKingdom/1.png" alt="screenshot"></div>
@@ -1081,10 +1121,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 5</div>
         </div>
         <div class="game-body">
-          <div class="game-title">Ruin Kingdom</div>
+          <div class="game-title-row">
+            <div class="game-title">Ruin Kingdom</div>
+            <button class="btn-breakdown" onclick="openBreakdown('ruinkingdom')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLUEPRINTS</span><span class="engine-tag">SET DRESSING</span></div>
           <p class="game-desc">Zone-based first-person RPG built to learn large-scale world design in UE5. Enemy AI, in-engine animations, custom shaders &amp; melee combat.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/ruin-kingdom" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/Ruin_Kingdom" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -1098,7 +1141,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
-      <div class="game-card game-card-clickable reveal" tabindex="0" role="button" aria-label="Open Island of Dead breakdown" onclick="openBreakdown('islandofdead')" onkeydown="if(event.key==='Enter')openBreakdown('islandofdead')">
+      <div class="game-card reveal">
         <div class="game-corner">2024</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/IslandofDead/1.png" alt="screenshot"></div>
@@ -1111,10 +1154,13 @@ box-shadow: 5px 5px 0 var(--ink);
           <div class="photo-count">1 / 4</div>
         </div>
         <div class="game-body">
-          <div class="game-title">Island of Dead</div>
+          <div class="game-title-row">
+            <div class="game-title">Island of Dead</div>
+            <button class="btn-breakdown" onclick="openBreakdown('islandofdead')" title="Full breakdown"><span class="btn-text">➜</span></button> 
+          </div>
           <div class="game-engine"><span class="engine-tag">UNITY</span><span class="engine-tag">C#</span><span class="engine-tag">PLOT TWIST</span></div>
           <p class="game-desc">My very first self-directed game - zero tutorials. Cute Chibi-style 2D zombie platformer with a companion character called ghosty. Where it all began.</p>
-          <div class="game-links" onclick="event.stopPropagation()">
+          <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/island-of-dead" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
               <a href="https://github.com/deepdass/Island_of_Dead" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
@@ -1243,7 +1289,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>
     <div class="art-cta reveal">
       <span class="art-cta-label">See everything on →</span>
-      <a href="https://artstation.com/deepdasscg" target="_blank" class="btn btn-gold">◈ ARTSTATION</a>
+      <a href="https://artstation.com/deepdasscg" target="_blank" class="btn btn-gold">◆ ARTSTATION</a>
     </div>
   </div>
 </section>
@@ -1252,12 +1298,12 @@ box-shadow: 5px 5px 0 var(--ink);
   <div class="section-wrap">
     <div class="section-header reveal">
       <span class="section-num">03</span>
-      <h2 class="section-title">SKILLS &amp; EXPERIENCES</h2>
+      <h2 class="section-title">SKILLS &amp; EXPERIENCES</h2> 
     </div>
     <div class="skills-grid">
-      <div class="skill-panel reveal"><div class="skill-header">⚙ ENGINES</div><ul class="skill-list"><li>Unreal Engine 5</li><li>Godot 4</li><li>Unity</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">⚒︎ ENGINES</div><ul class="skill-list"><li>Unreal Engine 5</li><li>Godot 4</li><li>Unity</li></ul></div>
       <div class="skill-panel reveal"><div class="skill-header">&lt;/&gt; LANGUAGES</div><ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>Python</li><li>UE5 Blueprints</li><li>HTML &amp; CSS</li></ul></div>
-      <div class="skill-panel reveal"><div class="skill-header">🎨 ART &amp; ASSETS</div><ul class="skill-list"><li>Blender</li><li>Substance Painter</li><li>GIMP &amp; Pure Ref</li><li>Aseprite</li><li>Audacity</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">◆ ART &amp; ASSETS</div><ul class="skill-list"><li>Blender</li><li>Substance Painter</li><li>GIMP &amp; Pure Ref</li><li>Aseprite</li><li>Audacity</li></ul></div>
       <div class="skill-panel reveal"><div class="skill-header">💭 OTHER INTERESTS</div><ul class="skill-list"><li>Git / GitHub</li><li>Gaming</li><li>Hardware</li><li>Photography</li><li>Music</li><li>Basketball &amp; Volleyball</li></ul></div>
     </div>
   </div>
@@ -1610,6 +1656,13 @@ function closeBreakdown(id) {
   el.classList.remove('open');
   document.body.style.overflow = '';
 }
+document.querySelectorAll('.game-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.style.animation = 'shake 0.4s ease-in-out';
+    setTimeout(() => card.style.animation = '', 400);
+  });
+});
+
 document.querySelectorAll('.breakdown-backdrop').forEach(backdrop => {
   backdrop.addEventListener('click', e => {
     if (e.target === backdrop) {
@@ -1628,4 +1681,4 @@ document.addEventListener('keydown', e => {
 });
 </script>
 </body>
-</html> 
+</html>
