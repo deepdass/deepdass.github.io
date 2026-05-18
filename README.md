@@ -33,3 +33,10 @@ My very first self-directed game - zero tutorials. Cute Chibi-style 2D zombie pl
 - HTML
 - CSS
 - JavaScript
+
+## Links
+- Email: deepdass.dev@gmail.com
+- itch.io: https://deepdass.itch.io
+- GitHub: https://github.com/deepdass
+- YouTube: https://youtube.com/@DeepDas-deepdass
+- ArtStation: https://artstation.com/deepdasscg
