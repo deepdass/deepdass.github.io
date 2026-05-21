@@ -1,7 +1,9 @@
 # Game Dev Portfolio 🎮🕹️
 A gamified comic style game development portfolio with detailed breakdown of games, art, skills, about and other experiences in game development.
 
-Live Website - https://deepdass.github.io/
+Live Link - https://deepdass.github.io/
+
+<img width="1675" height="850" alt="Screenshot 2026-05-07 062140" src="https://github.com/user-attachments/assets/1ccbe401-1031-4a1b-a4c0-18211a21abe9" />
 
 ## Features
 - Comic style design - bold, matching color scheme and comic layout
