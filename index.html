@@ -117,7 +117,7 @@ nav {
 .hero-title { font-family:'Permanent Marker',cursive; font-size:2rem; color:var(--yellow); text-shadow:2px 2px 0 var(--ink); margin-bottom:28px; transform:rotate(-1.5deg); display:block; width:640px; }
 .hero-desc { font-size:1.05rem; line-height:1.7; color:var(--paper); max-width:480px; font-weight:700; }
 .hero-links { display:flex; gap:14px; margin-top:28px; flex-wrap:wrap; }
-.btn { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:2px; padding:10px 24px; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); cursor:pointer; text-decoration:none; display:inline-block; transition:transform .1s,box-shadow .1s; }
+.btn { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:2px; padding:8px 24px; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); cursor:pointer; text-decoration:none; display:inline-block; transition:transform .1s,box-shadow .1s; }
 .btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
 .btn:active { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
 .btn-gold { background:var(--gold); color:var(--ink); }
@@ -128,7 +128,7 @@ nav {
 .collage-panel { position:absolute; border:4px solid var(--ink); overflow:hidden; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s,z-index 0s; }
 .collage-panel img { width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
 .collage-panel:hover { z-index:20!important; transform:scale(1.06) rotate(0deg)!important; box-shadow:8px 8px 0 var(--ink)!important; }
-.collage-label { position:absolute; bottom:0; left:0; right:0; background:var(--ink); font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; color:var(--gold); padding:4px 8px; text-align:center; transform:translateY(100%); transition:transform 0.18s ease; }
+.collage-label { position:absolute; bottom: -1px; left:0; right:0; background:var(--ink); font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; color:var(--gold); padding:4px 8px; text-align:center; transform:translateY(100%); transition:transform 0.18s ease; }
 .collage-panel:hover .collage-label { transform:translateY(0); }
 .cp-1 { --base-rot:3deg; width:220px; height:155px; top:8px; left:32px; transform:rotate(-3deg); box-shadow:5px 5px 0 var(--ink); animation:float 3.8s ease-in-out infinite; z-index:4; }
 .cp-2 { --base-rot:-4deg; width:168px; height:190px; top:14px; right:-10px; transform:rotate(4deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 4.2s ease-in-out infinite; z-index:3; }
@@ -136,7 +136,7 @@ nav {
 .cp-4 { --base-rot:5deg; width:148px; height:140px; top:202px; right:4px; transform:rotate(5deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 3.5s ease-in-out infinite; z-index:3; }
 .cp-5 { --base-rot:2deg; width:200px; height:140px; bottom:15px; left:50px; transform:rotate(2deg); box-shadow:5px 5px 0 var(--ink); animation:float 4.5s ease-in-out infinite; z-index:4; }
 .cp-6 { --base-rot:-4deg; width:155px; height:120px; bottom:15px; right:4px; transform:rotate(-4deg); box-shadow:5px 5px 0 var(--ink); animation:float-alt 5.2s ease-in-out infinite; z-index:3; }
-.collage-burst { position:absolute; top:140px; left:200px; width:76px; height:76px; background:var(--yellow); clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); display:flex; align-items:center; justify-content:center; font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:1px; text-align:center; color:var(--ink); border:2px solid var(--ink); animation:burst 0.7s 0.3s cubic-bezier(.36,.07,.19,.97) both, wiggle-slow 2.5s 1s ease-in-out infinite; z-index:10; pointer-events:none; }
+.collage-burst { position:absolute; top:140px; left:200px; width:76px; height:76px; background:var(--yellow); clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); display:flex; align-items:center; justify-content:center; font-family:'Bangers',cursive; font-size:0.7rem; letter-spacing:1px; text-align:center; color:var(--ink); border:2px solid var(--ink); animation:burst 0.7s 0.3s cubic-bezier(.36,.07,.19,.97) both, wiggle-slow 2.5s 1s ease-in-out infinite; z-index:100; pointer-events:none; }
 
 .ticker-wrap { background:var(--red); border-top:4px solid var(--ink); border-bottom:4px solid var(--ink); overflow:hidden; white-space:nowrap; padding:10px 0; position:relative; z-index:10; }
 .ticker-track { display:inline-block; animation:ticker 22s linear infinite; }
@@ -155,8 +155,8 @@ section { position:relative; z-index:1; }
 #games .section-title { color:var(--gold); }
 #games .section-title::after { background:var(--gold); }
 .year-divider { font-family:'Permanent Marker',cursive; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; padding:6px 20px; border:3px solid var(--gold); box-shadow:4px 4px 0 rgba(0,0,0,.4); margin-bottom:24px; margin-top:30px; transform:rotate(-1.5deg); }
-.games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; overflow:visible; padding-bottom:48px; }
-.game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; }
+.games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; overflow:visible; padding-bottom:28px; }
+.game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; margin-bottom: 24px;}
 .game-card:hover { animation:pop .14s ease forwards; transform:translate(-4px,-4px) rotate(-0.5deg); box-shadow:10px 10px 0 rgba(0,0,0,.5); }
 .game-card:hover .game-title { animation:wiggle 1.5s ease-in-out infinite; }
 .game-corner { position:absolute; top:-14px; right:16px; font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; background:var(--red); color:var(--white); padding:3px 12px; border:2px solid var(--ink); box-shadow:2px 2px 0 var(--ink); }
@@ -184,9 +184,8 @@ section { position:relative; z-index:1; }
 .game-btn { font-family:'Bangers',cursive; font-size:0.82rem; letter-spacing:1.5px; padding:6px 14px; border:2px solid var(--ink); box-shadow:3px 3px 0 var(--ink); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:transform .1s,box-shadow .1s; cursor:pointer; }
 .game-btn:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
 .game-btn:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
-.game-btn-itch { background:var(--red); color:var(--white); }
-.game-btn-gh { background:var(--gold); color:var(--ink); border-color:var(--ink); box-shadow:3px 3px 0 var(--ink); }
-.game-btn-gh:hover { box-shadow:5px 5px 0 var(--ink); }
+.game-btn-itch { background:var(--red); color:var(--white); border-color:var(--ink); box-shadow:3px 3px 0 var(--ink); }
+.game-btn-gh { background:var(--gold); color:var(--ink); border-color:var(--ink); box-shadow:3px 3px 0 var(--ink); padding:8px 14px;}
 .game-btn-soon { background:#ccc7b8; color:#777; border-color:#aaa; box-shadow:3px 3px 0 #aaa; cursor:default; }
 .game-btn-soon:hover { transform:none; box-shadow:3px 3px 0 #aaa; }
 .game-btn-yt { background:var(--yellow); color:var(--ink); border:2px dashed var(--ink); box-shadow:none; letter-spacing:2px; flex-shrink:0; white-space:nowrap; align-self:flex-end; transform:rotate(-1.5deg); }
@@ -324,7 +323,7 @@ section { position:relative; z-index:1; }
 .about-text p { font-size:1.05rem; line-height:1.75; font-weight:700; color:var(--ink); margin-bottom:16px; }
 .contact-card { background:var(--white); border:4px solid var(--ink); box-shadow:var(--shadow-lg); padding:28px; }
 .contact-title { font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:3px; margin-bottom:20px; color:var(--red); }
-.contact-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; font-weight:700; font-size:0.9rem; }
+.contact-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; font-weight:700; font-size:1rem; }
 .contact-icon { width:36px; height:36px; background:var(--ink); color:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:2px solid var(--gold); font-family:'Bangers',cursive; font-size:1.1rem; }
 .contact-row a { color:var(--blue); text-decoration:none; word-break:break-all; }
 .contact-row a:hover { text-decoration:underline; }
@@ -880,7 +879,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="hero-eyebrow">GAMEPLAY PROGRAMMER</div>
         <h1 class="hero-name">DEEP DAS</h1>
         <p class="hero-title wiggle-slow">Love Creating Experiences. Love Making Games.</p>
-        <p class="hero-desc">Heya, I'm Deep, a game developer who loves building, shipping and loves to prototype with different game ideas across Unreal Engine 5, Godot, and Unity. I love to learn new skills and iterate on the games I build till they feel satisfying.</p>
+        <p class="hero-desc">Heya, I'm Deep, a game developer who loves building, shipping and to prototype with different game ideas, with experience in different aspect of game development but loves programming the most.</p>
         <div class="hero-links">
           <a href="https://github.com/deepdass" target="_blank" class="btn btn-gold">&lt;/&gt; GITHUB</a>
           <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red">▶ ITCH.IO</a>
@@ -891,7 +890,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="collage-panel cp-1"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift"><div class="collage-label">TOKYO DRIFT</div></div>
         <div class="collage-panel cp-2"><img src="GameImgs/Noroi/1.png" alt="noroi"><div class="collage-label">Noroi</div></div>
         <div class="collage-panel cp-3"><img src="GameImgs/Skullward/1.png" alt="SkullWard"><div class="collage-label">SKULLWARD</div></div>
-        <div class="collage-panel cp-4"><img src="GameImgs/GaspFornow/3.png" alt="Gaspfornow"><div class="collage-label">GASPFORNOW</div></div>
+        <div class="collage-panel cp-4"><img src="GameImgs/PixSpell/1.png" alt="PixSpell"><div class="collage-label">PixSpell</div></div>
         <div class="collage-panel cp-5"><img src="GameImgs/RuinKingdom/1.png" alt="Ruin Kingdom"><div class="collage-label">RUIN KINGDOM</div></div>
         <div class="collage-panel cp-6"><img src="GameImgs/IslandofDead/1.png" alt="Island of Dead"><div class="collage-label">ISLAND OF DEAD</div></div>
         <div class="collage-burst">5+<br>GAMES<br>MADE</div>
@@ -905,11 +904,11 @@ box-shadow: 5px 5px 0 var(--ink);
     <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
     <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
     <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
-    <span class="ticker-item">UNREAL ENGINE 5</span><span class="ticker-item">GODOT 4</span><span class="ticker-item">UNITY</span>
-    <span class="ticker-item">BLENDER</span><span class="ticker-item">SUBSTANCE PAINTER</span>
+    <span class="ticker-item">DEVSANDBOX</span><span class="ticker-item">PIXSPELL</span>
     <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
     <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
     <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
+    <span class="ticker-item">DEVSANDBOX</span><span class="ticker-item">PIXSPELL</span>
   </div>
 </div>
 
@@ -924,6 +923,75 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
+      <div class="game-card reveal">
+        <div class="game-corner">2026</div>
+        <div class="game-photos">
+          <div class="photo-slide active"><img src="GameImgs/PixSpell/1.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/PixSpell/2.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/PixSpell/3.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/PixSpell/4.png" alt="screenshot"></div>
+          <button class="carousel-btn carousel-prev">‹</button>
+          <button class="carousel-btn carousel-next">›</button>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 4</div>
+        </div>
+        <div class="game-body">
+          <div class="game-title-row">
+            <div class="game-title">PixSpell</div>
+            <button class="btn-breakdown" onclick="openBreakdown('pixspell')" title="Full breakdown"><span class="btn-text">➜</span></button>
+          </div>
+          <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">WORKSHOP</span></div>
+          <p class="game-desc">A Game I made to teach about game development using Godot. It was for Codeday Lucknow 2026 Game Dev workshop.</p>
+          <div class="game-links">
+            <div class="game-links-left">
+              <span class="game-btn game-btn-soon">▶ SOON</span>
+              <a href="https://github.com/deepdass/CodedayWorkshop-GameDev" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
+            </div>
+            <div class="game-links-spacer"></div>
+            <!-- <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a> -->
+          </div>
+        </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
+      </div>
+
+
+      <div class="game-card reveal">
+        <div class="game-corner">2026</div>
+        <div class="game-photos">
+          <div class="photo-slide active"><img src="GameImgs/DevSandbox/1.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/DevSandbox/2.png" alt="screenshot"></div>
+          <div class="photo-slide"><img src="GameImgs/DevSandbox/3.png" alt="screenshot"></div>
+          <button class="carousel-btn carousel-prev">‹</button>
+          <button class="carousel-btn carousel-next">›</button>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="photo-count">1 / 3</div>
+        </div>
+        <div class="game-body">
+          <div class="game-title-row">
+            <div class="game-title">Tokyo Drift</div>
+            <button class="btn-breakdown" onclick="openBreakdown('devsandbox')" title="Full breakdown"><span class="btn-text">➜</span></button>
+          </div>
+          <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
+          <p class="game-desc">Physics-focused arcade drifting game inspired by Japanese car culture. Vehicle having car properties similar to their real like counterparts with matching real-world torque &amp; traction.</p>
+          <div class="game-links">
+            <div class="game-links-left">
+              <a href="https://deepdass.itch.io/devsandbox" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+              <a href="https://github.com/deepdass/DevSandbox" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
+            </div>
+            <div class="game-links-spacer"></div>
+            <!-- <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a> -->
+          </div>
+        </div>
+        <div class="card-click-hint" aria-hidden="true">
+          <span class="card-click-hint-text">Tap for full breakdown!!</span>
+          <img src="arrow.png" alt="" class="card-click-hint-arrow">
+        </div>
+      </div>
+
+
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
@@ -979,8 +1047,8 @@ box-shadow: 5px 5px 0 var(--ink);
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
           <div class="game-links">
             <div class="game-links-left">
-              <a href="https://deepdass.itch.io/retrohorror" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
-              <a href="https://github.com/deepdass/retrohorror" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
+              <a href="https://deepdass.itch.io/noroi" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+              <a href="https://github.com/deepdass/Noroi" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
             </div>
             <div class="game-links-spacer"></div>
             <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
@@ -1288,7 +1356,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
     </div>
     <div class="art-cta reveal">
-      <span class="art-cta-label">See everything on →</span>
+      <span class="art-cta-label">See breakdown on →</span>
       <a href="https://artstation.com/deepdasscg" target="_blank" class="btn btn-gold">◆ ARTSTATION</a>
     </div>
   </div>
@@ -1302,7 +1370,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>
     <div class="skills-grid">
       <div class="skill-panel reveal"><div class="skill-header">⚒︎ ENGINES</div><ul class="skill-list"><li>Unreal Engine 5</li><li>Godot 4</li><li>Unity</li></ul></div>
-      <div class="skill-panel reveal"><div class="skill-header">&lt;/&gt; LANGUAGES</div><ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>Python</li><li>UE5 Blueprints</li><li>HTML &amp; CSS</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">&lt;/&gt; LANGUAGES</div><ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>UE5 Blueprints</li><li>Python</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul></div>
       <div class="skill-panel reveal"><div class="skill-header">◆ ART &amp; ASSETS</div><ul class="skill-list"><li>Blender</li><li>Substance Painter</li><li>GIMP &amp; Pure Ref</li><li>Aseprite</li><li>Audacity</li></ul></div>
       <div class="skill-panel reveal"><div class="skill-header">💭 OTHER INTERESTS</div><ul class="skill-list"><li>Git / GitHub</li><li>Gaming</li><li>Hardware</li><li>Photography</li><li>Music</li><li>Basketball &amp; Volleyball</li></ul></div>
     </div>
