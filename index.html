@@ -125,9 +125,9 @@ nav {
 .btn-dark { background:var(--panel); color:var(--paper); }
 
 .hero-collage { flex-shrink:0; width:420px; height:480px; position:relative; transform:scale(1.2); left:14px; }
-.collage-panel { background:var(--ink); position:absolute; border:4px solid var(--ink); overflow:hidden; cursor:pointer; transition: transform 0.2s,filter 0.2s,z-index 0s; box-shadow: none;filter: drop-shadow(6px 6px 0 var(--ink));}
+.collage-panel { background:var(--ink); position:absolute; border:4px solid var(--ink); overflow:hidden; cursor:pointer; transition: transform 0.2s,filter 0.2s,z-index 0s; filter: drop-shadow(5px 5px 0 var(--ink));}
 .collage-panel img { width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
-.collage-panel:hover { z-index:20!important; transform:scale(1.06) rotate(0deg)!important; box-shadow: none!important;filter: drop-shadow(7px 7px 0 var(--ink))!important;} 
+.collage-panel:hover { z-index:20!important; transform:scale(1.06) rotate(0deg)!important; filter: drop-shadow(7px 7px 0 var(--ink))!important;} 
 .collage-label { position:absolute; bottom: -1px; left:0; right:0; background:var(--ink); font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; color:var(--gold); padding:4px 8px; text-align:center; transform:translateY(100%); transition:transform 0.18s ease; }
 .collage-panel:hover .collage-label { transform:translateY(0); }
 .cp-1 { --base-rot:3deg; width:220px; height:155px; top:8px; left:32px; transform:rotate(-3deg);animation:float 3.8s ease-in-out infinite; z-index:4; }
@@ -218,10 +218,10 @@ section { position:relative; z-index:1; }
   color: var(--gold);
   transform: translate(1px, -4px);
   position: relative;
-  border-radius: 8px
+  border-radius: 8px;
 }
 .btn-breakdown:hover {
-  transform: translate(-1px, -7px);  
+  transform: translate(-1px, -7px);
   box-shadow: 4px 4px 0 var(--ink);
 }
 
@@ -320,10 +320,10 @@ section { position:relative; z-index:1; }
 #about { background:var(--yellow); }
 #about .section-title { color:var(--ink); }
 .about-inner { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
-.about-text p { font-size:1.05rem; line-height:1.75; font-weight:700; color:var(--ink); margin-bottom:16px; }
-.contact-card { background:var(--white); border:4px solid var(--ink); box-shadow:var(--shadow-lg); padding:28px; }
-.contact-title { font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:3px; margin-bottom:20px; color:var(--red); }
-.contact-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; font-weight:700; font-size:1rem; }
+.about-text p { font-size:1.05rem; line-height:1.75; font-weight:700; color:var(--ink); margin-bottom:16px; } 
+.contact-card { background:var(--white); border:4px solid var(--ink); box-shadow:var(--shadow-lg); padding:28px; margin-top: -10px; }
+.contact-title { font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:3px; margin-bottom:18px; color:var(--red); }
+.contact-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; font-weight:700; font-size:1rem; }
 .contact-icon { width:36px; height:36px; background:var(--ink); color:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:2px solid var(--gold); font-family:'Bangers',cursive; font-size:1.1rem; }
 .contact-row a { color:var(--blue); text-decoration:none; word-break:break-all; }
 .contact-row a:hover { text-decoration:underline; }
@@ -869,8 +869,8 @@ box-shadow: 5px 5px 0 var(--ink);
 <section id="hero">
   <div class="star" style="top:63.5%;left:77.3%;animation-delay:.3s">★</div>
   <div class="star" style="top:85%;left:59%;animation-delay:1s;font-size:1.4rem">✦</div>
-  <div class="star" style="top:10%;left:64%;animation-delay:1.8s;font-size:2rem">✶</div>
-  <div class="star" style="top:12%;left:90%;animation-delay:2s;font-size:1.2rem">★</div>
+  <div class="star" style="top:8%;left:64%;animation-delay:1.8s;font-size:2rem">✶</div>
+  <div class="star" style="top:12%;left:90%;animation-delay:2s;font-size:1.2rem">★</div> 
   <div class="star" style="top:66%;left:95%;animation-delay:.7s">✶</div>
   <div class="star" style="top:90%;left:88%;animation-delay:2s;font-size:1.2rem">★</div>
   <div class="hero-scale-root" id="heroCanvas">
@@ -974,7 +974,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">DevSandbox</div>
             <button class="btn-breakdown" onclick="openBreakdown('devsandbox')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
-          <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">Sandbox</span></div>
+          <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">Blueprint</span><span class="engine-tag">Sandbox</span></div>
           <p class="game-desc">A Development Sandbox made in unreal engine using both c++ and blueprint, Fully replicated. Planning to make this into a sandbox which will contain my game dev shenanigans.</p>
           <div class="game-links">
             <div class="game-links-left">
@@ -1009,7 +1009,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <button class="btn-breakdown" onclick="openBreakdown('tokyodrift')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
-          <p class="game-desc">Physics-focused arcade drifting game inspired by Japanese car culture. Vehicle having car properties similar to their real like counterparts with matching real-world torque &amp; traction.</p>
+          <p class="game-desc">A drifting game with a mix of real life and arcadey fun, with scoring system and dynamic assisted drifting. Got inspired to make a drifting game by Japanese car culture.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1083,8 +1083,8 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">SkullWard</div>
             <button class="btn-breakdown" onclick="openBreakdown('skullward')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
-          <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
-          <p class="game-desc">Pixelated 3D roguelike dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba (Tokyo) in a physical arcade cabinet!</p>
+          <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">~GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
+          <p class="game-desc">3D Pixelated dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba in a physical arcade cabinet!</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/skullward" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1153,7 +1153,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">FPS LEARN</div>
             <button class="btn-breakdown" onclick="openBreakdown('fpslearn')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
-          <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLENDER</span><span class="engine-tag">C++</span><span class="engine-tag">ANIMATIONS</span></div>
+          <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLENDER</span><span class="engine-tag">ANIMATIONS</span></div>
           <p class="game-desc">A Learning project that I made to teach myself about the Animation workflow in game dev and how to build a combat system using custom animations.</p>
           <div class="game-links">
             <div class="game-links-left">
@@ -1194,7 +1194,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <button class="btn-breakdown" onclick="openBreakdown('ruinkingdom')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">BLUEPRINTS</span><span class="engine-tag">SET DRESSING</span></div>
-          <p class="game-desc">Zone-based first-person RPG built to learn large-scale world design in UE5. Enemy AI, in-engine animations, custom shaders &amp; melee combat.</p>
+          <p class="game-desc">Zone-based first-person RPG built to learn about large-scale world building mainly with Enemy AI, animations, custom shaders &amp; melee combat.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/ruin-kingdom" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1226,8 +1226,8 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">Island of Dead</div>
             <button class="btn-breakdown" onclick="openBreakdown('islandofdead')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
-          <div class="game-engine"><span class="engine-tag">UNITY</span><span class="engine-tag">C#</span><span class="engine-tag">PLOT TWIST</span></div>
-          <p class="game-desc">My very first self-directed game - zero tutorials. Cute Chibi-style 2D zombie platformer with a companion character called ghosty. Where it all began.</p>
+          <div class="game-engine"><span class="engine-tag">UNITY</span><span class="engine-tag">C#</span><span class="engine-tag">2D</span><span class="engine-tag">Chibi</span></div>
+          <p class="game-desc">Cute Chibi-style 2D zombie platformer with a companion character called ghosty with proper ending. My very first game without any full game tutorials.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/island-of-dead" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1279,7 +1279,7 @@ box-shadow: 5px 5px 0 var(--ink);
           <button class="carousel-btn carousel-next">›</button>
           <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
           <div class="photo-count">1 / 4</div>
-          <div class="art-overlay"><div class="art-card-title">Makeshift Pipe Wrench</div><div class="art-card-meta">Blender · Substance Painter · GIMP · Pure Ref</div></div>
+          <div class="art-overlay"><div class="art-card-title">Makeshift Pipe Wrench - Design by Polyrendr</div><div class="art-card-meta">Blender · Substance Painter · GIMP · Pure Ref</div></div>
         </div>
       </div>
 
@@ -1301,7 +1301,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-corner">2024</div>
         <div class="art-photos">
           <div class="photo-slide active"><img src="3D Models/someblends/cannon.png" alt="screenshot"></div>
-          <div class="art-overlay"><div class="art-card-title">Speed build Cannon</div><div class="art-card-meta">Blender</div></div>
+          <div class="art-overlay"><div class="art-card-title">Speed Cannon build</div><div class="art-card-meta">Blender</div></div>
         </div>
       </div>
 
@@ -1388,7 +1388,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <p>Game Developer who builds, ships and loves to prototypes with different game ideas across different game engines like Unreal Engine, Godot, and Unity. I love to learn new pipelines, workflows and tools that improve my games and skills. I enjoy exploring both the technical and creative sides of building projects.</p>
         <p>I like experimenting with new ideas, building projects from scratch, learning new things, solving problems and seeing ideas come to life. I also love helping people and sharing what I learn with others.</p>
         <p>Recently graduated from school, I was and am shipping games in my spare time and loving every second of it.</p>
-        <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red" style="margin-top:12px">▶ PLAY MY GAMES</a>
+        <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red" style="margin-top:18px">▶ PLAY MY GAMES</a>
       </div>
       <div class="contact-card reveal ink-box-lg">
         <div class="contact-title">GET IN TOUCH</div>
@@ -1397,6 +1397,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="contact-row"><div class="contact-icon">IT</div><a href="https://deepdass.itch.io" target="_blank">deepdass.itch.io</a></div>
         <div class="contact-row"><div class="contact-icon">AS</div><a href="https://artstation.com/deepdasscg" target="_blank">artstation.com/deepdasscg</a></div>
         <div class="contact-row"><div class="contact-icon">YT</div><a href="https://youtube.com/@DeepDas-deepdass" target="_blank">@DeepDas-deepdass</a></div>
+        <div class="contact-row"><div class="contact-icon">DC</div><a href="https://discord.com/users/1081291513423740928" target="_blank">discord.com/_.deepdass</a></div>
       </div>
     </div>
   </div>
