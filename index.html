@@ -676,10 +676,6 @@ box-shadow: 7px 7px 0 var(--ink);
   border: 4px solid var(--ink); 
   margin: 20px 0; overflow: visible; position: relative;
 }
-.bd-before-after:hover { 
-  transform: translate(-3px,-3px); 
-  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
-}
 .bd-ba-side {
   position: relative; display: flex; flex-direction: column;
 }
@@ -706,23 +702,6 @@ box-shadow: 7px 7px 0 var(--ink);
   position: relative; overflow: hidden; flex-shrink: 0;
 }
 .bd-ba-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bd-ba-label {
-  position: absolute; top: 10px; z-index: 5;
-  font-family: 'Bangers', cursive; font-size: 0.85rem; letter-spacing: 3px;
-  padding: 4px 12px;
-  border: 2px solid var(--ink);
-  pointer-events: none;
-}
-.bd-ba-label.before {
-  left: 10px;
-  background: #e8e0ce; color: var(--ink);
-  transform: rotate(-2deg); box-shadow: -3px 3px 0 var(--ink);
-}
-.bd-ba-label.after {
-  right: 10px;
-  background: var(--gold); color: var(--ink);
-  transform: rotate(1.5deg); box-shadow: 3px 3px 0 var(--ink);
-}
 
 .bd-ba-caption {
   font-size: 0.8rem; font-weight: 700; padding: 10px 14px;
@@ -776,7 +755,7 @@ box-shadow: 7px 7px 0 var(--ink);
 
 .bd-diff-item:hover {
 transform: translate(-3px, -3px);
-box-shadow: 5px 5px 0 var(--ink);
+box-shadow: 5px 5px 0 var(--ink); 
 }
 .bd-challenge-num {
   width: 56px; flex-shrink: 0;
@@ -854,6 +833,11 @@ box-shadow: 5px 5px 0 var(--ink);
 }
 </style>
 </head>
+
+
+
+<!-- HTML -->
+
 <body>
 
 <nav>
@@ -866,6 +850,8 @@ box-shadow: 5px 5px 0 var(--ink);
   </ul>
 </nav>
 
+
+<!-- HERO -->
 <section id="hero">
   <div class="star" style="top:63.5%;left:77.3%;animation-delay:.3s">★</div>
   <div class="star" style="top:85%;left:59%;animation-delay:1s;font-size:1.4rem">✦</div>
@@ -912,6 +898,9 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </div>
 
+
+
+<!-- ALL GAMES -->
 <section id="games">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -922,7 +911,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="year-divider reveal">── 2026 ──</div>
     <div class="games-grid">
 
-      
+      <!-- PIXSPELL -->
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
@@ -958,6 +947,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
 
+      <!-- DEVSANDBOX -->
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
@@ -992,6 +982,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
 
+      <!-- TOKYO DRIFT -->
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
@@ -1026,6 +1017,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
+      <!-- NOROI -->
       <div class="game-card reveal">
         <div class="game-corner">2026</div>
         <div class="game-photos">
@@ -1065,6 +1057,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
+      <!-- SKULLWARD -->
       <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
@@ -1101,6 +1094,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
+      <!-- GASPFORNOW -->
       <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
@@ -1135,7 +1129,7 @@ box-shadow: 5px 5px 0 var(--ink);
         </div>
       </div>
 
-      
+      <!-- FPS LEARN -->
       <div class="game-card reveal">
         <div class="game-corner">2025</div>
         <div class="game-photos">
@@ -1175,6 +1169,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       
+      <!-- RUIN KINGDOM -->
       <div class="game-card reveal">
         <div class="game-corner">2024</div>
         <div class="game-photos">
@@ -1209,6 +1204,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
 
       
+      <!-- ISLAND OF DEAD -->
       <div class="game-card reveal">
         <div class="game-corner">2024</div>
         <div class="game-photos">
@@ -1244,6 +1240,9 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </section>
 
+
+
+<!-- ART SECTION -->
 <section id="art">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -1362,6 +1361,8 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </section>
 
+
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -1377,6 +1378,8 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </section>
 
+
+<!-- ABOUT -->
 <section id="about">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -1396,7 +1399,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="contact-row"><div class="contact-icon">GIT</div><a href="https://github.com/deepdass" target="_blank">github.com/deepdass</a></div>
         <div class="contact-row"><div class="contact-icon">IT</div><a href="https://deepdass.itch.io" target="_blank">deepdass.itch.io</a></div>
         <div class="contact-row"><div class="contact-icon">AS</div><a href="https://artstation.com/deepdasscg" target="_blank">artstation.com/deepdasscg</a></div>
-        <div class="contact-row"><div class="contact-icon">YT</div><a href="https://youtube.com/@DeepDas-deepdass" target="_blank">@DeepDas-deepdass</a></div>
+        <div class="contact-row"><div class="contact-icon">YT</div><a href="https://youtube.com/@DeepDas-deepdass" target="_blank">youtube.com/deepdass</a></div>
         <div class="contact-row"><div class="contact-icon">DC</div><a href="https://discord.com/users/1081291513423740928" target="_blank">discord.com/_.deepdass</a></div>
       </div>
     </div>
@@ -1407,6 +1410,9 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
 
+                                                                                                     <!-- BREAKDOWNS -->
+
+<!-- TOKYO DRIFT --> 
 <div class="breakdown-backdrop" id="breakdown-tokyodrift" role="dialog" aria-modal="true" aria-label="Tokyo Drift Breakdown">
   <div class="breakdown-modal">
     <button class="bd-close" onclick="closeBreakdown('tokyodrift')" aria-label="Close">✕</button>
@@ -1415,16 +1421,14 @@ box-shadow: 5px 5px 0 var(--ink);
       <div class="bd-speedlines"></div>
       <div class="bd-header-content">
         <div class="bd-header-left">
-          <div class="bd-eyebrow">GAME BREAKDOWN <span style ="color: var(--red); font-size: 32px; ">But UNDER-CONSTRUCTION!!!</span></div>
+          <div class="bd-eyebrow">GAME BREAKDOWN</div>
           <h2 class="bd-game-title">TOKYO<br>DRIFT</h2>
-          <span class="bd-subtitle">Physics-focused Arcade Drifting in UE5</span>
+          <span class="bd-subtitle">Arcade Drifting in UE5</span>
           <div class="bd-tags">
             <span class="bd-tag">UE5</span><span class="bd-tag">Blueprint</span><span class="bd-tag">UE's Chaos Vehicles</span><span class="bd-tag">ARCADE DRIFTING</span><span class="bd-tag">JAPANESE CAR CULTURE</span>
           </div>
         </div>
         <div class="bd-header-right">
-          <div class="bd-stat"><span class="bd-stat-val">~50hr</span><span class="bd-stat-label">DEV TIME</span></div>
-          <div class="bd-stat-divider"></div>
           <div class="bd-stat"><span class="bd-stat-val">BP + C++</span><span class="bd-stat-label">LANGUAGE</span></div>
           <div class="bd-stat-divider"></div>
           <div class="bd-stat"><span class="bd-stat-val">UE5</span><span class="bd-stat-label">ENGINE</span></div>
@@ -1525,38 +1529,17 @@ box-shadow: 5px 5px 0 var(--ink);
               <div class="bd-challenge-a">UE5's Chaos vehicle system isn't built for drifting. No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift. Chaos vehicle marks drifting as slip and reduces both lateral and sideways speed equally, resulting in dead drifts. After the physics tweak on top of the chaos physics and other tweaks inside chaos physics like center of mass, engine and wheel setup. </div>
               <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
                 <div class="bd-ba-side before">
-                  <div class="bd-ba-label before">BEFORE</div>
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift"></div>
+                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_before.gif" alt="Tokyo Drift"></div>
                   <div class="bd-ba-caption">Instant slowing down when entering drift, resulting in dead drift</div>
                 </div>
                 <div class="bd-ba-side after">
-                  <div class="bd-ba-label after">AFTER</div>
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/img2.jpg" alt="Tokyo Drift"></div>
+                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_after.gif" alt="Tokyo Drift"></div>
                   <div class="bd-ba-caption">Dynamically change angular damping and apply force for arcade feel and better drift.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="bd-challenge">
-            <div class="bd-challenge-num">02</div>
-            <div class="bd-challenge-body">
-              <div class="bd-challenge-q">idk</div>
-              <div class="bd-challenge-a">remembering...</div>
-              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
-                <div class="bd-ba-side before">
-                  <div class="bd-ba-label before">BEFORE</div>
-                  <div class="bd-ba-img"></div>
-                  <div class="bd-ba-caption"></div>
-                </div>
-                <div class="bd-ba-side after">
-                  <div class="bd-ba-label after">AFTER</div>
-                  <div class="bd-ba-img"></div>
-                  <div class="bd-ba-caption"></div>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -1576,7 +1559,7 @@ box-shadow: 5px 5px 0 var(--ink);
           </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">BLUEPRINT's LIMITS</div>
-            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints. Next game in C++, Yeah.</div>
+            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints.</div>
           </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">PARTICLE DETAIL MATTERS</div>
@@ -1606,9 +1589,10 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="bd-diff-bullet">2</div>
             <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
           </div>
+
           <div class="bd-diff-item">
-            <div class="bd-diff-bullet">3</div>
-            <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
+            <div class="bd-diff-bullet">2</div>
+            <div class="bd-diff-text"><b>Handle skid marks differently.</b> Currently I'm using a ribbon renderer, but those appear twisted at some angles. I'm thinking of using just simple emmited to spawn planes, but they appear discontinuous unless spawning many planes, which affects performance.</div> 
           </div>
           
         </div>
@@ -1624,6 +1608,8 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </div>
 
+
+<!-- SCRIPTS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ4WVRYJ69"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
