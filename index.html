@@ -100,6 +100,8 @@ nav {
   display:flex; align-items:center; justify-content:space-between; padding:10px 32px;
 }
 .nav-logo { font-family:'Bangers',cursive; font-size:2rem; letter-spacing:3px; color:var(--gold); text-shadow:2px 2px 0 var(--red); text-decoration:none; }
+.nav-logo .small-letter {font-size: 0.70em;}
+
 .nav-links { display:flex; gap:24px; list-style:none; }
 .nav-links a { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--paper); text-decoration:none; transition:color .15s; position:relative; }
 .nav-links a::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:3px; background:var(--gold); transition:width .2s; }
@@ -222,7 +224,7 @@ section { position:relative; z-index:1; }
 }
 .btn-breakdown:hover {
   transform: translate(-1px, -7px);
-  filter: drop-shadow(4px 4px 0 var(--ink));
+  filter: drop-shadow(4px 4px 0 var(--ink)); 
 }
 
 .btn-breakdown .btn-text {
@@ -564,12 +566,6 @@ footer span { color:var(--red); }
   font-family: 'Bangers', cursive; font-size: 1.1rem; letter-spacing: 3px;
   color: var(--gold); margin-right: 8px;
 }
-.bd-sfx {
-  position: absolute; z-index: 6; pointer-events: none;
-  font-family: 'Bangers', cursive; letter-spacing: 2px;
-  text-shadow: 2px 2px 0 rgba(0,0,0,.3);
-  animation: burst .5s cubic-bezier(.36,.07,.19,.97) both;
-}
 
 @media (max-width: 700px) {
   .bd-panels { grid-template-columns: 1fr; }
@@ -841,7 +837,7 @@ box-shadow: 5px 5px 0 var(--ink);
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo wiggle-slow">DD</a>
+  <a href="#hero" id="nav-logo-greet" class="nav-logo wiggle-slow">H<span class="small-letter">ello!</span></a>
   <ul class="nav-links">
     <li><a href="#games">GAMES</a></li>
     <li><a href="#art">ART</a></li>
@@ -1441,15 +1437,12 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="bd-panels">
       <div class="bd-panel" style="aspect-ratio:16/9;">
         <img src="GameImgs/Tokyodrift/img1jpg.jpg" alt="Tokyo Drift gameplay" loading="lazy">
-        <div class="bd-sfx" style="top:10px;right:12px;font-size:1.6rem;color:var(--yellow);transform:rotate(8deg);">VROOM!</div>
       </div>
       <div class="bd-panel" style="aspect-ratio:16/9;">
         <img src="GameImgs/Tokyodrift/img2.jpg" alt="Tokyo Drift drift" loading="lazy">
-        <div class="bd-sfx" style="bottom:40px;right:12px;font-size:1.4rem;color:var(--red);transform:rotate(-6deg);">SKRRRT!</div> 
       </div>
       <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
         <img src="GameImgs/Tokyodrift/img3.png" alt="Tokyo Drift wide shot" loading="lazy" style="object-position:center 40%;">
-        <div class="bd-sfx" style="top:36px;left:60%;transform:translateX(-50%) rotate(-3deg);font-size:2rem;color:var(--gold);">Drift track =)</div>
       </div>
     </div>
     <!-- THE IDEA -->
@@ -1737,6 +1730,15 @@ document.addEventListener('keydown', e => {
     });
   }
 });
+
+const greetings = ['Hello!', 'Hi', 'Heyy', 'Howdy!!', 'Yoo', 'Hola!', 'Welcome.', 'Greetings', 'Sup!!', 'Hiya!!!', 'Haloo'];  
+const greetEl = document.getElementById('nav-logo-greet');
+if (greetEl) {
+  const pick = greetings[Math.floor(Math.random() * greetings.length)];
+  const first = pick.charAt(0);
+  const rest = pick.slice(1);
+  greetEl.innerHTML = first + '<span class="small-letter">' + rest + '</span>';
+}
 </script>
 </body>
-</html>
+</html> 
