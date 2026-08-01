@@ -472,6 +472,7 @@ footer span { color:var(--red); }
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   border-bottom: 4px solid var(--ink);
+  background: var(--ink);
 }
 .bd-panel {
   position: relative;
@@ -961,7 +962,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">DevSandbox</div>
-            <!-- <button class="btn-breakdown" onclick="openBreakdown('devsandbox')" title="Full breakdown"><span class="btn-text">➜</span></button> -->
+            <button class="btn-breakdown" onclick="openBreakdown('devsandbox')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">Blueprint</span><span class="engine-tag">Sandbox</span></div>
           <p class="game-desc">A Development Sandbox made in unreal engine using both c++ and blueprint, Fully replicated. Planning to make this into a sandbox which will contain my game dev shenanigans.</p>
@@ -1032,7 +1033,7 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">Noroi</div>
-            <!-- <button class="btn-breakdown" onclick="openBreakdown('noroi')" title="Full breakdown"><span class="btn-text">➜</span></button> -->
+            <button class="btn-breakdown" onclick="openBreakdown('noroi')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
@@ -1042,7 +1043,7 @@ box-shadow: 5px 5px 0 var(--ink);
               <a href="https://github.com/deepdass/Noroi" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; GITHUB</a>
             </div>
             <div class="game-links-spacer"></div>
-            <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a>
+            <a href="https://www.youtube.com/watch?v=UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YT</a> 
           </div>
         </div>
         <div class="card-click-hint" aria-hidden="true">
@@ -1661,7 +1662,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>
 
 
-    
+
 
     <div class="bd-footer-links">
       <span class="bd-footer-title">PLAY IT →</span>
@@ -1673,7 +1674,7 @@ box-shadow: 5px 5px 0 var(--ink);
 </div>
  
 
-<script type="text/plain" id="commented-out-section">
+
 
 <!-- DevSandbox -->
 <div class="breakdown-backdrop" id="breakdown-devsandbox" role="dialog" aria-modal="true" aria-label="DevSandbox Breakdown">
@@ -1720,151 +1721,24 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
     </div>
 
-    <!-- GAMEPLAY VIDEO -->
+    <!-- GAMEPLAY VIDEO 
     <div class="bd-yt-section">
       <div class="bd-yt-embed-wrap">
         <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="DevSandbox gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
+      </div> 
       <div class="bd-yt-sidebar">
         <div class="bd-yt-label">GAMEPLAY VIDEO</div>
-        <p class="bd-yt-desc">Gameplay footage showing the drift physics, car handling, environment and all the juicy effects and sound.</p>
+        <p class="bd-yt-desc">Gameplay footage showing fun sandbox tools and my game dev experiments and shenanigans, Playing it multiplayer with my friend.</p>
       </div>
     </div>
+-->
 
-    <!-- HOW IT WAS BUILT -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">01</div>
-        <div class="bd-section-title">WHAT I Have <span>Built</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-tech-grid">
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">PHYSICS</div>
-            <div class="bd-tech-card-title">Vehicle Physics</div>
-            <div class="bd-tech-card-desc">The base vehicle simulation is handled by UE5's Chaos Vehicle physics system. So Car has custom engine, transmission, differential setups and the wheels with lateral slip curves, suspension, and torque configs similar to their real world counterparts.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">DRIFT SYSTEM</div>
-            <div class="bd-tech-card-title">Arcade drifting</div>
-            <div class="bd-tech-card-desc">I wanted the drift to feel arcadey, so that required a component on top of Chaos physics to reduce the realism and make it fast paced. This system has counter steering, applies drift force, adjust torque and angular damping to get the arcade feel.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">environment</div>
-            <div class="bd-tech-card-title">drift track</div>
-            <div class="bd-tech-card-desc">Drift track as the environment of the game - japan themed with kanji and hiragana markings with mountain and nature environment, then edit to sustained drift angles around corners with wide sand runoff zones and cones placement.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">scoring SYSTEM</div>
-            <div class="bd-tech-card-title">Score</div>
-            <div class="bd-tech-card-desc">The Scoring system is designed to reward controlled and dedicated drifts with different multiplier based on which gear the car is on, score points depending upon tilt of the car with continuous drift meter drain.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">CAMERA</div>
-            <div class="bd-tech-card-title">Dynamic Spring Arm</div>
-            <div class="bd-tech-card-desc">The camera tilts and lags based on MPH and drift angle, and FOV change ofcourse. When the car is in a drift, the spring arm rotates dynamically to capture the drift perfectly. Camera system to change perspective from behind car to driver or rear perspective.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">VFX & SFX</div>
-            <div class="bd-tech-card-title">Skid marks & Engine sound </div>
-            <div class="bd-tech-card-desc">Niagara particle systems on each wheel emit skid marks based on drift angle and speed. Meta-sound system for the engine and skid sound, which changes based on RPM, drift angle.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CHALLENGES & SOLUTIONS -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">02</div>
-        <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div>
-      </div>
-      
-      <div class="bd-section-body">
-        <div class="bd-challenge-list">
-
-          <div class="bd-challenge">
-            <div class="bd-challenge-num">01</div>
-            <div class="bd-challenge-body">
-              <div class="bd-challenge-q">Chaos Physics Fighting Me on Rear Traction</div>
-              <div class="bd-challenge-a">UE5's Chaos vehicle system isn't built for drifting. No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift. Chaos vehicle marks drifting as slip and reduces both lateral and sideways speed equally, resulting in dead drifts. After the physics tweak on top of the chaos physics and other tweaks inside chaos physics like center of mass, engine and wheel setup. </div>
-              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
-                <div class="bd-ba-side before">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_before.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Instant slowing down when entering drift, resulting in dead drift</div>
-                </div>
-                <div class="bd-ba-side after">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_after.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Dynamically change angular damping and apply force for arcade feel and better drift.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-
-    <!-- WHAT I LEARNED -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">03</div>
-        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-learned-grid">
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">ENGINE SOURCE DIVING</div>
-            <div class="bd-learn-desc">When the engine doesn't expose the parameters you need, you need to go read the source. Learned a lot about c++, how a big scalable system is build and to navigate UE5's souce code to find the files.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">BLUEPRINT's LIMITS</div>
-            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">PARTICLE DETAIL MATTERS</div>
-            <div class="bd-learn-desc">Tying Niagara particle and engine sound intensity to game variables (slip angle, speed) made VFX and SFX feel reactive and alive. These effects should represent what's actually happening in gameplay.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">CHAOS VEHICLE NOT BUILD FOR DRIFT</div>
-            <div class="bd-learn-desc">No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift, unless you make your own function in C++. Chaos Vehicle shines for grip cars, suspension etc. Learned to build around that limitation.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WHAT I'D DO DIFFERENTLY -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">04</div>
-        <div class="bd-section-title">WHAT I'D DO <span>DIFFERENTLY</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-diff-list">
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">1</div>
-            <div class="bd-diff-text"><b>Extend Chaos Vehicle properly,</b> with c++ and blueprint both. Use the Chaos Vehicle as the base for the animation, suspension and change the code that handles slip with my own in c++ and use blueprint for rapid iteration.</div>
-          </div>
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">2</div>
-            <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
-          </div>
-
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">2</div>
-            <div class="bd-diff-text"><b>Handle skid marks differently.</b> Currently I'm using a ribbon renderer, but those appear twisted at some angles. I'm thinking of using just simple emitter to spawn planes, but they appear discontinuous unless spawning many planes, which affects performance.</div> 
-          </div>
-          
-        </div> 
-      </div>
-    </div>
 
     <div class="bd-footer-links">
       <span class="bd-footer-title">PLAY IT →</span>
-      <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
-      <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
-      <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
+      <a href="https://deepdass.itch.io/devsandbox" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+      <a href="https://github.com/deepdass/DevSandbox" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
+      <!-- <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a> -->
     </div>
   </div>
 </div>
@@ -1919,156 +1793,30 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="bd-speech-row">
       <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
       <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">So, <b>I wanted to get better at building modular, scalable, performant game code</b>, because that's what I love the most about coding - creating stuff and optimising the hell out of it, then I stumbled upon a good glorious open source <a href="https://github.com/tomlooman/ActionRoguelikez" target="_blank">Github Repository</a> by Tom Looman about just that. It has a custom built framework like Epic's GAS called Action System, it also introduced me to a lot of debug features, performance practice and it all fully replicated.</div>
-        <div class="bd-speech-bubble yellow-bubble"><b>Apart from reading source code, I tried to understand and implement it my way</b> because that's how I learn the best. So, Now I have turned this into a sandbox, with fun Sandbox Tools - some are experiment that I wanted to tryout making.</div>
+        <div class="bd-speech-bubble">I was watching a lot of retro games gameplay like Resident Evil, Silent Hill, Metal Gear and more. <b>I became fascinated and obsessed with the unique visual of retro games, some that arose due to hardware limitation and some artistic choices</b> - Vertex jitter, limited colors with dither, low poly models, using pre-rendered or scanned real-life textures etc.</div>
+        <div class="bd-speech-bubble yellow-bubble"><b>For the game I planned to make a small prototype focused on visuals and polish.</b> The PS1 visual is best for a horror game and given that horro game inspired me to make this game, so I made one.</div>
+        <div class="bd-speech-bubble">I Tried to match the retro style as much as I can by not just having shaders to simulate the hardware limitations but also with limiting perspective with fixed camera. Later Section include code snippets and shader.</div> 
       </div>
     </div>
 
     <!-- GAMEPLAY VIDEO -->
     <div class="bd-yt-section">
       <div class="bd-yt-embed-wrap">
-        <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="Tokyo Drift gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/UEUjXJqJcD0" title="Tokyo Drift gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="bd-yt-sidebar">
         <div class="bd-yt-label">GAMEPLAY VIDEO</div>
-        <p class="bd-yt-desc">Gameplay footage showing the drift physics, car handling, environment and all the juicy effects and sound.</p>
-      </div>
-    </div>
-
-    <!-- HOW IT WAS BUILT -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">01</div>
-        <div class="bd-section-title">WHAT I Have <span>Built</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-tech-grid">
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">PHYSICS</div>
-            <div class="bd-tech-card-title">Vehicle Physics</div>
-            <div class="bd-tech-card-desc">The base vehicle simulation is handled by UE5's Chaos Vehicle physics system. So Car has custom engine, transmission, differential setups and the wheels with lateral slip curves, suspension, and torque configs similar to their real world counterparts.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">DRIFT SYSTEM</div>
-            <div class="bd-tech-card-title">Arcade drifting</div>
-            <div class="bd-tech-card-desc">I wanted the drift to feel arcadey, so that required a component on top of Chaos physics to reduce the realism and make it fast paced. This system has counter steering, applies drift force, adjust torque and angular damping to get the arcade feel.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">environment</div>
-            <div class="bd-tech-card-title">drift track</div>
-            <div class="bd-tech-card-desc">Drift track as the environment of the game - japan themed with kanji and hiragana markings with mountain and nature environment, then edit to sustained drift angles around corners with wide sand runoff zones and cones placement.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">scoring SYSTEM</div>
-            <div class="bd-tech-card-title">Score</div>
-            <div class="bd-tech-card-desc">The Scoring system is designed to reward controlled and dedicated drifts with different multiplier based on which gear the car is on, score points depending upon tilt of the car with continuous drift meter drain.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">CAMERA</div>
-            <div class="bd-tech-card-title">Dynamic Spring Arm</div>
-            <div class="bd-tech-card-desc">The camera tilts and lags based on MPH and drift angle, and FOV change ofcourse. When the car is in a drift, the spring arm rotates dynamically to capture the drift perfectly. Camera system to change perspective from behind car to driver or rear perspective.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">VFX & SFX</div>
-            <div class="bd-tech-card-title">Skid marks & Engine sound </div>
-            <div class="bd-tech-card-desc">Niagara particle systems on each wheel emit skid marks based on drift angle and speed. Meta-sound system for the engine and skid sound, which changes based on RPM, drift angle.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CHALLENGES & SOLUTIONS -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">02</div>
-        <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div>
-      </div>
-      
-      <div class="bd-section-body">
-        <div class="bd-challenge-list">
-
-          <div class="bd-challenge">
-            <div class="bd-challenge-num">01</div>
-            <div class="bd-challenge-body">
-              <div class="bd-challenge-q">Chaos Physics Fighting Me on Rear Traction</div>
-              <div class="bd-challenge-a">UE5's Chaos vehicle system isn't built for drifting. No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift. Chaos vehicle marks drifting as slip and reduces both lateral and sideways speed equally, resulting in dead drifts. After the physics tweak on top of the chaos physics and other tweaks inside chaos physics like center of mass, engine and wheel setup. </div>
-              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
-                <div class="bd-ba-side before">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_before.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Instant slowing down when entering drift, resulting in dead drift</div>
-                </div>
-                <div class="bd-ba-side after">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_after.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Dynamically change angular damping and apply force for arcade feel and better drift.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <p class="bd-yt-desc">Gameplay footage showing PS1 visuals, environment and enemy and player state machine.</p> 
       </div>
     </div>
 
 
-    <!-- WHAT I LEARNED -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">03</div>
-        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-learned-grid">
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">ENGINE SOURCE DIVING</div>
-            <div class="bd-learn-desc">When the engine doesn't expose the parameters you need, you need to go read the source. Learned a lot about c++, how a big scalable system is build and to navigate UE5's souce code to find the files.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">BLUEPRINT's LIMITS</div>
-            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">PARTICLE DETAIL MATTERS</div>
-            <div class="bd-learn-desc">Tying Niagara particle and engine sound intensity to game variables (slip angle, speed) made VFX and SFX feel reactive and alive. These effects should represent what's actually happening in gameplay.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">CHAOS VEHICLE NOT BUILD FOR DRIFT</div>
-            <div class="bd-learn-desc">No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift, unless you make your own function in C++. Chaos Vehicle shines for grip cars, suspension etc. Learned to build around that limitation.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- WHAT I'D DO DIFFERENTLY -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">04</div>
-        <div class="bd-section-title">WHAT I'D DO <span>DIFFERENTLY</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-diff-list">
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">1</div>
-            <div class="bd-diff-text"><b>Extend Chaos Vehicle properly,</b> with c++ and blueprint both. Use the Chaos Vehicle as the base for the animation, suspension and change the code that handles slip with my own in c++ and use blueprint for rapid iteration.</div>
-          </div>
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">2</div>
-            <div class="bd-diff-text"><b>Build a better sound system.</b> Engine audio is based on RPM with pitch changes, but I would like to build a system which plays sound on gear change as engine sound is one of the things I like the most about cars. But getting good sound is the hardest part.</div>
-          </div>
-
-          <div class="bd-diff-item">
-            <div class="bd-diff-bullet">2</div>
-            <div class="bd-diff-text"><b>Handle skid marks differently.</b> Currently I'm using a ribbon renderer, but those appear twisted at some angles. I'm thinking of using just simple emitter to spawn planes, but they appear discontinuous unless spawning many planes, which affects performance.</div> 
-          </div>
-          
-        </div> 
-      </div>
-    </div>
 
     <div class="bd-footer-links">
       <span class="bd-footer-title">PLAY IT →</span>
-      <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
-      <a href="https://github.com/deepdass/tokyodrift" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
-      <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
+      <a href="https://deepdass.itch.io/noroi" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+      <a href="https://github.com/deepdass/Noroi" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
+      <a href="https://youtu.be/UEUjXJqJcD0" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
     </div>
   </div>
 </div>
@@ -2077,6 +1825,8 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
 
+
+<script type="text/plain" id="commented-out-section">
 <!-- SkullWard -->
 <div class="breakdown-backdrop" id="breakdown-skullward" role="dialog" aria-modal="true" aria-label="skullward Breakdown">
   <div class="breakdown-modal">
