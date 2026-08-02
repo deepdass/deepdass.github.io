@@ -606,6 +606,20 @@ footer span { color:var(--red); }
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   margin-bottom: 24px;
 }
+
+.bd-tech-card.bd-span-2 {
+  grid-column: 1 / -1;
+}
+.bd-tech-card.bd-span-2:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.bd-learn-card.bd-span-2 {
+  grid-column: 1 / -1;
+}
+
+
 .bd-tech-card-label {
   font-family: 'Bangers', cursive; font-size: 0.75rem;
   letter-spacing: 3px; color: var(--white);
@@ -630,7 +644,7 @@ footer span { color:var(--red); }
 }
 .bd-code-wrap:hover {
 transform: translate(-2px, -2px);
-box-shadow: 7px 7px 0 var(--ink);
+box-shadow: 7px 7px 0 var(--ink); 
 }
 
 .bd-code-bar {
@@ -642,7 +656,7 @@ box-shadow: 7px 7px 0 var(--ink);
   letter-spacing: 2px; color: var(--ink); flex: 1;
 }
 .bd-code-bar-lang {
-  font-family: 'Bangers', cursive; font-size: 0.75rem;
+  font-family: 'Bangers', cursive; font-size: 0.75rem; 
   letter-spacing: 2px; background: var(--ink); color: var(--gold);
   padding: 2px 10px; border: 1.5px solid rgba(255,255,255,.2);
 }
@@ -669,6 +683,17 @@ box-shadow: 7px 7px 0 var(--ink);
   font-size: 0.8rem; font-weight: 700; color: rgba(245,238,220,.5);
   padding: 8px 24px 12px; border-top: 2px dashed rgba(223,199,143,.2);
   font-style: italic;
+}
+
+.bd-figure {
+  border: 3px solid var(--ink); background: #111; margin: 20px 0;
+  overflow: hidden; transition: transform .1s, box-shadow .1s;
+}
+.bd-figure img, .bd-figure video { width: 100%; display: block; }
+.bd-figure-caption {
+  font-size: 0.8rem; font-weight: 700; padding: 10px 10px;
+  background: var(--white); color: #2a1f0a;
+  line-height: 1.5; border-top: 3px solid var(--ink);
 }
 
 .bd-before-after {
@@ -736,6 +761,7 @@ box-shadow: 7px 7px 0 var(--ink);
 .bd-challenge {
   display: flex; gap: 0; border: 3px solid var(--ink);
   overflow: visible; background: var(--white);
+  margin-top: 16px;
 }
 
 .bd-learn-card {
@@ -764,7 +790,7 @@ box-shadow: 5px 5px 0 var(--ink);
   display: flex; align-items: center; justify-content: center;
   border-right: 3px solid var(--ink);
 }
-.bd-challenge-body { padding: 16px 20px; flex: 1; }
+.bd-challenge-body { padding: 16px 20px; flex: 1; min-width: 0; }
 .bd-challenge-q {
   font-family: 'Bangers', cursive; font-size: 1.05rem;
   letter-spacing: 2px; color: var(--red); margin-bottom: 6px;
@@ -1449,7 +1475,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
     </div>
 
-    <!-- HOW IT WAS BUILT -->
+    <!-- WHAT I HAVE BUILT -->
     <div class="bd-section">
       <div class="bd-section-header">
         <div class="bd-section-num">01</div>
@@ -1570,7 +1596,7 @@ box-shadow: 5px 5px 0 var(--ink);
           </div>
 
           <div class="bd-diff-item">
-            <div class="bd-diff-bullet">2</div>
+            <div class="bd-diff-bullet">3</div>
             <div class="bd-diff-text"><b>Handle skid marks differently.</b> Currently I'm using a ribbon renderer, but those appear twisted at some angles. I'm thinking of using just simple emitter to spawn planes, but they appear discontinuous unless spawning many planes, which affects performance.</div> 
           </div>
           
@@ -1789,7 +1815,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <!-- GAMEPLAY VIDEO --> 
     <div class="bd-yt-section" style="background:#0e0b08;" >
       <div class="bd-yt-embed-wrap" style="border-color: var(--ink);">
-        <iframe src="https://www.youtube.com/embed/UEUjXJqJcD0" title="Tokyo Drift gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/UEUjXJqJcD0" title="Noroi gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="bd-yt-sidebar">
         <div class="bd-yt-label" style="color: #c9a030;">GAMEPLAY VIDEO</div>
@@ -1800,7 +1826,259 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
 
-    <div class="bd-footer-links" style="border-top-color: var(--ink); box-shadow: none;"> 
+    <!-- WHAT I HAVE BUILT --> 
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">01</div>
+        <div class="bd-section-title">WHAT I HAVE <span>BUILT</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-tech-grid">
+
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Visuals</div>
+            <div class="bd-tech-card-title">PS1 Era Visuals</div>
+            <div class="bd-tech-card-desc">The visuals of the game matches the visuals of Play Station 1 era game with low resolution viewport, limited color/ lighting, fixed camera and jitter effect with low poly geometry. I matched the visuals as close I could using shader and assets.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Animation</div>
+            <div class="bd-tech-card-title">State Matching</div>
+            <div class="bd-tech-card-desc">Both player and enemies uses modular state matching for their logic, so the logic matches the animation seamlessly. This allows me to be able to add any state easily - keeping things modular and clean.</div>
+          </div>
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">Unique Animation</div>
+            <div class="bd-tech-card-title">Stepped Animation</div>
+            <div class="bd-tech-card-desc">Animation trick used mainly in 2D looking 3D animations like used in Spider-Man: Across the Spider-Verse, which is animated using stepped keyframes, which is somewhat similar to stop motion animation, and to some extent you can use this in your retro game for a unique animation style. So what does this mean, for example you are animating on 3s it just means the next animation frame will be after 3 frames of that constant frame, so no in-betweens or transitions frame<br>
+ 2s - 2 constant frame<br>
+ 3s - 3 constant frame and so on</div>
+ 
+        <div class="bd-figure">
+          <video src="https://github.com/user-attachments/assets/b27c0d1a-54f2-4cc5-9ef9-87d9bdd8989e" autoplay loop muted playsinline></video>
+          <div class="bd-figure-caption">3s Animation Demo</div>
+        </div>
+        <div class="bd-code-wrap">
+          <div class="bd-code-bar">
+            <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+            <div class="bd-code-bar-title">step_animation.py — Blender Keyframe Stripper</div>
+            <div class="bd-code-bar-lang">Python</div>
+          </div>
+          <pre class="bd-code-block"><span class="bd-code-keyword">import</span> bpy
+
+step = <span class="bd-code-num">2</span> <span class="bd-code-comment">## determines the step</span>
+
+obj = bpy.context.active_object
+
+<span class="bd-code-keyword">if</span> obj <span class="bd-code-keyword">and</span> obj.animation_data <span class="bd-code-keyword">and</span> obj.animation_data.action:
+
+    action = obj.animation_data.action
+
+    <span class="bd-code-keyword">for</span> fcurve <span class="bd-code-keyword">in</span> action.fcurves:
+
+        keys = fcurve.keyframe_points
+
+        <span class="bd-code-comment"># remove keys except every nth</span>
+        <span class="bd-code-keyword">for</span> i <span class="bd-code-keyword">in</span> <span class="bd-code-func">reversed</span>(<span class="bd-code-func">range</span>(<span class="bd-code-func">len</span>(keys))):
+            <span class="bd-code-keyword">if</span> i % step != <span class="bd-code-num">0</span>:
+                keys.<span class="bd-code-func">remove</span>(keys[i])
+
+        <span class="bd-code-comment"># set constant interpolation</span>
+        <span class="bd-code-keyword">for</span> kp <span class="bd-code-keyword">in</span> keys:
+            kp.interpolation = <span class="bd-code-string">'CONSTANT'</span>
+
+    <span class="bd-code-comment"># refresh UI</span>
+    <span class="bd-code-keyword">for</span> area <span class="bd-code-keyword">in</span> bpy.context.screen.areas:
+        <span class="bd-code-keyword">if</span> area.type <span class="bd-code-keyword">in</span> {<span class="bd-code-string">'DOPESHEET_EDITOR'</span>, <span class="bd-code-string">'GRAPH_EDITOR'</span>}:
+            area.<span class="bd-code-func">tag_redraw</span>()
+
+<span class="bd-code-keyword">else</span>:
+    <span class="bd-code-func">print</span>(<span class="bd-code-string">"Select an object with animation."</span>)</pre>
+          <div class="bd-code-caption">▲ run from Blender's scripting tab, object selected.</div>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGES & SOLUTIONS -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">02</div>
+        <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div> 
+      </div>
+      
+      <div class="bd-speech-bubble-wrap" style="padding-bottom: 2px;">
+        <div class="bd-speech-bubble" style="background:#1c150d; border-color:#3d3228; color:#c6bca8; --bubble-bg:#1c150d; --bubble-border:#3d3228; max-width: 790px; margin-left: 8px;"><b style="color:#c9a030;">After this includes parts from a guide I made on this project (Check Github for detailed Guide).</b> All of this is my understanding of how you can recreate the aesthetic of the PlayStation 1 era graphics inside Godot.</div>
+      </div> 
+
+      <div class="bd-section-body" style="padding-top: 0px;">
+        <div class="bd-challenge-list">
+
+          <div class="bd-challenge"> 
+            <div class="bd-challenge-num">01</div>
+            <div class="bd-challenge-body">
+              <div class="bd-challenge-q">32,768 Colors Still Banded</div>
+              <div class="bd-challenge-a">Well why do we even need dither, isn't 32,768 a lot a color? No, I thought that too but I was wrong, even with these many colors you could still see color banding (not a smooth gradient between colors) once quantized down from Godot's 8 bit output. So a ColorRect shader grabs the rendered frame through the screen texture, divides each channel into 32 steps, and nudges every pixel by an offset pulled from a 4×4 ordered dither matrix before rounding - the noise is intentional, it simulates the sense of having more colors then there actually is and breaks up the banding.</div> 
+              <div class="bd-figure"> 
+                <img src="https://github.com/user-attachments/assets/8123fd45-b9db-41b4-b00d-ace11ce7fe3f" alt="Color banding example" loading="lazy">
+                <div class="bd-figure-caption">Color banding on a limited palette without dithering</div>
+              </div>
+              <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">dither.gdshader — 15-bit Color Quantize</div>
+                  <div class="bd-code-bar-lang">GDShader</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-keyword">shader_type</span> canvas_item;
+
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">sampler2D</span> screen_tex<span class="bd-code-comment">: hint_screen_texture, repeat_disable, filter_nearest; // get what is being rendered, tells Godot to not tile it and use pixel-perfect sampling so it doesnt get blurry</span>
+
+<span class="bd-code-comment">// 4×4 ps1 ordered dither matrix, it hold the offset values that gets applied to each pixel depending on its screen postion</span>
+<span class="bd-code-keyword">const</span> <span class="bd-code-func">float</span> dither[<span class="bd-code-num">16</span>] = <span class="bd-code-func">float</span>[<span class="bd-code-num">16</span>](
+  <span class="bd-code-num">-4.0</span>,  <span class="bd-code-num">0.0</span>, <span class="bd-code-num">-3.0</span>,  <span class="bd-code-num">1.0</span>,
+   <span class="bd-code-num">2.0</span>, <span class="bd-code-num">-2.0</span>,  <span class="bd-code-num">3.0</span>, <span class="bd-code-num">-1.0</span>,
+  <span class="bd-code-num">-3.0</span>,  <span class="bd-code-num">1.0</span>, <span class="bd-code-num">-4.0</span>,  <span class="bd-code-num">0.0</span>,
+   <span class="bd-code-num">3.0</span>, <span class="bd-code-num">-1.0</span>,  <span class="bd-code-num">2.0</span>, <span class="bd-code-num">-2.0</span>
+);
+
+<span class="bd-code-keyword">void</span> <span class="bd-code-func">fragment</span>() { <span class="bd-code-comment">// fragment func lets you manipulation each pixel</span>
+  <span class="bd-code-func">vec3</span> screen_color = <span class="bd-code-func">texture</span>(screen_tex, UV).rgb; <span class="bd-code-comment">// get the rgb color of the pixel</span>
+
+  <span class="bd-code-comment">// this gets where the pixel sit in the dither matrix</span>
+  <span class="bd-code-func">int</span> x = <span class="bd-code-func">int</span>(FRAGCOORD.x) % <span class="bd-code-num">4</span>; <span class="bd-code-comment">// FRAGCOORD is the pixel's actual 2D screen postion and % get it to 0 to 3 range</span>
+  <span class="bd-code-func">int</span> y = <span class="bd-code-func">int</span>(FRAGCOORD.y) % <span class="bd-code-num">4</span>;
+  <span class="bd-code-func">int</span> index = y * <span class="bd-code-num">4</span> + x; <span class="bd-code-comment">// converts 2D coordinates into a flat array index</span>
+
+  <span class="bd-code-func">float</span> dither_offset = (dither[index] / <span class="bd-code-num">8.0</span>); <span class="bd-code-comment">// gets the offset</span>
+
+  <span class="bd-code-func">vec3</span> quantized_color = <span class="bd-code-func">floor</span>((screen_color * <span class="bd-code-num">255.0</span>) / <span class="bd-code-num">8.0</span> + dither_offset) / <span class="bd-code-num">31.0</span>; <span class="bd-code-comment">// quantizes 8bit color with dither offset to a 5bit color</span>
+
+  COLOR = <span class="bd-code-func">vec4</span>(quantized_color, <span class="bd-code-num">1</span>); <span class="bd-code-comment">// applies the color and 1 is the alpha value</span>
+}</pre>
+                <div class="bd-code-caption">▲ screen-space dither pass, applied on a Color Rect material over the whole frame</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bd-challenge">
+            <div class="bd-challenge-num">02</div> 
+            <div class="bd-challenge-body">
+              <div class="bd-challenge-q">Modern GPUs Are Too Precise</div>
+              <div class="bd-challenge-a">Jitter effect, Why does this happen? The ps1 hardware rasterizer was unable to render polygons at a sub pixel level due to lack of precision to calculate positions between pixels so it only worked with integers and rounded off the floating point numbers, which caused them to appear snapping at lower resolution. Modern gpus can accurately calculate to sub pixel level and render at higher res, so that wobble just doesn't happen anymore, it has to be forced back in. You have to add a material override for every material and model, converting each vertex to normalized device coordinates, rounding it to a fake low resolution, then converting it back before handing the position off to the rasterizer.</div>
+              <div class="bd-figure">
+                <video src="https://github.com/user-attachments/assets/a804e0e7-0480-4a83-9c52-59689623d081" autoplay loop muted playsinline></video>
+                <div class="bd-figure-caption">Vertex jitter at rasterization - polygons snapping to a fake low-res grid</div>
+              </div>
+              <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">ps1_jitter.gdshader — Clip-Space Vertex Snap</div>
+                  <div class="bd-code-bar-lang">GDShader</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-keyword">shader_type</span> spatial;
+<span class="bd-code-keyword">render_mode</span> blend_mix, cull_back, depth_prepass_alpha,
+  shadows_disabled, specular_disabled, vertex_lighting; <span class="bd-code-comment">// these just strips the modern rendering features</span>
+
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">sampler2D</span> base_tex<span class="bd-code-comment">: source_color, filter_nearest;</span> <span class="bd-code-comment">// Its a parameter in the shader for the material base color</span>
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">vec2</span> texture_tile = <span class="bd-code-func">vec2</span>(<span class="bd-code-num">1</span>, <span class="bd-code-num">1</span>); <span class="bd-code-comment">// tiles the texture</span>
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">vec2</span> texture_offset = <span class="bd-code-func">vec2</span>(<span class="bd-code-num">0</span>, <span class="bd-code-num">0</span>); <span class="bd-code-comment">// offset if needed</span>
+
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">bool</span> snap_enabled = <span class="bd-code-num">true</span>; <span class="bd-code-comment">// should have jitter effect?</span>
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">float</span> snap_res<span class="bd-code-comment">: hint_range(60.0, 480.0, 1)</span> = <span class="bd-code-num">128.0</span>; <span class="bd-code-comment">// smaller value more jitter, fake resolution for vertex positions</span>
+
+<span class="bd-code-keyword">void</span> <span class="bd-code-func">vertex</span>() { <span class="bd-code-comment">// runs for every vertex in a mesh and lets you manipulate it, we are reversing the modern rendering pipeline so we can inject our code into it</span>
+  <span class="bd-code-func">vec4</span> view_space_pos = MODELVIEW_MATRIX * <span class="bd-code-func">vec4</span>(VERTEX, <span class="bd-code-num">1.0</span>); <span class="bd-code-comment">// object space to view space</span>
+  <span class="bd-code-func">vec4</span> clip_space_pos = PROJECTION_MATRIX * view_space_pos; <span class="bd-code-comment">// view space to clip space</span>
+
+  <span class="bd-code-keyword">if</span> (snap_enabled) {
+    <span class="bd-code-func">vec2</span> ndc = clip_space_pos.xy / clip_space_pos.w; <span class="bd-code-comment">// converts it into NDC (Normalized Device Coordinates, the –1 to +1 screen space) by dividing it by the forth direction of the modern clip space w</span>
+    ndc = <span class="bd-code-func">round</span>(ndc * snap_res) / snap_res; <span class="bd-code-comment">// locks the vertex to one of the point in the fake res across the screen</span>
+    clip_space_pos.xy = ndc * clip_space_pos.w; <span class="bd-code-comment">// converts back to clip space</span>
+  }
+  POSITION = clip_space_pos; <span class="bd-code-comment">// sets the postion</span>
+}
+
+<span class="bd-code-keyword">void</span> <span class="bd-code-func">fragment</span>() { <span class="bd-code-comment">// in fragment shader we are only applying back the textures</span>
+  <span class="bd-code-func">vec4</span> base = <span class="bd-code-func">texture</span>(base_tex, UV * texture_tile + texture_offset);
+  ALBEDO = base.rgb;
+  ALPHA = base.a;
+}</pre>
+                <div class="bd-code-caption">▲ material override applied to every mesh in the scene</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bd-challenge">
+            <div class="bd-challenge-num">03</div>
+            <div class="bd-challenge-body">
+              <div class="bd-challenge-q">Smooth Lighting Broke the Illusion</div>
+              <div class="bd-challenge-a">Godot's default lighting is calculated pixel to pixel, which gives a smooth gradient - exactly what gives away a modern engine. rendering/shading/overrides/force_vertex_shading = true | forces the lighting to be at vertex level instead, so each triangle just gets one lighting value interpolated across its face, the same faceted look original hardware was stuck with.</div>
+              <div class="bd-figure">
+                <img src="https://github.com/user-attachments/assets/14ddb1b6-2233-4e05-97b4-b9dc099cd12e" alt="Vertex shading vs pixel shading comparison" loading="lazy">
+                <div class="bd-figure-caption">Godot's default pixel shading (left) vs Vertex shading (right)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT I LEARNED -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">03</div>
+        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-learned-grid">
+
+          <div class="bd-learn-card bd-span-2">
+            <div class="bd-learn-title">How graphic engine works</div>
+            <div class="bd-learn-desc">I learned a lot about how does graphic engine works, mainly how does it translate 3D graphics to 2D graphics and mainly the rasterizer, ndc space.</div>
+          </div>
+
+          <div class="bd-learn-card bd-span-2"> 
+            <div class="bd-learn-title">THE PS1 GPU WAS TECHNICALLY A 2D RENDERER</div>
+            <div class="bd-learn-desc">PS1 GPU was technically a 2D rasterization engine, it didn't have a native 3D depth buffer (Z-buffer) or hardware support for perspective correction, it relied on a separate companion chip called the Geometry Transformation Engine. The GTE handled 3D math and projections, converting 3D world coordinates into flat 2D screen coordinates then fed it to the 2D GPU.</div>
+          </div>
+
+          <div class="bd-learn-card bd-span-2">
+            <div class="bd-learn-title">ARTISTIC CHOICE or Workarounds</div>
+            <div class="bd-learn-desc">Many retro games made choices some workaround, some artistic choices and some both like - Capcom used fixed camera because they wanted to have prerendered background for immersion and have cinematography that changes the mood throught fixed camera angles. These game could only have one light source at a time and derived most of the light from AO maps (prebaked lighting from real world places). Silent Hill iconic fog was originally a workaround for technical limitations like limited draw distance and low hardware processing power.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S NEXT -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">04</div>
+        <div class="bd-section-title">WHAT'S <span>NEXT</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-diff-list">
+          <div class="bd-diff-item">
+            <div class="bd-diff-bullet">1</div>
+            <div class="bd-diff-text"><b>Affine texture mapping.</b> Gives distorted texture mapping because PS1 hardware mapped mapped textures in 2D screen space instead of accounting for 3D depth, but most of the games tried to hide this using vertex color rather than textures, having high density models, fixed camera angles. So, I'm not sure if I want to add this into the game. Also its distracting.</div>
+            <div class="bd-figure"> 
+              <img src="https://github.com/user-attachments/assets/679646bc-7dd3-44ea-8da2-f855bdc00ed9" alt="Affine vs perspective-correct texture mapping" loading="lazy">
+            </div>
+          </div>
+
+          <div class="bd-diff-item">
+            <div class="bd-diff-bullet">2</div>
+            <div class="bd-diff-text"><b>Add a CRT filter.</b> If you have a old T.V the dithering effect looks so good already, so a crt filter over the dithered, jittered output would make it cooler and really give that retro feel.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="bd-footer-links" style="border-top-color: var(--ink); box-shadow: none;">  
       <span class="bd-footer-title">PLAY IT →</span>
       <a href="https://deepdass.itch.io/noroi" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
       <a href="https://github.com/deepdass/Noroi" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
