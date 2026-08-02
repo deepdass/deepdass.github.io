@@ -857,9 +857,52 @@ box-shadow: 5px 5px 0 var(--ink);
   .nav-links { gap:14px; }
   .about-inner { grid-template-columns:1fr; }
 }
+
+#breakdown-noroi .breakdown-modal { background: #0e0b08; }
+#breakdown-noroi .bd-section { border-bottom-color: #3d3228; }
+#breakdown-noroi .bd-section-header { border-bottom-color: #3d3228; }
+#breakdown-noroi .bd-section-num { border-right-color: #3d3228; color: #c9a030; } 
+
+#breakdown-noroi .bd-tech-card,
+#breakdown-noroi .bd-learn-card,
+#breakdown-noroi .bd-challenge,
+#breakdown-noroi .bd-diff-item {
+  background: #1c150d; border-color: #3d3228;
+}
+
+#breakdown-noroi .bd-section-title { color: #c6bca8;} 
+#breakdown-noroi .bd-section-title span { color: #6b1414; }
+#breakdown-noroi .bd-tech-card:hover,
+#breakdown-noroi .bd-learn-card:hover { box-shadow: 3px 3px 0 var(--ink); }
+#breakdown-noroi .bd-diff-item { box-shadow: 3px 3px 0 var(--ink); }
+#breakdown-noroi .bd-diff-item:hover { box-shadow: 5px 5px 0 var(--ink); }
+
+#breakdown-noroi .bd-tech-card-title { color: #c9a030; }
+#breakdown-noroi .bd-tech-card-desc,
+#breakdown-noroi .bd-learn-desc,
+#breakdown-noroi .bd-challenge-a,
+#breakdown-noroi .bd-diff-text { color: #c6bca8; opacity: .85; }
+
+#breakdown-noroi .bd-tech-card-label { background: #6b1414; border-color: #3d3228; }
+#breakdown-noroi .bd-learn-title,
+#breakdown-noroi .bd-challenge-q { color: #c9a030; }
+#breakdown-noroi .bd-diff-bullet { background: #c9a030; border-color: #3d3228; }
+#breakdown-noroi .bd-diff-text b { color: #c9a030; }
+
+#breakdown-noroi .bd-challenge-num { background: #0e0b08; color: #c9a030; border-right-color: #3d3228; }
+#breakdown-noroi .bd-figure,
+#breakdown-noroi .bd-ba-img { background: #111; border-color: #3d3228; }
+#breakdown-noroi .bd-figure-caption,
+#breakdown-noroi .bd-ba-caption {
+  background: #1c150d; color: #c6bca8; opacity: .85; border-top-color: #3d3228;
+}
+#breakdown-noroi .bd-code-wrap { border-color: #3d3228; box-shadow: 5px 5px 0 var(--ink); }
+#breakdown-noroi .bd-code-wrap:hover { box-shadow: 7px 7px 0 var(--ink); }
+#breakdown-noroi .bd-panels { border-bottom-color: #3d3228; }
+#breakdown-noroi .bd-panel { border-color: #3d3228; }
+#breakdown-noroi .bd-footer-links { border-top-color: #3d3228 !important; } 
 </style>
 </head>
-
 
 
 <!-- HTML -->
@@ -1813,7 +1856,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>  
 
     <!-- GAMEPLAY VIDEO --> 
-    <div class="bd-yt-section" style="background:#0e0b08;" >
+    <div class="bd-yt-section" style="background:#0e0b08;">
       <div class="bd-yt-embed-wrap" style="border-color: var(--ink);">
         <iframe src="https://www.youtube.com/embed/UEUjXJqJcD0" title="Noroi gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
@@ -1827,7 +1870,7 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
     <!-- WHAT I HAVE BUILT --> 
-    <div class="bd-section">
+    <div class="bd-section" style="background:#0e0b08;">
       <div class="bd-section-header">
         <div class="bd-section-num">01</div>
         <div class="bd-section-title">WHAT I HAVE <span>BUILT</span></div>
@@ -1901,7 +1944,7 @@ obj = bpy.context.active_object
     </div>
 
     <!-- CHALLENGES & SOLUTIONS -->
-    <div class="bd-section">
+    <div class="bd-section" style="background:#0e0b08;">
       <div class="bd-section-header">
         <div class="bd-section-num">02</div>
         <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div> 
@@ -2025,7 +2068,7 @@ obj = bpy.context.active_object
     </div>
 
     <!-- WHAT I LEARNED -->
-    <div class="bd-section">
+    <div class="bd-section" style="background:#0e0b08;">
       <div class="bd-section-header">
         <div class="bd-section-num">03</div>
         <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
@@ -2052,7 +2095,7 @@ obj = bpy.context.active_object
     </div>
 
     <!-- WHAT'S NEXT -->
-    <div class="bd-section">
+    <div class="bd-section" style="background:#0e0b08;">
       <div class="bd-section-header">
         <div class="bd-section-num">04</div>
         <div class="bd-section-title">WHAT'S <span>NEXT</span></div>
