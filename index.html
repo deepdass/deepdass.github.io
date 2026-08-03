@@ -2198,7 +2198,7 @@ obj = bpy.context.active_object
       </div>
     </div> -->
 
-    <!-- WHAT I LEARNED -->
+    <!-- WHAT I LEARNED --> 
     <div class="bd-section">
       <div class="bd-section-header">
         <div class="bd-section-num">02</div>
@@ -2421,6 +2421,11 @@ function closeBreakdown(id) {
   if (!el) return;
   el.classList.remove('open');
   document.body.style.overflow = '';
+  el.querySelectorAll('.bd-yt-embed-wrap iframe').forEach(iframe => { 
+    const src = iframe.getAttribute('src');
+    iframe.setAttribute('src', '');
+    iframe.setAttribute('src', src);
+  });
 }
 document.querySelectorAll('.game-card').forEach(card => {
   card.addEventListener('click', () => {
