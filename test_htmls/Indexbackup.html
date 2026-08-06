@@ -312,18 +312,13 @@ section { position:relative; z-index:1; }
 }
 
 #skills { background:var(--paper); }
-.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:26px; }
-.skill-panel { background:var(--white); border:3px solid var(--ink); box-shadow:3px 3px 0 var(--ink); padding:22px; position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; }
-.skill-panel:hover { animation:pop .1s ease forwards; transform:translate(-3px,-3px) rotate(0.5deg); box-shadow:6px 6px 0 var(--ink); }
-.skill-panel:hover .skill-icon { transform:rotate(-6deg) scale(1.08); }
-.skill-header-row { display:flex; align-items:center; gap:12px; border-bottom:0.21rem dashed rgba(26,16,8,.2); padding-bottom:11px; margin-bottom:16px; }
-.skill-icon { width:42px; height:42px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Bangers',cursive; font-size:1.3rem; color:var(--white); background:var(--red); border:2px solid var(--ink); filter: drop-shadow(2px 2px 0 var(--ink)); transition:transform .2s; }
-.skill-header { font-family:'Bangers',cursive; font-size:1.35rem; letter-spacing:2px; color:var(--ink); line-height:1.1; }
-.skill-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
-.skill-list li { font-size:0.8rem; font-weight:700; color:var(--ink); background:var(--paper); border:2px solid var(--ink); padding:5px 12px; filter:drop-shadow(2px 2px 0 var(--ink)); transition:transform .12s,filter .12s; }
-.skill-list li:nth-child(odd) { transform:rotate(-1deg); }
-.skill-list li:nth-child(even) { transform:rotate(1deg); }
-.skill-list li:hover { transform:translate(-2px,-2px) rotate(0deg); filter:drop-shadow(4px 4px 0 var(--ink)); background:var(--yellow);}
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px; }
+.skill-panel { background:var(--white); border:3px solid var(--ink); box-shadow:5px 5px 0 var(--ink); padding:20px; transition:transform .15s,box-shadow .15s; }
+.skill-panel:hover { animation:pop .1s ease forwards; transform:translate(-3px,-3px) rotate(0.5deg); box-shadow:8px 8px 0 var(--ink); }
+.skill-header { font-family:'Bangers',cursive; font-size:1.4rem; letter-spacing:2px; color:var(--red); border-bottom:3px solid var(--ink); padding-bottom:8px; margin-bottom:14px; }
+.skill-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.skill-list li { font-size:0.9rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:8px; }
+.skill-list li::before { content:'▶'; color:var(--red); font-size:0.6rem; flex-shrink:0; }
 
 #about { background:var(--yellow); }
 #about .section-title { color:var(--ink); }
@@ -1500,34 +1495,10 @@ box-shadow: 5px 5px 0 var(--ink);
       <h2 class="section-title">SKILLS &amp; EXPERIENCES</h2> 
     </div>
     <div class="skills-grid">
-      <div class="skill-panel reveal">
-        <div class="skill-header-row">
-          <div class="skill-icon">⚒︎</div>
-          <div class="skill-header">ENGINES</div>
-        </div>
-        <ul class="skill-list"><li>Unreal Engine 5</li><li>Godot 4</li><li>Unity</li><li>Pygame library</li></ul> 
-      </div>
-      <div class="skill-panel reveal">
-        <div class="skill-header-row">
-          <div class="skill-icon">&lt;/&gt;</div>
-          <div class="skill-header">LANGUAGES</div>
-        </div>
-        <ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>UE5 Blueprints</li><li>Python</li><li>C</li><li>GDShader</li><li>HLSL</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul>
-      </div>
-      <div class="skill-panel reveal">
-        <div class="skill-header-row">
-          <div class="skill-icon">◆</div>
-          <div class="skill-header">ART &amp; ASSETS</div>
-        </div>
-        <ul class="skill-list"><li>Blender</li><li>Aseprite</li><li>Substance Painter</li><li>Pure Ref</li><li>GIMP</li><li>Krita</li><li>Audacity</li></ul>
-      </div>
-      <div class="skill-panel reveal">
-        <div class="skill-header-row">
-          <div class="skill-icon">▲</div>
-          <div class="skill-header">Tools</div>
-        </div>
-        <ul class="skill-list"><li>Git / GitHub</li><li>Slack</li><li>Discord</li><li>Unreal Insights</li><li>Rider</li><li>Visual Studio</li><li>VS Code</li><li>CLI</li></ul>
-      </div>
+      <div class="skill-panel reveal"><div class="skill-header">⚒︎ ENGINES</div><ul class="skill-list"><li>Unreal Engine 5</li><li>Godot 4</li><li>Unity</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">&lt;/&gt; LANGUAGES</div><ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>UE5 Blueprints</li><li>Python</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">◆ ART &amp; ASSETS</div><ul class="skill-list"><li>Blender</li><li>Substance Painter</li><li>GIMP &amp; Pure Ref</li><li>Aseprite</li><li>Audacity</li></ul></div>
+      <div class="skill-panel reveal"><div class="skill-header">💭 OTHER INTERESTS</div><ul class="skill-list"><li>Git / GitHub</li><li>Gaming</li><li>Hardware</li><li>Photography</li><li>Music</li><li>Basketball &amp; Volleyball</li></ul></div>
     </div>
   </div>
 </section>
