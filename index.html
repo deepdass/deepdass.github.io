@@ -642,10 +642,6 @@ footer span { color:var(--red); }
   box-shadow: 5px 5px 0 var(--ink); margin: 20px 0;
   position: relative; overflow: hidden;
 }
-.bd-code-wrap:hover {
-transform: translate(-2px, -2px);
-box-shadow: 7px 7px 0 var(--ink); 
-}
 
 .bd-code-bar {
   background: var(--gold); border-bottom: 3px solid var(--ink);
@@ -671,7 +667,7 @@ box-shadow: 7px 7px 0 var(--ink);
 .bd-code-block {
   padding: 20px 24px; overflow-x: auto;
   font-family: 'Courier New', monospace; font-size: 0.82rem;
-  line-height: 1.7; color: #f5eedc;
+  line-height: 1.5; color: #f5eedc;
   margin: 0; white-space: pre;
 }
 .bd-code-comment { color: #6b8a6b; font-style: italic; }
@@ -901,6 +897,16 @@ box-shadow: 5px 5px 0 var(--ink);
 #breakdown-noroi .bd-panels { border-bottom-color: #3d3228; }
 #breakdown-noroi .bd-panel { border-color: #3d3228; }
 #breakdown-noroi .bd-footer-links { border-top-color: #3d3228 !important; } 
+
+
+
+#breakdown-devsandbox .bd-code-keyword { color: #CC7832; font-weight: 400; }
+#breakdown-devsandbox .bd-code-func { color: #FFC66D; font-weight: 400; }
+#breakdown-devsandbox .bd-code-string { color: #6A8759; font-style: normal; }
+#breakdown-devsandbox .bd-code-num { color: #6897BB; }
+#breakdown-devsandbox .bd-code-comment { color: #808080; font-style: italic; }
+#breakdown-devsandbox .bd-code-member { color: #9876AA; }
+#breakdown-devsandbox .bd-code-caption { color: rgba(169,183,198,.6); border-top-color: rgba(204,120,50,.25); }
 </style>
 </head>
 
@@ -1751,7 +1757,7 @@ box-shadow: 5px 5px 0 var(--ink);
  3s - 3 constant frame and so on</div>
  
         <div class="bd-figure">
-          <video src="GameImgs/Noroi/stepped_anim.mp4" autoplay loop muted playsinline></video>
+          <video src="GameImgs/Noroi/stepped_anim.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
           <div class="bd-figure-caption">3s Animation Demo</div>
         </div>
         <div class="bd-code-wrap">
@@ -1819,7 +1825,6 @@ obj = bpy.context.active_object
               <div class="bd-challenge-a">Well why do we even need dither, isn't 32,768 a lot a color? No, I thought that too but I was wrong, even with these many colors you could still see color banding (not a smooth gradient between colors) once quantized down from Godot's 8 bit output. So a ColorRect shader grabs the rendered frame through the screen texture, divides each channel into 32 steps, and nudges every pixel by an offset pulled from a 4×4 ordered dither matrix before rounding - the noise is intentional, it simulates the sense of having more colors then there actually is and breaks up the banding.</div> 
               <div class="bd-figure"> 
                 <img src="https://github.com/user-attachments/assets/8123fd45-b9db-41b4-b00d-ace11ce7fe3f" alt="Color banding example" loading="lazy">
-                <div class="bd-figure-caption">Color banding on a limited palette without dithering</div>
               </div>
               <div class="bd-code-wrap">
                 <div class="bd-code-bar">
@@ -2166,48 +2171,155 @@ obj = bpy.context.active_object
       </div>
     </div>
 
-    <!-- CHALLENGES & SOLUTIONS -->
-    <!--<div class="bd-section">
+
+    <!-- code snippets -->
+    <div class="bd-section">
       <div class="bd-section-header">
         <div class="bd-section-num">02</div>
-        <div class="bd-section-title">CHALLENGES <span>&amp; SOLUTIONS</span></div>
+        <div class="bd-section-title">code <span>snippets</span></div> 
       </div>
-      
       <div class="bd-section-body">
-        <div class="bd-challenge-list">
+        <div class="bd-tech-grid">
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">Action System</div>
+            <div class="bd-tech-card-title">Start and Stop of Actions with networking</div>
+            <div class="bd-tech-card-desc">Action Component is a Actor Component that handles the start and stop of a action. It cycles through the action array and matches the Gameplay tag to start/ stop the action.</div>
 
-          <div class="bd-challenge">
-            <div class="bd-challenge-num">01</div>
-            <div class="bd-challenge-body">
-              <div class="bd-challenge-q">Chaos Physics Fighting Me on Rear Traction</div>
-              <div class="bd-challenge-a">UE5's Chaos vehicle system isn't built for drifting. No matter how much you tweak Chaos Vehicle's exposed parameters, it doesn't produce real drift. Chaos vehicle marks drifting as slip and reduces both lateral and sideways speed equally, resulting in dead drifts. After the physics tweak on top of the chaos physics and other tweaks inside chaos physics like center of mass, engine and wheel setup. </div>
-              <div class="bd-before-after" style="margin-top:14px;"><div class="bd-ba-arrow"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon points="4,20 4,44 36,44 36,56 60,32 36,8 36,20" fill="#ffe94a" stroke="#1a1008" stroke-width="4" stroke-linejoin="round"/></svg></div>
-                <div class="bd-ba-side before">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_before.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Instant slowing down when entering drift, resulting in dead drift</div>
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SActionComponent.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
                 </div>
-                <div class="bd-ba-side after">
-                  <div class="bd-ba-img"><img src="GameImgs/Tokyodrift/1_after.gif" alt="Tokyo Drift"></div>
-                  <div class="bd-ba-caption">Dynamically change angular damping and apply force for arcade feel and better drift.</div>
+                <pre class="bd-code-block"><span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStartAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
+{
+    <span class="bd-code-func">StartActionByName</span>(InstigatorActor, NameTag);
+}
+
+<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StartActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
+{
+    SCOPE_CYCLE_COUNTER(STAT_StartActionByName); 
+    UE_LOG(LogTemp, Warning, TEXT(<span class="bd-code-string">"StartActionByName called with: %s, Actions.Num=%d"</span>), *NameTag.<span class="bd-code-func">ToString</span>(), <span class="bd-code-member">Actions</span>.Num());
+
+    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
+    {
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
+        {
+            <span class="bd-code-keyword">if</span> (!Action-&gt;<span class="bd-code-func">CanStartAction</span>(Instigator))
+            {
+                <span class="bd-code-keyword">continue</span>;
+            }
+            <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
+            {
+                <span class="bd-code-func">ServerStartAction</span>(Instigator, NameTag);
+            }
+            <span class="bd-code-keyword">else</span>
+            {
+                Action-&gt;<span class="bd-code-func">StartAction</span>(Instigator);
+            }
+            
+            TRACE_BOOKMARK(TEXT(<span class="bd-code-string">"StartAction: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(Action));
+            <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+        }
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+}
+
+<span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStopAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
+{
+    <span class="bd-code-func">StopActionByName</span>(InstigatorActor, NameTag);
+}
+
+<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StopActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
+{
+    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
+    {
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
+        {
+            <span class="bd-code-keyword">if</span> (Action-&gt;<span class="bd-code-func">GetIsActionRunning</span>())
+            {
+                <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
+                {
+                    <span class="bd-code-func">ServerStopAction</span>(Instigator, NameTag);
+                }
+                <span class="bd-code-keyword">else</span>
+                {
+                    Action-&gt;<span class="bd-code-func">StopAction</span>(Instigator);
+                }
+                <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+            }
+        }
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+}</pre>
+</div>
+            
+            <div class="bd-tech-card-title">Actions</div>
+            <div class="bd-tech-card-desc">Actions are UObject derived classes that can be added to action component to grant the pawn the ability to do that action and it handles the CanStart/Start/Stop using Gameplay Tags.</div>
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SAction.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
                 </div>
+                <pre class="bd-code-block"><span class="bd-code-keyword">bool</span> USAction::<span class="bd-code-func">CanStartAction_Implementation</span>(AActor* Instigator)
+{
+    <span class="bd-code-keyword">if</span> (<span class="bd-code-func">GetIsActionRunning</span>())
+    {
+       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+    }
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    
+    <span class="bd-code-keyword">if</span> (ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">HasAny</span>(<span class="bd-code-member">BlockedTags</span>))
+    {
+       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+}
+
+
+<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StartAction_Implementation</span>(AActor* Instigator)
+{
+    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Running Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    
+    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">AppendTags</span>(<span class="bd-code-member">GrantsTags</span>);
+    
+    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">true</span>;
+}
+
+<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StopAction_Implementation</span>(AActor* Instigator)
+{
+    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Stopped Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">RemoveTags</span>(<span class="bd-code-member">GrantsTags</span>);
+    
+    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">false</span>;
+}</pre>
+              <div class="bd-code-caption">▲ checks blocked tags before an action can run, then grants/removes gameplay tags while the action is running.</div>
               </div>
             </div>
-          </div>
-
+            
         </div>
       </div>
-    </div> -->
-
-
+    </div>
+    
 
     <!-- WHAT I LEARNED --> 
     <div class="bd-section">
       <div class="bd-section-header">
-        <div class="bd-section-num">02</div>
+        <div class="bd-section-num">03</div>
         <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
       </div>
       <div class="bd-section-body">
         <div class="bd-learned-grid">
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">Improved at building modular, scalable code</div>
+            <div class="bd-learn-desc">By building the Action system, Function libraries, all event based logic gave me a good idea how can I have similar logic for my games moving forward.</div>
+          </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">Gameplay Tags</div>
             <div class="bd-learn-desc">Use of Gameplay Tags to handle state management for buffs, blocking abilities, interaction rules. Which is much better and more manageable the just separate bools.</div>
@@ -2219,10 +2331,6 @@ obj = bpy.context.active_object
           <div class="bd-learn-card">
             <div class="bd-learn-title">Multiplayer Networking</div>
             <div class="bd-learn-desc">Understood a lot about Unreal's multiplayer client-server model with proper replication, RPCs, Multicast, RepNotify, and server authority checks.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">Improved at building modular, scalable code</div>
-            <div class="bd-learn-desc">Building the Action system, Function libraries, all event based logic gave me a good idea how can I have similar logic for my games moving forward.</div>
           </div>
         </div>
       </div>
