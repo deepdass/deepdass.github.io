@@ -1757,7 +1757,7 @@ box-shadow: 5px 5px 0 var(--ink);
  3s - 3 constant frame and so on</div>
  
         <div class="bd-figure">
-          <video src="GameImgs/Noroi/stepped_anim.mp4" muted="muted" autoplay="autoplay" loop="loop"></video>
+          <video id="vid-autoplay" src="GameImgs/Noroi/stepped_anim.mp4" controls muted loop playsinline></video>
           <div class="bd-figure-caption">3s Animation Demo</div>
         </div>
         <div class="bd-code-wrap">
@@ -2569,6 +2569,23 @@ if (greetEl) {
   const rest = pick.slice(1);
   greetEl.innerHTML = first + '<span class="small-letter">' + rest + '</span>';
 }
+
+
+const video = document.getElementById('vid-autoplay');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+}, {
+  threshold: 0.35
+});
+observer.observe(video);
+
 </script>
 </body>
 </html>
