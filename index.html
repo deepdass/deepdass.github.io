@@ -335,13 +335,15 @@ section { position:relative; z-index:1; }
 #tools .section-title { color:var(--gold); }
 #tools .section-title::after { background:var(--gold); }
 
-.tools-card { background:var(--paper); border:4px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding:28px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; transition: transform .03s, box-shadow .03s !important; margin-bottom: 14px; }
-.tools-card:hover { transform: translate(-3px, -3px) !important; box-shadow: 6px 6px 0 var(--ink); } 
-
-.tools-card-text { flex:1; min-width:240px; }
-.tools-card-title { font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:2px; color:var(--ink); margin-bottom:10px; }
-.tools-card-desc { font-size:1rem; line-height:1.6; font-weight:700; color:var(--ink); max-width:700px; }
-.tools-card .btn { flex-shrink:0; }
+.tool-card {background:var(--paper); border:4px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding:28px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; transition: transform .03s, box-shadow .03s !important; margin-bottom:24px; }
+.tool-card:hover { transform:translate(-3px,-3px) !important; box-shadow:6px 6px 0 var(--ink); }
+.tool-card:hover .tool-title { animation:wiggle 1.5s ease-in-out infinite; }
+.tool-corner { position:absolute; top:-14px; left:24px; font-family:'Bangers',cursive; font-size:0.78rem; letter-spacing:2px; background:var(--red); color:var(--white); padding:3px 12px; border:2px solid var(--ink); box-shadow:2px 2px 0 var(--ink); z-index:3; transform:rotate(-2deg); }
+.tool-body { flex:1; min-width:240px; padding-right:24px; border-right:2px dashed rgba(26,16,8,.2); }
+.tool-title { font-family:'Bangers',cursive; font-size:1.8rem; letter-spacing:2px; color:var(--ink); line-height:1.15; margin-bottom:10px; display:inline-block; }
+.tool-desc { font-size:1rem; line-height:1.6; color:var(--ink); font-weight:700; max-width:700px; }
+.tool-footer { flex-shrink:0; padding-left:4px; }
+.tool-footer .btn { font-size:1.1rem; }
 .btn-github { display:inline-flex; align-items:center; gap:10px; }
 .btn-github svg { width:22px; height:22px; fill:currentColor; }
 
@@ -1318,37 +1320,47 @@ box-shadow: 5px 5px 0 var(--ink);
       <span class="section-num">02</span>
       <h2 class="section-title">TOOLS &amp; PLUGINS</h2>
     </div>
-    <div class="tools-card reveal">
-      <div class="tools-card-text">
-        <div class="tools-card-title">UE Class Mover</div>
-        <div class="tools-card-desc">A very useful CLI tool that moves C++ class files to a new folder/subfolder with different presets like flat, Public/Private split, or all Private and automatically fixes all the #include paths so nothing breaks. Shows diff-style preview, adds IncludePaths to build.cs, also batch changes :)</div>
+
+    <div class="tool-card reveal">
+      <div class="tool-corner">CLI TOOL</div>
+      <div class="tool-body">
+        <div class="tool-title">UE Class Mover</div>
+        <div class="tool-desc">A very useful CLI tool that moves C++ class files to a new folder/subfolder with different presets like flat, Public/Private split, or all Private and automatically fixes all the #include paths so nothing breaks. Shows diff-style preview, adds IncludePaths to build.cs, also batch changes :)</div>
       </div>
-      <a href="https://github.com/deepdass/UEClassMover" target="_blank" class="btn btn-dark btn-github">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-        VIEW ON GITHUB
-      </a>
+      <div class="tool-footer">
+        <a href="https://github.com/deepdass/UEClassMover" target="_blank" class="btn btn-gold btn-github">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          VIEW ON GITHUB
+        </a>
+      </div>
     </div>
 
-    <div class="tools-card reveal">
-      <div class="tools-card-text">
-        <div class="tools-card-title">Stepped animation Converter</div>
-        <div class="tools-card-desc">A simple python art tool to convert any animation to a stepped animation like 2s, 3s or any of your choosing. Runnable from the blender's scripting tab.</div>
+    <div class="tool-card reveal">
+      <div class="tool-corner">ART TOOL</div>
+      <div class="tool-body">
+        <div class="tool-title">Stepped Animation Converter</div>
+        <div class="tool-desc">A simple python art tool to convert any animation to a stepped animation like 2s, 3s or any of your choosing. Runnable from the Blender's scripting tab.</div>
       </div>
-      <a href="https://github.com/deepdass/stop_motion_style-animation_converter" target="_blank" class="btn btn-dark btn-github">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-        VIEW ON GITHUB
-      </a>
+      <div class="tool-footer">
+        <a href="https://github.com/deepdass/stop_motion_style-animation_converter" target="_blank" class="btn btn-gold btn-github">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          VIEW ON GITHUB
+        </a>
+      </div>
     </div>
 
-    <div class="tools-card reveal">
-      <div class="tools-card-text">
-        <div class="tools-card-title">Wakatime Integration for UE5</div>
-        <div class="tools-card-desc">Wakatime Integration for UE5, a tool to track your time in Unreal Engine 5. Sends heartbeats when compiling, saving assets or basically when you edit anything in the engine.</div>
+    <div class="tool-card reveal">
+      <div class="tool-corner">UE5 PLUGIN</div>
+      <div class="tool-body">
+        <div class="tool-title">Wakatime Integration for UE5</div>
+        <div class="tool-desc">Wakatime Integration for UE5, a tool to track your time in Unreal Engine 5. Sends heartbeats when compiling, saving assets or basically when you edit anything in the engine.</div>
       </div>
-      <a href="https://github.com/deepdass/WakatimeIntegrationUE5" target="_blank" class="btn btn-dark btn-github">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-        VIEW ON GITHUB
-      </a>
+      <div class="tool-footer">
+        <a href="https://github.com/deepdass/WakatimeIntegrationUE5" target="_blank" class="btn btn-gold btn-github">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          VIEW ON GITHUB
+        </a>
+      </div>
     </div>
 
   </div>
