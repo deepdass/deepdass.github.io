@@ -903,10 +903,7 @@ box-shadow: 5px 5px 0 var(--ink);
 #breakdown-devsandbox .bd-code-keyword { color: #CC7832; font-weight: 400; }
 #breakdown-devsandbox .bd-code-func { color: #FFC66D; font-weight: 400; }
 #breakdown-devsandbox .bd-code-string { color: #6A8759; font-style: normal; }
-#breakdown-devsandbox .bd-code-num { color: #6897BB; }
-#breakdown-devsandbox .bd-code-comment { color: #808080; font-style: italic; }
-#breakdown-devsandbox .bd-code-member { color: #9876AA; }
-#breakdown-devsandbox .bd-code-caption { color: rgba(169,183,198,.6); border-top-color: rgba(204,120,50,.25); }
+/* #breakdown-devsandbox .bd-code-member { color: #9876AA; } */
 </style>
 </head>
 
@@ -2303,6 +2300,154 @@ obj = bpy.context.active_object
               </div>
             </div>
             
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">Cheat Manager</div> 
+            <div class="bd-tech-card-title">Exec Commands for Debugging</div>
+            <div class="bd-tech-card-desc">SCheatManager extends unreal's base cheat manager with useful Exec functions for quick testing/ debugging like healing/damaging the player, granting coins, teleporting along an axis and killing every AI, callable from the console.</div>
+
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SCheatManager.h</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block">UENUM(BlueprintType)
+<span class="bd-code-keyword">enum</span> <span class="bd-code-keyword">class</span> EMoveAxis : uint8
+{
+    X,
+    Y,
+    Z
+};
+
+UCLASS()
+<span class="bd-code-keyword">class</span> PROJECTIDK_API USCheatManager : <span class="bd-code-keyword">public</span> UCheatManager
+{
+    GENERATED_BODY()
+    
+<span class="bd-code-keyword">public</span>:
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">GrantCoin</span>(int32 Amount = <span class="bd-code-num">1000</span>);
+
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">KillAll</span>();
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm = <span class="bd-code-num">200</span>, EMoveAxis Axis = EMoveAxis::Z);
+    
+};</pre>
+                <div class="bd-code-caption">▲ all five function are UFUNCTION(Exec), so they're callable directly from the console useful for debugging or even in shipped game.</div>
+              </div>
+
+            <div class="bd-tech-card-title">Implementation</div>
+            <div class="bd-tech-card-desc">Each command has sensible defaults to fall back to like max health, length in float with axis Z when called with no arguments.</div>
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SCheatManager.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
+        
+        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
+        {
+            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
+        }
+        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, Amount);
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
+        
+        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
+        {
+            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
+        }
+        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, -Amount);
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">GrantCoin</span>(int32 Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        ASPlayerState* SPlayerState = MyPawn-&gt;<span class="bd-code-func">GetPlayerState</span>&lt;ASPlayerState&gt;();
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(SPlayerState))
+        {
+            SPlayerState-&gt;<span class="bd-code-func">ApplyCreditChange</span>(MyPawn, Amount);
+        }
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">KillAll</span>()
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        <span class="bd-code-keyword">for</span> (TActorIterator&lt;ASAICharacter&gt; It(<span class="bd-code-func">GetWorld</span>()); It; ++It) 
+        {
+            ASAICharacter* Bot = *It;
+            USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(Bot);
+            <span class="bd-code-keyword">if</span> (AttributeComp &amp;&amp; AttributeComp-&gt;<span class="bd-code-func">GetIsAlive</span>())
+            {
+                AttributeComp-&gt;<span class="bd-code-func">Kill</span>(MyPawn);
+            }
+        }
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm, ::EMoveAxis Axis)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (ACharacter* MyCharacter = MyPC-&gt;<span class="bd-code-func">GetCharacter</span>())
+    {
+        <span class="bd-code-keyword">if</span> (UCharacterMovementComponent* MoveComp = MyCharacter-&gt;<span class="bd-code-func">GetCharacterMovement</span>())
+        {
+            MoveComp-&gt;<span class="bd-code-member">Velocity</span> = FVector::ZeroVector;
+        }
+        FVector Direction = FVector::ZeroVector;
+
+        <span class="bd-code-keyword">switch</span> (Axis)
+        {
+        <span class="bd-code-keyword">case</span> EMoveAxis::X:
+            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorForwardVector</span>();
+            <span class="bd-code-keyword">break</span>;
+        <span class="bd-code-keyword">case</span> EMoveAxis::Y:
+            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorRightVector</span>();
+            <span class="bd-code-keyword">break</span>;
+        <span class="bd-code-keyword">case</span> EMoveAxis::Z:
+            Direction = FVector::UpVector;
+            <span class="bd-code-keyword">break</span>;
+        }
+        
+        MyCharacter-&gt;<span class="bd-code-func">AddActorWorldOffset</span>(Direction * ByCm, <span class="bd-code-num">false</span>);
+    }
+}</pre>
+              </div>
+          </div>
+
         </div>
       </div>
     </div>
