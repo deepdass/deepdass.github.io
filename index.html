@@ -775,7 +775,7 @@ footer span { color:var(--red); }
 }
 .bd-tech-card:hover { 
   transform: translate(-3px,-3px) rotate(0.4deg); 
-  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
+  filter: drop-shadow(3px 3px 0px var(--ink));
 }
 
 .bd-challenge {
@@ -790,7 +790,7 @@ footer span { color:var(--red); }
 }
 .bd-learn-card:hover { 
   transform: translate(-2px,-2px) rotate(0.5deg); 
-  box-shadow: 3px 3px 0 var(--shadow-color, var(--ink)); 
+  filter: drop-shadow(3px 3px 0 var(--ink));
 }
 
 .bd-diff-item {
@@ -1173,7 +1173,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">SkullWard</div>
             <button class="btn-breakdown" onclick="openBreakdown('skullward')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
-          <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">~GLSL</span><span class="engine-tag">OPTIMIZATION</span></div>
+          <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">OPTIMIZATION</span></div>
           <p class="game-desc">3D Pixelated dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba in a physical arcade cabinet!</p>
           <div class="game-links">
             <div class="game-links-left">
@@ -1565,6 +1565,511 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
                                                                                                      <!-- BREAKDOWNS -->
+
+
+
+
+<!-- PixSpell --> 
+<div class="breakdown-backdrop" id="breakdown-pixspell" role="dialog" aria-modal="true" aria-label="pixspell Breakdown">
+  <div class="breakdown-modal">
+    <button class="bd-close" onclick="closeBreakdown('pixspell')" aria-label="Close">✕</button>
+    <div class="bd-header">
+      <div class="bd-header-bg"></div>
+      <div class="bd-speedlines"></div>
+      <div class="bd-header-content">
+        <div class="bd-header-left">
+          <div class="bd-eyebrow">GAME BREAKDOWN</div>
+          <h2 class="bd-game-title">PixSpell</h2>
+          <span class="bd-subtitle">A Game made for Codeday Lucknow 2026 Workshop.</span>
+          <div class="bd-tags">
+            <span class="bd-tag">Godot</span><span class="bd-tag">GDScript</span><span class="bd-tag">GDShader</span><span class="bd-tag">Codeday Workshop</span>
+          </div>
+        </div>
+        <div class="bd-header-right">
+          <div class="bd-stat"><span class="bd-stat-val">GDScript + GDShader</span><span class="bd-stat-label">LANGUAGE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">Godot</span><span class="bd-stat-label">ENGINE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">Duo</span><span class="bd-stat-label">Team Size</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bd-panels">
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/PixSpell/1.png" alt="Screenshot" loading="lazy">
+      </div>
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/PixSpell/3.png" alt="Screenshot" loading="lazy">
+      </div>
+      <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
+        <img src="GameImgs/PixSpell/2.png" alt="Screenshot" loading="lazy" style="object-position:center 17%;">
+      </div>
+    </div>
+    <!-- THE IDEA -->
+    <div class="bd-speech-row">
+      <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
+      <div class="bd-speech-bubble-wrap">
+        <div class="bd-speech-bubble">I always love attending events like codeday, and one of the things I love the most about codeday are the workshops, that help beginner build something technical or creative.<b> I always loved sharing and teaching, or just yap about what I made. So naturaly I wanted to organize a workshop at an event like this.</b> As I became a Volunteer for organizing Codeday Lucknow 2026, I decided to organize a Game Dev workshop with another Game Developer and my friend Shubh - <a href="https://chaddest.itch.io/">Itch.io. </a>For the workshop Shubh handled the PPT and I handled the demonstration in Godot.</div>
+        <div class="bd-speech-bubble yellow-bubble"><b>For the demonstration in Godot, I included challenges that introduced them to all the feature that they may need to make a game by themself.</b> The project file that we provided to the participants also included references for the challenge and during the workshop, I tried to walk them through the full thought process in building the game .</div>
+      </div>
+    </div>
+
+    <!-- GAMEPLAY VIDEO -->
+    <div class="bd-yt-section">
+      <div class="bd-yt-embed-wrap">
+        <iframe src="https://www.youtube.com/embed/TNHcGbID7dY" title="PixSpell gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="bd-yt-sidebar">
+        <div class="bd-yt-label">GAMEPLAY VIDEO</div>
+        <p class="bd-yt-desc">Gameplay footage showing the different bits that we made for workshop, environment with pixelation and water shaders.</p> 
+      </div>
+    </div>
+
+
+
+
+    <div class="bd-footer-links">
+      <span class="bd-footer-title">PLAY IT →</span>
+      <span class="game-btn game-btn-soon" style="box-shadow: none;">▶ SOON</span>
+      <a href="https://github.com/deepdass/CodedayWorkshop-GameDev" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
+      <a href="https://youtu.be/TNHcGbID7dY" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
+    </div>
+  </div>
+</div>
+ 
+
+
+
+<!-- DevSandbox -->
+<div class="breakdown-backdrop" id="breakdown-devsandbox" role="dialog" aria-modal="true" aria-label="DevSandbox Breakdown">
+  <div class="breakdown-modal">
+    <button class="bd-close" onclick="closeBreakdown('devsandbox')" aria-label="Close">✕</button>
+    <div class="bd-header">
+      <div class="bd-header-bg"></div>
+      <div class="bd-speedlines"></div>
+      <div class="bd-header-content">
+        <div class="bd-header-left">
+          <div class="bd-eyebrow">GAME BREAKDOWN</div>
+          <h2 class="bd-game-title">DevSandbox</h2>
+          <span class="bd-subtitle">A Development Sandbox containing my shenanigans.</span>
+          <div class="bd-tags">
+            <span class="bd-tag">UE5</span><span class="bd-tag">C++</span><span class="bd-tag">Blueprint</span><span class="bd-tag">Sandbox</span><span class="bd-tag">Experiments</span>
+          </div>
+        </div>
+        <div class="bd-header-right">
+          <div class="bd-stat"><span class="bd-stat-val">BP + C++</span><span class="bd-stat-label">LANGUAGE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">UE5</span><span class="bd-stat-label">ENGINE</span></div>
+          <div class="bd-stat-divider"></div>
+          <div class="bd-stat"><span class="bd-stat-val">SOLO</span><span class="bd-stat-label">TEAM SIZE</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bd-panels">
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/DevSandbox/1.png" alt="Screenshot" loading="lazy">
+      </div>
+      <div class="bd-panel" style="aspect-ratio:16/9;">
+        <img src="GameImgs/DevSandbox/2.png" alt="Screenshot" loading="lazy">
+      </div>
+      <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
+        <img src="GameImgs/DevSandbox/3.png" alt="Screenshot" loading="lazy" style="object-position:center 40%;">
+      </div>
+    </div>
+    <!-- THE IDEA -->
+    <div class="bd-speech-row">
+      <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
+      <div class="bd-speech-bubble-wrap">
+        <div class="bd-speech-bubble">So, <b>I wanted to get better at building modular, scalable, performant game code</b>, because that's what I love the most about coding - creating stuff and optimising the hell out of it, then I stumbled upon a good glorious open source <a href="https://github.com/tomlooman/ActionRoguelikez" target="_blank">Github Repository</a> by Tom Looman about just that. It has a custom built framework like Epic's GAS called Action System, it also introduced me to a lot of debug features, performance practice and it all fully replicated.</div>
+        <div class="bd-speech-bubble yellow-bubble"><b>Apart from reading source code, I tried to understand and implement it my way</b> because that's how I learn the best. So, Now I have turned this into a sandbox, with fun Sandbox Tools - some are experiment that I wanted to tryout making.</div>
+      </div>
+    </div>
+
+    <!-- GAMEPLAY VIDEO 
+    <div class="bd-yt-section">
+      <div class="bd-yt-embed-wrap">
+        <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="DevSandbox gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div> 
+      <div class="bd-yt-sidebar">
+        <div class="bd-yt-label">GAMEPLAY VIDEO</div>
+        <p class="bd-yt-desc">Gameplay footage showing fun sandbox tools and my game dev experiments and shenanigans, Playing it multiplayer with my friend.</p>
+      </div>
+    </div>
+-->
+
+
+    <!-- WHAT I HAVE BUILT -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">01</div>
+        <div class="bd-section-title">WHAT I HAVE <span>BUILT</span></div> 
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-tech-grid">
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Modularity & Scalable</div>
+            <div class="bd-tech-card-title">Actor component like Action system</div>
+            <div class="bd-tech-card-desc">Action System is a custom data-driven framework by Tom Looman to handle any action that a player/ AI can do, It similar to Epic's Gameplay Ability System. Game also uses actor components, blueprint function library, interfaces for everything from attributes, interaction to all gameplay logic.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Performance</div>
+            <div class="bd-tech-card-title">Event driven Logic</div>
+            <div class="bd-tech-card-desc">Instead of checking when to do something on tick, Im using event driven logic for everything like UI, player state and more using multicast delegate & broadcasts, interfaces and also async loading to keep things performant.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Multiplayer</div>
+            <div class="bd-tech-card-title">Replicated and Networked</div>
+            <div class="bd-tech-card-desc">Game is fully replicated and networked. Also with support for players to connect using Epic's EOS or Steam system or even local multiplayer.</div> 
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Development</div>
+            <div class="bd-tech-card-title">Debug and Development</div>
+            <div class="bd-tech-card-desc">In development I used a lot of debug tools like custom executable function, console functions/ variables, logging, breakpoints, drawing debug info, C++ asserts and ending with in-depth profiling.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Sandbox Enviorment</div>
+            <div class="bd-tech-card-title">Sandbox tools</div>
+            <div class="bd-tech-card-desc">Apart from implementing and learning from the Github Repo. I recreated unique mechanics from games, some which I wanted to try experimenting with or anything that seemed fun in the same framework.</div> 
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Serializing</div>
+            <div class="bd-tech-card-title">Save And Load System</div>
+            <div class="bd-tech-card-desc">Save And Load System for saving game state by serializing player state for saving player progression, serializing world transforms and variables like chest bLidOpened automatically to save actor state.</div>
+          </div>
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">AI</div>
+            <div class="bd-tech-card-title">AI behavior</div>
+            <div class="bd-tech-card-desc">AI has behavior trees, blackboards and AI perception for minion's decision-making with custom C++ behavior tree tasks and services. Minion has different states like attack, flee, heal and patrol area. Also, AI and Pickups are spawned using Environment Query System (EQS) to find the best spawned location for them.</div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- code snippets -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">02</div>
+        <div class="bd-section-title">code <span>snippets</span></div> 
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-tech-grid">
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">Action System</div>
+            <div class="bd-tech-card-title">Start and Stop of Actions with networking</div>
+            <div class="bd-tech-card-desc">Action Component is an Actor Component that handles the start and stop of an action. It cycles through the action array and matches the Gameplay tag to start/ stop the action.</div>
+
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SActionComponent.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStartAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
+{
+    <span class="bd-code-func">StartActionByName</span>(InstigatorActor, NameTag);
+}
+
+<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StartActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
+{
+    SCOPE_CYCLE_COUNTER(STAT_StartActionByName); 
+    UE_LOG(LogTemp, Warning, TEXT(<span class="bd-code-string">"StartActionByName called with: %s, Actions.Num=%d"</span>), *NameTag.<span class="bd-code-func">ToString</span>(), <span class="bd-code-member">Actions</span>.Num());
+
+    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
+    {
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
+        {
+            <span class="bd-code-keyword">if</span> (!Action-&gt;<span class="bd-code-func">CanStartAction</span>(Instigator))
+            {
+                <span class="bd-code-keyword">continue</span>;
+            }
+            <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
+            {
+                <span class="bd-code-func">ServerStartAction</span>(Instigator, NameTag);
+            }
+            <span class="bd-code-keyword">else</span>
+            {
+                Action-&gt;<span class="bd-code-func">StartAction</span>(Instigator);
+            }
+            
+            TRACE_BOOKMARK(TEXT(<span class="bd-code-string">"StartAction: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(Action));
+            <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+        }
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+}
+
+<span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStopAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
+{
+    <span class="bd-code-func">StopActionByName</span>(InstigatorActor, NameTag);
+}
+
+<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StopActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
+{
+    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
+    {
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
+        {
+            <span class="bd-code-keyword">if</span> (Action-&gt;<span class="bd-code-func">GetIsActionRunning</span>())
+            {
+                <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
+                {
+                    <span class="bd-code-func">ServerStopAction</span>(Instigator, NameTag);
+                }
+                <span class="bd-code-keyword">else</span>
+                {
+                    Action-&gt;<span class="bd-code-func">StopAction</span>(Instigator);
+                }
+                <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+            }
+        }
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+}</pre>
+</div>
+            
+            <div class="bd-tech-card-title">Actions</div>
+            <div class="bd-tech-card-desc">Actions are UObject derived classes that can be added to action component to grant the pawn the ability to do that action and it handles the CanStart/Start/Stop using Gameplay Tags.</div>
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SAction.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-keyword">bool</span> USAction::<span class="bd-code-func">CanStartAction_Implementation</span>(AActor* Instigator)
+{
+    <span class="bd-code-keyword">if</span> (<span class="bd-code-func">GetIsActionRunning</span>())
+    {
+       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+    }
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    
+    <span class="bd-code-keyword">if</span> (ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">HasAny</span>(<span class="bd-code-member">BlockedTags</span>))
+    {
+       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
+    }
+    <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
+}
+
+
+<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StartAction_Implementation</span>(AActor* Instigator)
+{
+    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Running Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    
+    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">AppendTags</span>(<span class="bd-code-member">GrantsTags</span>);
+    
+    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">true</span>;
+}
+
+<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StopAction_Implementation</span>(AActor* Instigator)
+{
+    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Stopped Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
+    
+    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
+    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">RemoveTags</span>(<span class="bd-code-member">GrantsTags</span>);
+    
+    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">false</span>;
+}</pre>
+              <div class="bd-code-caption">▲ checks blocked tags before an action can run, then grants/removes gameplay tags while the action is running.</div>
+              </div>
+            </div>
+            
+          <div class="bd-tech-card bd-span-2">
+            <div class="bd-tech-card-label">Cheat Manager</div> 
+            <div class="bd-tech-card-title">Exec Commands for Debugging</div>
+            <div class="bd-tech-card-desc">SCheatManager extends unreal's base cheat manager with useful Exec functions for quick testing/ debugging like healing/damaging the player, granting coins, teleporting along an axis and killing every AI, callable from the console.</div>
+
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SCheatManager.h</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block">UENUM(BlueprintType)
+<span class="bd-code-keyword">enum</span> <span class="bd-code-keyword">class</span> EMoveAxis : uint8
+{
+    X,
+    Y,
+    Z
+};
+
+UCLASS()
+<span class="bd-code-keyword">class</span> PROJECTIDK_API USCheatManager : <span class="bd-code-keyword">public</span> UCheatManager
+{
+    GENERATED_BODY()
+    
+<span class="bd-code-keyword">public</span>:
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">GrantCoin</span>(int32 Amount = <span class="bd-code-num">1000</span>);
+
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">KillAll</span>();
+    
+    UFUNCTION(Exec)
+    <span class="bd-code-keyword">void</span> <span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm = <span class="bd-code-num">200</span>, EMoveAxis Axis = EMoveAxis::Z);
+    
+};</pre>
+                <div class="bd-code-caption">▲ all five function are UFUNCTION(Exec), so they're callable directly from the console useful for debugging or even in shipped game.</div>
+              </div>
+
+            <div class="bd-tech-card-title">Implementation</div>
+            <div class="bd-tech-card-desc">Each command has sensible defaults to fall back to like max health, length in float with axis Z when called with no arguments.</div>
+            <div class="bd-code-wrap">
+                <div class="bd-code-bar">
+                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
+                  <div class="bd-code-bar-title">SCheatManager.cpp</div>
+                  <div class="bd-code-bar-lang">C++</div>
+                </div>
+                <pre class="bd-code-block"><span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
+        
+        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
+        {
+            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
+        }
+        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, Amount);
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
+        
+        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
+        {
+            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
+        }
+        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, -Amount);
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">GrantCoin</span>(int32 Amount)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        ASPlayerState* SPlayerState = MyPawn-&gt;<span class="bd-code-func">GetPlayerState</span>&lt;ASPlayerState&gt;();
+        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(SPlayerState))
+        {
+            SPlayerState-&gt;<span class="bd-code-func">ApplyCreditChange</span>(MyPawn, Amount);
+        }
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">KillAll</span>()
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
+    {
+        <span class="bd-code-keyword">for</span> (TActorIterator&lt;ASAICharacter&gt; It(<span class="bd-code-func">GetWorld</span>()); It; ++It) 
+        {
+            ASAICharacter* Bot = *It;
+            USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(Bot);
+            <span class="bd-code-keyword">if</span> (AttributeComp &amp;&amp; AttributeComp-&gt;<span class="bd-code-func">GetIsAlive</span>())
+            {
+                AttributeComp-&gt;<span class="bd-code-func">Kill</span>(MyPawn);
+            }
+        }
+    }
+}
+
+<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm, ::EMoveAxis Axis)
+{
+    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
+
+    <span class="bd-code-keyword">if</span> (ACharacter* MyCharacter = MyPC-&gt;<span class="bd-code-func">GetCharacter</span>())
+    {
+        <span class="bd-code-keyword">if</span> (UCharacterMovementComponent* MoveComp = MyCharacter-&gt;<span class="bd-code-func">GetCharacterMovement</span>())
+        {
+            MoveComp-&gt;<span class="bd-code-member">Velocity</span> = FVector::ZeroVector;
+        }
+        FVector Direction = FVector::ZeroVector;
+
+        <span class="bd-code-keyword">switch</span> (Axis)
+        {
+        <span class="bd-code-keyword">case</span> EMoveAxis::X:
+            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorForwardVector</span>();
+            <span class="bd-code-keyword">break</span>;
+        <span class="bd-code-keyword">case</span> EMoveAxis::Y:
+            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorRightVector</span>();
+            <span class="bd-code-keyword">break</span>;
+        <span class="bd-code-keyword">case</span> EMoveAxis::Z:
+            Direction = FVector::UpVector;
+            <span class="bd-code-keyword">break</span>;
+        }
+        
+        MyCharacter-&gt;<span class="bd-code-func">AddActorWorldOffset</span>(Direction * ByCm, <span class="bd-code-num">false</span>);
+    }
+}</pre>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- WHAT I LEARNED --> 
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">03</div>
+        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-learned-grid">
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">Improved at building modular, scalable code</div>
+            <div class="bd-learn-desc">By building the Action system, Function libraries, all event based logic gave me a good idea how can I have similar logic for my games moving forward.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">Gameplay Tags</div>
+            <div class="bd-learn-desc">Use of Gameplay Tags to handle state management for buffs, blocking abilities, interaction rules. Which is much better and more manageable the just separate bools.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">Event based logic</div>
+            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints.</div>
+          </div>
+          <div class="bd-learn-card">
+            <div class="bd-learn-title">Multiplayer Networking</div>
+            <div class="bd-learn-desc">Understood a lot about Unreal's multiplayer client-server model with proper replication, RPCs, Multicast, RepNotify, and server authority checks.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bd-footer-links">
+      <span class="bd-footer-title">PLAY IT →</span>
+      <a href="https://deepdass.itch.io/devsandbox" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+      <a href="https://github.com/deepdass/DevSandbox" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
+      <!-- <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a> -->
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 <!-- TOKYO DRIFT --> 
@@ -2094,509 +2599,6 @@ obj = bpy.context.active_object
 
 
 
-<!-- PixSpell --> 
-<div class="breakdown-backdrop" id="breakdown-pixspell" role="dialog" aria-modal="true" aria-label="pixspell Breakdown">
-  <div class="breakdown-modal">
-    <button class="bd-close" onclick="closeBreakdown('pixspell')" aria-label="Close">✕</button>
-    <div class="bd-header">
-      <div class="bd-header-bg"></div>
-      <div class="bd-speedlines"></div>
-      <div class="bd-header-content">
-        <div class="bd-header-left">
-          <div class="bd-eyebrow">GAME BREAKDOWN</div>
-          <h2 class="bd-game-title">PixSpell</h2>
-          <span class="bd-subtitle">A Game made for Codeday Lucknow 2026 Workshop.</span>
-          <div class="bd-tags">
-            <span class="bd-tag">Godot</span><span class="bd-tag">GDScript</span><span class="bd-tag">GDShader</span><span class="bd-tag">Codeday Workshop</span>
-          </div>
-        </div>
-        <div class="bd-header-right">
-          <div class="bd-stat"><span class="bd-stat-val">GDScript + GDShader</span><span class="bd-stat-label">LANGUAGE</span></div>
-          <div class="bd-stat-divider"></div>
-          <div class="bd-stat"><span class="bd-stat-val">Godot</span><span class="bd-stat-label">ENGINE</span></div>
-          <div class="bd-stat-divider"></div>
-          <div class="bd-stat"><span class="bd-stat-val">Duo</span><span class="bd-stat-label">Team Size</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="bd-panels">
-      <div class="bd-panel" style="aspect-ratio:16/9;">
-        <img src="GameImgs/PixSpell/1.png" alt="Screenshot" loading="lazy">
-      </div>
-      <div class="bd-panel" style="aspect-ratio:16/9;">
-        <img src="GameImgs/PixSpell/3.png" alt="Screenshot" loading="lazy">
-      </div>
-      <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
-        <img src="GameImgs/PixSpell/2.png" alt="Screenshot" loading="lazy" style="object-position:center 17%;">
-      </div>
-    </div>
-    <!-- THE IDEA -->
-    <div class="bd-speech-row">
-      <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
-      <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">I always love attending events like codeday, and one of the things I love the most about codeday are the workshops, that help beginner build something technical or creative.<b> I always loved sharing and teaching, or just yap about what I made. So naturaly I wanted to organize a workshop at an event like this.</b> As I became a Volunteer for organizing Codeday Lucknow 2026, I decided to organize a Game Dev workshop with another Game Developer and my friend Shubh - <a href="https://chaddest.itch.io/">Itch.io. </a>For the workshop Shubh handled the PPT and I handled the demonstration in Godot.</div>
-        <div class="bd-speech-bubble yellow-bubble"><b>For the demonstration in Godot, I included challenges that introduced them to all the feature that they may need to make a game by themself.</b> The project file that we provided to the participants also included references for the challenge and during the workshop, I tried to walk them through the full thought process in building the game .</div>
-      </div>
-    </div>
-
-    <!-- GAMEPLAY VIDEO -->
-    <div class="bd-yt-section">
-      <div class="bd-yt-embed-wrap">
-        <iframe src="https://www.youtube.com/embed/TNHcGbID7dY" title="PixSpell gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="bd-yt-sidebar">
-        <div class="bd-yt-label">GAMEPLAY VIDEO</div>
-        <p class="bd-yt-desc">Gameplay footage showing the different bits that we made for workshop, environment with pixelation and water shaders.</p> 
-      </div>
-    </div>
-
-
-
-
-    <div class="bd-footer-links">
-      <span class="bd-footer-title">PLAY IT →</span>
-      <span class="game-btn game-btn-soon" style="box-shadow: none;">▶ SOON</span>
-      <a href="https://github.com/deepdass/CodedayWorkshop-GameDev" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
-      <a href="https://youtu.be/TNHcGbID7dY" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a>
-    </div>
-  </div>
-</div>
- 
-
-
-
-<!-- DevSandbox -->
-<div class="breakdown-backdrop" id="breakdown-devsandbox" role="dialog" aria-modal="true" aria-label="DevSandbox Breakdown">
-  <div class="breakdown-modal">
-    <button class="bd-close" onclick="closeBreakdown('devsandbox')" aria-label="Close">✕</button>
-    <div class="bd-header">
-      <div class="bd-header-bg"></div>
-      <div class="bd-speedlines"></div>
-      <div class="bd-header-content">
-        <div class="bd-header-left">
-          <div class="bd-eyebrow">GAME BREAKDOWN</div>
-          <h2 class="bd-game-title">DevSandbox</h2>
-          <span class="bd-subtitle">A Development Sandbox containing my shenanigans.</span>
-          <div class="bd-tags">
-            <span class="bd-tag">UE5</span><span class="bd-tag">C++</span><span class="bd-tag">Blueprint</span><span class="bd-tag">Sandbox</span><span class="bd-tag">Experiments</span>
-          </div>
-        </div>
-        <div class="bd-header-right">
-          <div class="bd-stat"><span class="bd-stat-val">BP + C++</span><span class="bd-stat-label">LANGUAGE</span></div>
-          <div class="bd-stat-divider"></div>
-          <div class="bd-stat"><span class="bd-stat-val">UE5</span><span class="bd-stat-label">ENGINE</span></div>
-          <div class="bd-stat-divider"></div>
-          <div class="bd-stat"><span class="bd-stat-val">SOLO</span><span class="bd-stat-label">TEAM SIZE</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="bd-panels">
-      <div class="bd-panel" style="aspect-ratio:16/9;">
-        <img src="GameImgs/DevSandbox/1.png" alt="Screenshot" loading="lazy">
-      </div>
-      <div class="bd-panel" style="aspect-ratio:16/9;">
-        <img src="GameImgs/DevSandbox/2.png" alt="Screenshot" loading="lazy">
-      </div>
-      <div class="bd-panel bd-panel-wide" style="aspect-ratio:21/9;">
-        <img src="GameImgs/DevSandbox/3.png" alt="Screenshot" loading="lazy" style="object-position:center 40%;">
-      </div>
-    </div>
-    <!-- THE IDEA -->
-    <div class="bd-speech-row">
-      <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
-      <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">So, <b>I wanted to get better at building modular, scalable, performant game code</b>, because that's what I love the most about coding - creating stuff and optimising the hell out of it, then I stumbled upon a good glorious open source <a href="https://github.com/tomlooman/ActionRoguelikez" target="_blank">Github Repository</a> by Tom Looman about just that. It has a custom built framework like Epic's GAS called Action System, it also introduced me to a lot of debug features, performance practice and it all fully replicated.</div>
-        <div class="bd-speech-bubble yellow-bubble"><b>Apart from reading source code, I tried to understand and implement it my way</b> because that's how I learn the best. So, Now I have turned this into a sandbox, with fun Sandbox Tools - some are experiment that I wanted to tryout making.</div>
-      </div>
-    </div>
-
-    <!-- GAMEPLAY VIDEO 
-    <div class="bd-yt-section">
-      <div class="bd-yt-embed-wrap">
-        <iframe src="https://www.youtube.com/embed/-IfPtmApisE" title="DevSandbox gameplay video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div> 
-      <div class="bd-yt-sidebar">
-        <div class="bd-yt-label">GAMEPLAY VIDEO</div>
-        <p class="bd-yt-desc">Gameplay footage showing fun sandbox tools and my game dev experiments and shenanigans, Playing it multiplayer with my friend.</p>
-      </div>
-    </div>
--->
-
-
-    <!-- WHAT I HAVE BUILT -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">01</div>
-        <div class="bd-section-title">WHAT I HAVE <span>BUILT</span></div> 
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-tech-grid">
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Modularity & Scalable</div>
-            <div class="bd-tech-card-title">Actor component like Action system</div>
-            <div class="bd-tech-card-desc">Action System is a custom data-driven framework by Tom Looman to handle any action that a player/ AI can do, It similar to Epic's Gameplay Ability System. Game also uses actor components, blueprint function library, interfaces for everything from attributes, interaction to all gameplay logic.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Performance</div>
-            <div class="bd-tech-card-title">Event driven Logic</div>
-            <div class="bd-tech-card-desc">Instead of checking when to do something on tick, Im using event driven logic for everything like UI, player state and more using multicast delegate & broadcasts, interfaces and also async loading to keep things performant.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Multiplayer</div>
-            <div class="bd-tech-card-title">Replicated and Networked</div>
-            <div class="bd-tech-card-desc">Game is fully replicated and networked. Also with support for players to connect using Epic's EOS or Steam system or even local multiplayer.</div> 
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Development</div>
-            <div class="bd-tech-card-title">Debug and Development</div>
-            <div class="bd-tech-card-desc">In development I used a lot of debug tools like custom executable function, console functions/ variables, logging, breakpoints, drawing debug info, C++ asserts and ending with in-depth profiling.</div>
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Sandbox Enviorment</div>
-            <div class="bd-tech-card-title">Sandbox tools</div>
-            <div class="bd-tech-card-desc">Apart from implementing and learning from the Github Repo. I recreated unique mechanics from games, some which I wanted to try experimenting with or anything that seemed fun in the same framework.</div> 
-          </div>
-          <div class="bd-tech-card">
-            <div class="bd-tech-card-label">Serializing</div>
-            <div class="bd-tech-card-title">Save And Load System</div>
-            <div class="bd-tech-card-desc">Save And Load System for saving game state by serializing player state for saving player progression, serializing world transforms and variables like chest bLidOpened automatically to save actor state.</div>
-          </div>
-          <div class="bd-tech-card bd-span-2">
-            <div class="bd-tech-card-label">AI</div>
-            <div class="bd-tech-card-title">AI behavior</div>
-            <div class="bd-tech-card-desc">AI has behavior trees, blackboards and AI perception for minion's decision-making with custom C++ behavior tree tasks and services. Minion has different states like attack, flee, heal and patrol area. Also, AI and Pickups are spawned using Environment Query System (EQS) to find the best spawned location for them.</div> 
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- code snippets -->
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">02</div>
-        <div class="bd-section-title">code <span>snippets</span></div> 
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-tech-grid">
-          <div class="bd-tech-card bd-span-2">
-            <div class="bd-tech-card-label">Action System</div>
-            <div class="bd-tech-card-title">Start and Stop of Actions with networking</div>
-            <div class="bd-tech-card-desc">Action Component is an Actor Component that handles the start and stop of an action. It cycles through the action array and matches the Gameplay tag to start/ stop the action.</div>
-
-            <div class="bd-code-wrap">
-                <div class="bd-code-bar">
-                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
-                  <div class="bd-code-bar-title">SActionComponent.cpp</div>
-                  <div class="bd-code-bar-lang">C++</div>
-                </div>
-                <pre class="bd-code-block"><span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStartAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
-{
-    <span class="bd-code-func">StartActionByName</span>(InstigatorActor, NameTag);
-}
-
-<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StartActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
-{
-    SCOPE_CYCLE_COUNTER(STAT_StartActionByName); 
-    UE_LOG(LogTemp, Warning, TEXT(<span class="bd-code-string">"StartActionByName called with: %s, Actions.Num=%d"</span>), *NameTag.<span class="bd-code-func">ToString</span>(), <span class="bd-code-member">Actions</span>.Num());
-
-    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
-    {
-        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
-        {
-            <span class="bd-code-keyword">if</span> (!Action-&gt;<span class="bd-code-func">CanStartAction</span>(Instigator))
-            {
-                <span class="bd-code-keyword">continue</span>;
-            }
-            <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
-            {
-                <span class="bd-code-func">ServerStartAction</span>(Instigator, NameTag);
-            }
-            <span class="bd-code-keyword">else</span>
-            {
-                Action-&gt;<span class="bd-code-func">StartAction</span>(Instigator);
-            }
-            
-            TRACE_BOOKMARK(TEXT(<span class="bd-code-string">"StartAction: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(Action));
-            <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
-        }
-    }
-    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
-}
-
-<span class="bd-code-func">void</span> USActionComponent::<span class="bd-code-func">ServerStopAction_Implementation</span>(AActor* InstigatorActor, FGameplayTag NameTag)
-{
-    <span class="bd-code-func">StopActionByName</span>(InstigatorActor, NameTag);
-}
-
-<span class="bd-code-keyword">bool</span> USActionComponent::<span class="bd-code-func">StopActionByName</span>(AActor* Instigator, FGameplayTag NameTag)
-{
-    <span class="bd-code-keyword">for</span> (USAction* Action : <span class="bd-code-member">Actions</span>)
-    {
-        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(Action) &amp;&amp; Action-&gt;<span class="bd-code-func">GetNameTag</span>() == NameTag)
-        {
-            <span class="bd-code-keyword">if</span> (Action-&gt;<span class="bd-code-func">GetIsActionRunning</span>())
-            {
-                <span class="bd-code-keyword">if</span> (!<span class="bd-code-func">GetOwner</span>()-&gt;<span class="bd-code-func">HasAuthority</span>())
-                {
-                    <span class="bd-code-func">ServerStopAction</span>(Instigator, NameTag);
-                }
-                <span class="bd-code-keyword">else</span>
-                {
-                    Action-&gt;<span class="bd-code-func">StopAction</span>(Instigator);
-                }
-                <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
-            }
-        }
-    }
-    <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
-}</pre>
-</div>
-            
-            <div class="bd-tech-card-title">Actions</div>
-            <div class="bd-tech-card-desc">Actions are UObject derived classes that can be added to action component to grant the pawn the ability to do that action and it handles the CanStart/Start/Stop using Gameplay Tags.</div>
-            <div class="bd-code-wrap">
-                <div class="bd-code-bar">
-                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
-                  <div class="bd-code-bar-title">SAction.cpp</div>
-                  <div class="bd-code-bar-lang">C++</div>
-                </div>
-                <pre class="bd-code-block"><span class="bd-code-keyword">bool</span> USAction::<span class="bd-code-func">CanStartAction_Implementation</span>(AActor* Instigator)
-{
-    <span class="bd-code-keyword">if</span> (<span class="bd-code-func">GetIsActionRunning</span>())
-    {
-       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
-    }
-    
-    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
-    
-    <span class="bd-code-keyword">if</span> (ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">HasAny</span>(<span class="bd-code-member">BlockedTags</span>))
-    {
-       <span class="bd-code-keyword">return</span> <span class="bd-code-num">false</span>;
-    }
-    <span class="bd-code-keyword">return</span> <span class="bd-code-num">true</span>;
-}
-
-
-<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StartAction_Implementation</span>(AActor* Instigator)
-{
-    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Running Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
-    
-    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
-    
-    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">AppendTags</span>(<span class="bd-code-member">GrantsTags</span>);
-    
-    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">true</span>;
-}
-
-<span class="bd-code-func">void</span> USAction::<span class="bd-code-func">StopAction_Implementation</span>(AActor* Instigator)
-{
-    UE_LOG(LogTemp, Log, TEXT(<span class="bd-code-string">"Stopped Action: %s"</span>), *<span class="bd-code-func">GetNameSafe</span>(<span class="bd-code-keyword">this</span>))
-    
-    USActionComponent* ActionComp = <span class="bd-code-func">GetOwningComponent</span>();
-    ActionComp-&gt;<span class="bd-code-member">ActiveGameplayTags</span>.<span class="bd-code-func">RemoveTags</span>(<span class="bd-code-member">GrantsTags</span>);
-    
-    <span class="bd-code-member">bIsActionRunning</span> = <span class="bd-code-num">false</span>;
-}</pre>
-              <div class="bd-code-caption">▲ checks blocked tags before an action can run, then grants/removes gameplay tags while the action is running.</div>
-              </div>
-            </div>
-            
-          <div class="bd-tech-card bd-span-2">
-            <div class="bd-tech-card-label">Cheat Manager</div> 
-            <div class="bd-tech-card-title">Exec Commands for Debugging</div>
-            <div class="bd-tech-card-desc">SCheatManager extends unreal's base cheat manager with useful Exec functions for quick testing/ debugging like healing/damaging the player, granting coins, teleporting along an axis and killing every AI, callable from the console.</div>
-
-            <div class="bd-code-wrap">
-                <div class="bd-code-bar">
-                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
-                  <div class="bd-code-bar-title">SCheatManager.h</div>
-                  <div class="bd-code-bar-lang">C++</div>
-                </div>
-                <pre class="bd-code-block">UENUM(BlueprintType)
-<span class="bd-code-keyword">enum</span> <span class="bd-code-keyword">class</span> EMoveAxis : uint8
-{
-    X,
-    Y,
-    Z
-};
-
-UCLASS()
-<span class="bd-code-keyword">class</span> PROJECTIDK_API USCheatManager : <span class="bd-code-keyword">public</span> UCheatManager
-{
-    GENERATED_BODY()
-    
-<span class="bd-code-keyword">public</span>:
-    
-    UFUNCTION(Exec)
-    <span class="bd-code-keyword">void</span> <span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
-    
-    UFUNCTION(Exec)
-    <span class="bd-code-keyword">void</span> <span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount = <span class="bd-code-num">-1.0f</span>);
-    
-    UFUNCTION(Exec)
-    <span class="bd-code-keyword">void</span> <span class="bd-code-func">GrantCoin</span>(int32 Amount = <span class="bd-code-num">1000</span>);
-
-    UFUNCTION(Exec)
-    <span class="bd-code-keyword">void</span> <span class="bd-code-func">KillAll</span>();
-    
-    UFUNCTION(Exec)
-    <span class="bd-code-keyword">void</span> <span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm = <span class="bd-code-num">200</span>, EMoveAxis Axis = EMoveAxis::Z);
-    
-};</pre>
-                <div class="bd-code-caption">▲ all five function are UFUNCTION(Exec), so they're callable directly from the console useful for debugging or even in shipped game.</div>
-              </div>
-
-            <div class="bd-tech-card-title">Implementation</div>
-            <div class="bd-tech-card-desc">Each command has sensible defaults to fall back to like max health, length in float with axis Z when called with no arguments.</div>
-            <div class="bd-code-wrap">
-                <div class="bd-code-bar">
-                  <div class="bd-code-dots"><div class="bd-code-dot"></div><div class="bd-code-dot"></div><div class="bd-code-dot"></div></div>
-                  <div class="bd-code-bar-title">SCheatManager.cpp</div>
-                  <div class="bd-code-bar-lang">C++</div>
-                </div>
-                <pre class="bd-code-block"><span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">HealSelf</span>(<span class="bd-code-keyword">float</span> Amount)
-{
-    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
-
-    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
-    {
-        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
-        
-        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
-        {
-            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
-        }
-        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, Amount);
-    }
-}
-
-<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">DamageSelf</span>(<span class="bd-code-keyword">float</span> Amount)
-{
-    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
-
-    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
-    {
-        USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(MyPawn);
-        
-        <span class="bd-code-keyword">if</span> (Amount &lt; <span class="bd-code-num">0</span>)
-        {
-            Amount = AttributeComp-&gt;<span class="bd-code-func">GetMaxHealth</span>();
-        }
-        AttributeComp-&gt;<span class="bd-code-func">ApplyHealthChange</span>(MyPawn, -Amount);
-    }
-}
-
-<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">GrantCoin</span>(int32 Amount)
-{
-    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
-
-    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
-    {
-        ASPlayerState* SPlayerState = MyPawn-&gt;<span class="bd-code-func">GetPlayerState</span>&lt;ASPlayerState&gt;();
-        <span class="bd-code-keyword">if</span> (<span class="bd-code-func">IsValid</span>(SPlayerState))
-        {
-            SPlayerState-&gt;<span class="bd-code-func">ApplyCreditChange</span>(MyPawn, Amount);
-        }
-    }
-}
-
-<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">KillAll</span>()
-{
-    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
-
-    <span class="bd-code-keyword">if</span> (APawn* MyPawn = MyPC-&gt;<span class="bd-code-func">GetPawn</span>())
-    {
-        <span class="bd-code-keyword">for</span> (TActorIterator&lt;ASAICharacter&gt; It(<span class="bd-code-func">GetWorld</span>()); It; ++It) 
-        {
-            ASAICharacter* Bot = *It;
-            USAttributeComponent* AttributeComp = USAttributeComponent::<span class="bd-code-func">GetAttributes</span>(Bot);
-            <span class="bd-code-keyword">if</span> (AttributeComp &amp;&amp; AttributeComp-&gt;<span class="bd-code-func">GetIsAlive</span>())
-            {
-                AttributeComp-&gt;<span class="bd-code-func">Kill</span>(MyPawn);
-            }
-        }
-    }
-}
-
-<span class="bd-code-func">void</span> USCheatManager::<span class="bd-code-func">MoveInDirectionBy</span>(<span class="bd-code-keyword">float</span> ByCm, ::EMoveAxis Axis)
-{
-    APlayerController* MyPC = <span class="bd-code-func">GetOuterAPlayerController</span>();
-
-    <span class="bd-code-keyword">if</span> (ACharacter* MyCharacter = MyPC-&gt;<span class="bd-code-func">GetCharacter</span>())
-    {
-        <span class="bd-code-keyword">if</span> (UCharacterMovementComponent* MoveComp = MyCharacter-&gt;<span class="bd-code-func">GetCharacterMovement</span>())
-        {
-            MoveComp-&gt;<span class="bd-code-member">Velocity</span> = FVector::ZeroVector;
-        }
-        FVector Direction = FVector::ZeroVector;
-
-        <span class="bd-code-keyword">switch</span> (Axis)
-        {
-        <span class="bd-code-keyword">case</span> EMoveAxis::X:
-            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorForwardVector</span>();
-            <span class="bd-code-keyword">break</span>;
-        <span class="bd-code-keyword">case</span> EMoveAxis::Y:
-            Direction = MyCharacter-&gt;<span class="bd-code-func">GetActorRightVector</span>();
-            <span class="bd-code-keyword">break</span>;
-        <span class="bd-code-keyword">case</span> EMoveAxis::Z:
-            Direction = FVector::UpVector;
-            <span class="bd-code-keyword">break</span>;
-        }
-        
-        MyCharacter-&gt;<span class="bd-code-func">AddActorWorldOffset</span>(Direction * ByCm, <span class="bd-code-num">false</span>);
-    }
-}</pre>
-              </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    
-
-    <!-- WHAT I LEARNED --> 
-    <div class="bd-section">
-      <div class="bd-section-header">
-        <div class="bd-section-num">03</div>
-        <div class="bd-section-title">WHAT I <span>LEARNED</span></div>
-      </div>
-      <div class="bd-section-body">
-        <div class="bd-learned-grid">
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">Improved at building modular, scalable code</div>
-            <div class="bd-learn-desc">By building the Action system, Function libraries, all event based logic gave me a good idea how can I have similar logic for my games moving forward.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">Gameplay Tags</div>
-            <div class="bd-learn-desc">Use of Gameplay Tags to handle state management for buffs, blocking abilities, interaction rules. Which is much better and more manageable the just separate bools.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">Event based logic</div>
-            <div class="bd-learn-desc">Unreal Engine's visual scripting language - blueprint has it limitations not just in terms of performance but a lot of engine features aren't exposed to blueprints.</div>
-          </div>
-          <div class="bd-learn-card">
-            <div class="bd-learn-title">Multiplayer Networking</div>
-            <div class="bd-learn-desc">Understood a lot about Unreal's multiplayer client-server model with proper replication, RPCs, Multicast, RepNotify, and server authority checks.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bd-footer-links">
-      <span class="bd-footer-title">PLAY IT →</span>
-      <a href="https://deepdass.itch.io/devsandbox" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
-      <a href="https://github.com/deepdass/DevSandbox" target="_blank" class="game-btn game-btn-gh">&lt;/&gt; Github</a>
-      <!-- <a href="https://www.youtube.com/watch?v=-IfPtmApisE" target="_blank" class="game-btn game-btn-yt">▶ YOUTUBE</a> -->
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
 
 <!-- SkullWard -->
 <div class="breakdown-backdrop" id="breakdown-skullward" role="dialog" aria-modal="true" aria-label="skullward Breakdown">
@@ -2656,7 +2658,48 @@ UCLASS()
         <div class="bd-yt-label">GAMEPLAY VIDEO</div>
         <p class="bd-yt-desc">Gameplay footage showing the dungeon crawler/roguelike aspect of the game, with procedurally generated map and environment.</p>
       </div>
-    </div> 
+    </div>
+
+    
+    <!-- WHAT I HAVE BUILT -->
+    <div class="bd-section">
+      <div class="bd-section-header">
+        <div class="bd-section-num">01</div>
+        <div class="bd-section-title">WHAT I HAVE <span>BUILT</span></div> 
+      </div>
+      <div class="bd-section-body">
+        <div class="bd-tech-grid">
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Data-Driven Power Up System</div>
+            <div class="bd-tech-card-title">Resource files and Stat Management script</div>
+            <div class="bd-tech-card-desc">Power ups are resource files, resource in Godot are serializable data containers used to hold information. Then the power up data can be used by the stat management script. This allows easy powerup creation and balance changes.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">Stat System</div>
+            <div class="bd-tech-card-title">stats based logic for player </div>
+            <div class="bd-tech-card-desc">The modular stat management script handles player's stats and gameplay logic like adding/reducing stats, damage, speed, stamina, luck factor and health using crit rate, crit damage, defence etc (which it gets from the powerups). This can be placed on any node on an enemy or a player.</div> 
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">weighted rarity system</div>
+            <div class="bd-tech-card-title">Power Up Probability based on rarity</div>
+            <div class="bd-tech-card-desc">The chests selects power up based on rarity weight and luck factor. Then gives effects and resource to the powerup base on the basis of the rarity. The chest drops from the top when the player clears a room, inspired by Otherworld Legends.</div>
+          </div>
+          <div class="bd-tech-card">
+            <div class="bd-tech-card-label">interactive environment</div>
+            <div class="bd-tech-card-title">Mass based interaction</div>
+            <div class="bd-tech-card-desc">Environment has actual elevation given that it's a 3D game and many interactable objects that interact differently based on mass, and code so the charcater movement component can interact with these rigidbodies accurately.</div>
+          </div>
+          <div class="bd-tech-card  bd-span-2">
+            <div class="bd-tech-card-label">Performance</div>
+            <div class="bd-tech-card-title">Runs on a raspberry pi!!</div>
+            <div class="bd-tech-card-desc">The target hardware for this game was a raspberry pi 5 because the arcade machine I made was powered by it. Given that raspberry pi 5 is a low-power hardware, and the game is a 3D game with shader, vfx, procedural generation etc, to make it run on this hardware with good frame rate took intense profiling and optimisation decisions from the start.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
 
 
     <div class="bd-footer-links">
