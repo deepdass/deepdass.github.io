@@ -362,6 +362,8 @@ section { position:relative; z-index:1; }
 footer { background:var(--ink); border-top:5px solid var(--gold); padding:32px 24px; text-align:center; }
 footer p { font-family:'Bangers',cursive; font-size:1.1rem; letter-spacing:3px; color:var(--gold); }
 footer span { color:var(--red); }
+footer p a {color: inherit; text-decoration: none; }
+
 .reveal { opacity:0; transform:translateY(30px) rotate(-1deg); transition:opacity .5s,transform .5s; }
 .reveal.visible { opacity:1; transform:translateY(0) rotate(0deg); }
 
@@ -1545,7 +1547,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>
     <div class="about-inner">
       <div class="about-text reveal">
-        <p>Game Developer who builds, ships and loves to prototypes with different game ideas across different game engines like Unreal Engine, Godot, and Unity. I love to learn new pipelines, workflows and tools that improve my games and skills. I enjoy exploring both the technical and creative sides of building projects.</p>
+        <p>Game Developer who builds, ships and loves to prototype with different game ideas across different game engines like Unreal Engine, Godot, and Unity. I love to learn new pipelines, workflows and tools that improve my games and skills. I enjoy exploring both the technical and creative sides of building projects.</p>
         <p>I like experimenting with new ideas, building projects from scratch, learning new things, solving problems and seeing ideas come to life. I also love helping people and sharing what I learn with others.</p>
         <p>Recently graduated from high school, I was and am shipping games in my spare time and loving every second of it.</p>
         <a href="https://deepdass.itch.io" target="_blank" class="btn btn-red" style="margin-top:18px">▶ PLAY MY GAMES</a>
@@ -1563,7 +1565,9 @@ box-shadow: 5px 5px 0 var(--ink);
   </div>
 </section>
 
-<footer><p>MADE WITH L<span>♥</span>ve - DEEP DAS</p></footer>
+<footer>
+  <p><a href="https://github.com/deepdass/deepdass.github.io">MADE WITH L<span>♥</span>ve - DEEP DAS</a></p>
+</footer>
 
 
 
@@ -1612,8 +1616,8 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="bd-speech-row">
       <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
       <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">I always love attending events like codeday, and one of the things I love the most about codeday are the workshops, that help beginner build something technical or creative.<b> I always loved sharing and teaching, or just yap about what I made. So naturaly I wanted to organize a workshop at an event like this.</b> As I became a Volunteer for organizing Codeday Lucknow 2026, I decided to organize a Game Dev workshop with another Game Developer and my friend Shubh - <a href="https://chaddest.itch.io/">Itch.io. </a>For the workshop Shubh handled the PPT and I handled the demonstration in Godot.</div>
-        <div class="bd-speech-bubble yellow-bubble"><b>For the demonstration in Godot, I included challenges that introduced them to all the feature that they may need to make a game by themself.</b> The project file that we provided to the participants also included references for the challenge and during the workshop, I tried to walk them through the full thought process in building the game .</div>
+        <div class="bd-speech-bubble">I always love attending events like codeday, and one of the things I love the most about codeday are the workshops, that help beginner build something technical or creative.<b> I always loved sharing and teaching, or just yap about what I made. So naturally I wanted to organize a workshop at an event like this.</b> As I became a Volunteer for organizing Codeday Lucknow 2026, I decided to organize a Game Dev workshop with another Game Developer and my friend Shubh - <a href="https://chaddest.itch.io/">Itch.io. </a>For the workshop Shubh handled the PPT and I handled the demonstration in Godot.</div>
+        <div class="bd-speech-bubble yellow-bubble"><b>For the demonstration in Godot, I included challenges that introduced them to all the features that they may need to make a game by themself.</b> The project file that we provided to the participants also included references for the challenge and during the workshop, I tried to walk them through the full thought process in building the game.</div>
       </div>
     </div>
 
@@ -1684,7 +1688,7 @@ box-shadow: 5px 5px 0 var(--ink);
       <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
       <div class="bd-speech-bubble-wrap">
         <div class="bd-speech-bubble">So, <b>I wanted to get better at building modular, scalable, performant game code</b>, because that's what I love the most about coding - creating stuff and optimising the hell out of it, then I stumbled upon a good glorious open source <a href="https://github.com/tomlooman/ActionRoguelikez" target="_blank">Github Repository</a> by Tom Looman about just that. It has a custom built framework like Epic's GAS called Action System, it also introduced me to a lot of debug features, performance practice and it all fully replicated.</div>
-        <div class="bd-speech-bubble yellow-bubble"><b>Apart from reading source code, I tried to understand and implement it my way</b> because that's how I learn the best. So, Now I have turned this into a sandbox, with fun Sandbox Tools - some are experiment that I wanted to tryout making.</div>
+        <div class="bd-speech-bubble yellow-bubble"><b>Apart from reading source code, I tried to understand and implement it my way</b> because that's how I learn the best. So, Now I have turned this into a sandbox, with fun Sandbox Tools - some are experiments that I wanted to try-out making.</div>
       </div>
     </div>
 
@@ -2115,7 +2119,7 @@ UCLASS()
     <div class="bd-speech-row">
       <div class="bd-speaker-side"><span class="bd-speaker-text">THE IDEA</span></div>
       <div class="bd-speech-bubble-wrap">
-        <div class="bd-speech-bubble">After coming back from Tokyo, I kept thinking about all the cool cars I saw there, and wanted to make a game about them. And since drifting originated in Japan, <b>so a game centered around Japanese car culture just made sense.</b> Then I thought about what would capture that feeling well, and based on what I saw and took photos off, I knew that I wanted a neon city with graffiti but haven't added it yet.. but for now I have a drift track with hills.</div>
+        <div class="bd-speech-bubble">After coming back from Tokyo, I kept thinking about all the cool cars I saw there, and wanted to make a game about them. And since drifting originated in Japan, <b>so a game centered around Japanese car culture just made sense.</b> Then I thought about what would capture that feeling well, and based on what I saw and took photos off, I knew that I wanted a neon city with graffiti but haven't added it yet.. But for now I have a drift track with hills.</div>
         <div class="bd-speech-bubble yellow-bubble">Also, before this <b>I wanted to make a drifting game</b> to see how I could build smooth drifting physics and how car physics actually work as I enjoyed playing these types of games. The drifting physics took a lot of iterations to make it feel right and to make it behave how an actual car would.</div>
       </div>
     </div>
@@ -2162,7 +2166,7 @@ UCLASS()
           <div class="bd-tech-card">
             <div class="bd-tech-card-label">CAMERA</div>
             <div class="bd-tech-card-title">Dynamic Spring Arm</div>
-            <div class="bd-tech-card-desc">The camera tilts and lags based on MPH and drift angle, and FOV change ofcourse. When the car is in a drift, the spring arm rotates dynamically to capture the drift perfectly. Camera system to change perspective from behind car to driver or rear perspective.</div>
+            <div class="bd-tech-card-desc">The camera tilts and lags based on MPH and drift angle, and FOV change of course. When the car is in a drift, the spring arm rotates dynamically to capture the drift perfectly. Camera system to change perspective from behind car to driver or rear perspective.</div>
           </div>
           <div class="bd-tech-card">
             <div class="bd-tech-card-label">VFX & SFX</div>
@@ -2216,7 +2220,7 @@ UCLASS()
         <div class="bd-learned-grid">
           <div class="bd-learn-card">
             <div class="bd-learn-title">ENGINE SOURCE DIVING</div>
-            <div class="bd-learn-desc">When the engine doesn't expose the parameters you need, you need to go read the source. Learned a lot about c++, how a big scalable system is build and to navigate UE5's souce code to find the files.</div>
+            <div class="bd-learn-desc">When the engine doesn't expose the parameters you need, you need to go read the source. Learned a lot about C++, how a big scalable system is built and to navigate UE5's source code to find the files.</div>
           </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">BLUEPRINT's LIMITS</div>
@@ -2318,7 +2322,7 @@ UCLASS()
       <div class="bd-speaker-side" style="background:#6b1414; border-right-color:#3d3228;"><span class="bd-speaker-text" style="color:#c9a030; text-shadow:2px 2px 0 rgba(0,0,0,.3);">THE IDEA</span></div> 
       <div class="bd-speech-bubble-wrap">
         <div class="bd-speech-bubble" style="background:#1c150d; border-color:#3d3228; color:#c6bca8; --bubble-bg:#1c150d; --bubble-border:#3d3228;">I was watching a lot of retro games gameplay like Resident Evil, Silent Hill, Metal Gear and more. <b style="color:#c9a030;">I became fascinated and obsessed with the unique visual of retro games, some that arose due to hardware limitation and some artistic choices</b> - Vertex jitter, limited colors with dither, low poly models, using pre-rendered or scanned real-life textures etc.</div>
-        <div class="bd-speech-bubble yellow-bubble" style="background:#c9a030; color:#1a1008; border-color:#1a1008; --bubble-bg:#c9a030; --bubble-border:#1a1008;"><b style="color:#6b1414;">For the game I planned to make a small prototype focused on visuals and polish.</b> The PS1 visual is best for a horror game and given that horro game inspired me to make this game, so I made one.</div>
+        <div class="bd-speech-bubble yellow-bubble" style="background:#c9a030; color:#1a1008; border-color:#1a1008; --bubble-bg:#c9a030; --bubble-border:#1a1008;"><b style="color:#6b1414;">For the game I planned to make a small prototype focused on visuals and polish.</b> The PS1 visual is best for a horror game and given that horror game inspired me to make this game, so I made one.</div>
         <div class="bd-speech-bubble" style="background:#1c150d; border-color:#3d3228; color:#c6bca8; --bubble-bg:#1c150d; --bubble-border:#3d3228;">I Tried to match the retro style as much as I can by not just having shaders to simulate the hardware limitations but also with limiting perspective with fixed camera. Later Section include code snippets and shader.</div> 
       </div> 
     </div>  
@@ -2443,7 +2447,7 @@ obj = bpy.context.active_object
 
 <span class="bd-code-keyword">uniform</span> <span class="bd-code-func">sampler2D</span> screen_tex<span class="bd-code-comment">: hint_screen_texture, repeat_disable, filter_nearest; // get what is being rendered, tells Godot to not tile it and use pixel-perfect sampling so it doesnt get blurry</span>
 
-<span class="bd-code-comment">// 4×4 ps1 ordered dither matrix, it hold the offset values that gets applied to each pixel depending on its screen postion</span>
+<span class="bd-code-comment">// 4×4 ps1 ordered dither matrix, it hold the offset values that gets applied to each pixel depending on its screen position</span>
 <span class="bd-code-keyword">const</span> <span class="bd-code-func">float</span> dither[<span class="bd-code-num">16</span>] = <span class="bd-code-func">float</span>[<span class="bd-code-num">16</span>](
   <span class="bd-code-num">-4.0</span>,  <span class="bd-code-num">0.0</span>, <span class="bd-code-num">-3.0</span>,  <span class="bd-code-num">1.0</span>,
    <span class="bd-code-num">2.0</span>, <span class="bd-code-num">-2.0</span>,  <span class="bd-code-num">3.0</span>, <span class="bd-code-num">-1.0</span>,
@@ -2455,7 +2459,7 @@ obj = bpy.context.active_object
   <span class="bd-code-func">vec3</span> screen_color = <span class="bd-code-func">texture</span>(screen_tex, UV).rgb; <span class="bd-code-comment">// get the rgb color of the pixel</span>
 
   <span class="bd-code-comment">// this gets where the pixel sit in the dither matrix</span>
-  <span class="bd-code-func">int</span> x = <span class="bd-code-func">int</span>(FRAGCOORD.x) % <span class="bd-code-num">4</span>; <span class="bd-code-comment">// FRAGCOORD is the pixel's actual 2D screen postion and % get it to 0 to 3 range</span>
+  <span class="bd-code-func">int</span> x = <span class="bd-code-func">int</span>(FRAGCOORD.x) % <span class="bd-code-num">4</span>; <span class="bd-code-comment">// FRAGCOORD is the pixel's actual 2D screen position and % get it to 0 to 3 range</span>
   <span class="bd-code-func">int</span> y = <span class="bd-code-func">int</span>(FRAGCOORD.y) % <span class="bd-code-num">4</span>;
   <span class="bd-code-func">int</span> index = y * <span class="bd-code-num">4</span> + x; <span class="bd-code-comment">// converts 2D coordinates into a flat array index</span>
 
@@ -2489,7 +2493,7 @@ obj = bpy.context.active_object
 <span class="bd-code-keyword">render_mode</span> blend_mix, cull_back, depth_prepass_alpha,
   shadows_disabled, specular_disabled, vertex_lighting; <span class="bd-code-comment">// these just strips the modern rendering features</span>
 
-<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">sampler2D</span> base_tex<span class="bd-code-comment">: source_color, filter_nearest;</span> <span class="bd-code-comment">// Its a parameter in the shader for the material base color</span>
+<span class="bd-code-keyword">uniform</span> <span class="bd-code-func">sampler2D</span> base_tex<span class="bd-code-comment">: source_color, filter_nearest;</span> <span class="bd-code-comment">// It's a parameter in the shader for the material base color</span>
 <span class="bd-code-keyword">uniform</span> <span class="bd-code-func">vec2</span> texture_tile = <span class="bd-code-func">vec2</span>(<span class="bd-code-num">1</span>, <span class="bd-code-num">1</span>); <span class="bd-code-comment">// tiles the texture</span>
 <span class="bd-code-keyword">uniform</span> <span class="bd-code-func">vec2</span> texture_offset = <span class="bd-code-func">vec2</span>(<span class="bd-code-num">0</span>, <span class="bd-code-num">0</span>); <span class="bd-code-comment">// offset if needed</span>
 
@@ -2505,7 +2509,7 @@ obj = bpy.context.active_object
     ndc = <span class="bd-code-func">round</span>(ndc * snap_res) / snap_res; <span class="bd-code-comment">// locks the vertex to one of the point in the fake res across the screen</span>
     clip_space_pos.xy = ndc * clip_space_pos.w; <span class="bd-code-comment">// converts back to clip space</span>
   }
-  POSITION = clip_space_pos; <span class="bd-code-comment">// sets the postion</span>
+  POSITION = clip_space_pos; <span class="bd-code-comment">// sets the position</span>
 }
 
 <span class="bd-code-keyword">void</span> <span class="bd-code-func">fragment</span>() { <span class="bd-code-comment">// in fragment shader we are only applying back the textures</span>
@@ -2555,7 +2559,7 @@ obj = bpy.context.active_object
 
           <div class="bd-learn-card bd-span-2">
             <div class="bd-learn-title">ARTISTIC CHOICE or Workarounds</div>
-            <div class="bd-learn-desc">Many retro games made choices some workaround, some artistic choices and some both like - Capcom used fixed camera because they wanted to have prerendered background for immersion and have cinematography that changes the mood throught fixed camera angles. These game could only have one light source at a time and derived most of the light from AO maps (prebaked lighting from real world places). Silent Hill iconic fog was originally a workaround for technical limitations like limited draw distance and low hardware processing power.</div>
+            <div class="bd-learn-desc">Many retro games made choices some workaround, some artistic choices and some both like - Capcom used fixed camera because they wanted to have prerendered background for immersion and have cinematography that changes the mood through fixed camera angles. These game could only have one light source at a time and derived most of the light from AO maps (prebaked lighting from real world places). Silent Hill iconic fog was originally a workaround for technical limitations like limited draw distance and low hardware processing power.</div>
           </div>
         </div>
       </div>
@@ -2571,7 +2575,7 @@ obj = bpy.context.active_object
         <div class="bd-diff-list">
           <div class="bd-diff-item">
             <div class="bd-diff-bullet">1</div>
-            <div class="bd-diff-text"><b>Affine texture mapping.</b> Gives distorted texture mapping because PS1 hardware mapped mapped textures in 2D screen space instead of accounting for 3D depth, but most of the games tried to hide this using vertex color rather than textures, having high density models, fixed camera angles. So, I'm not sure if I want to add this into the game. Also its distracting.</div>
+            <div class="bd-diff-text"><b>Affine texture mapping.</b> Gives distorted texture mapping because PS1 hardware mapped textures in 2D screen space instead of accounting for 3D depth, but most of the games tried to hide this using vertex color rather than textures, having high density models, fixed camera angles. So, I'm not sure if I want to add this into the game. Also it's distracting.</div>
             <div class="bd-figure"> 
               <img src="https://github.com/user-attachments/assets/679646bc-7dd3-44ea-8da2-f855bdc00ed9" alt="Affine vs perspective-correct texture mapping" loading="lazy">
             </div>
@@ -2685,12 +2689,12 @@ obj = bpy.context.active_object
           <div class="bd-tech-card">
             <div class="bd-tech-card-label">weighted rarity system</div>
             <div class="bd-tech-card-title">Power Up Probability based on rarity</div>
-            <div class="bd-tech-card-desc">The chests selects power up based on rarity weight and luck factor. Then gives effects and resource to the powerup base on the basis of the rarity. The chest drops from the top when the player clears a room, inspired by Otherworld Legends.</div>
+            <div class="bd-tech-card-desc">The chests select power up based on rarity weight and luck factor. Then gives effects and resource to the powerup based on the basis of the rarity. The chest drops from the top when the player clears a room, inspired by Otherworld Legends.</div>
           </div>
           <div class="bd-tech-card">
             <div class="bd-tech-card-label">interactive environment</div>
             <div class="bd-tech-card-title">Mass based interaction</div>
-            <div class="bd-tech-card-desc">Environment has actual elevation given that it's a 3D game and many interactable objects that interact differently based on mass, and code so the charcater movement component can interact with these rigidbodies accurately.</div>
+            <div class="bd-tech-card-desc">Environment has actual elevation given that it's a 3D game and many interactable objects that interact differently based on mass, and code so the character movement component can interact with these rigidbodies accurately.</div>
           </div>
           <div class="bd-tech-card">
             <div class="bd-tech-card-label">Performance</div>
