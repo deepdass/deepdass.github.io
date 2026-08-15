@@ -638,6 +638,7 @@ footer p a {color: inherit; text-decoration: none; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
   margin-bottom: 24px;
 }
+.bd-tech-grid > * { min-width: 0; }
 
 .bd-tech-card.bd-span-2 {
   grid-column: 1 / -1;
@@ -673,6 +674,7 @@ footer p a {color: inherit; text-decoration: none; }
   border: 3px solid var(--ink); background: #1a1008;
   box-shadow: 5px 5px 0 var(--ink); margin: 20px 0;
   position: relative; overflow: hidden;
+  min-width: 0; max-width: 100%;
 }
 
 .bd-code-bar {
@@ -682,13 +684,15 @@ footer p a {color: inherit; text-decoration: none; }
 .bd-code-bar-title {
   font-family: 'Bangers', cursive; font-size: 0.85rem;
   letter-spacing: 2px; color: var(--ink); flex: 1;
+  min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .bd-code-bar-lang {
   font-family: 'Bangers', cursive; font-size: 0.75rem; 
   letter-spacing: 2px; background: var(--ink); color: var(--gold);
   padding: 2px 10px; border: 1.5px solid rgba(255,255,255,.2);
+  flex-shrink: 0;
 }
-.bd-code-dots { display: flex; gap: 6px; }
+.bd-code-dots { display: flex; gap: 6px; flex-shrink: 0; }
 .bd-code-dot {
   width: 10px; height: 10px; border-radius: 50%;
   border: 2px solid rgba(0,0,0,.3);
@@ -698,9 +702,11 @@ footer p a {color: inherit; text-decoration: none; }
 .bd-code-dot:nth-child(3) { background: #4caf50; }
 .bd-code-block {
   padding: 20px 24px; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   font-family: 'Courier New', monospace; font-size: 0.82rem;
   line-height: 1.5; color: #f5eedc;
   margin: 0; white-space: pre;
+  max-width: 100%;
 }
 .bd-code-comment { color: #6b8a6b; font-style: italic; }
 .bd-code-keyword { color: #DFC78F; font-weight: bold; }
@@ -933,6 +939,127 @@ box-shadow: 5px 5px 0 var(--ink);
 #breakdown-devsandbox .bd-code-func { color: #FFC66D; font-weight: 400; }
 #breakdown-devsandbox .bd-code-string { color: #6A8759; font-style: normal; }
 /* #breakdown-devsandbox .bd-code-member { color: #9876AA; } */
+
+@media (max-width: 860px) {
+  nav { padding: 10px 18px; }
+  .nav-burger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 36px; background: transparent; border: none;
+    cursor: pointer; padding: 0; z-index: 210; position: relative;
+  }
+  .nav-burger span {
+    display: block; width: 26px; height: 3px; background: var(--gold);
+    border-radius: 1px; transition: transform .2s ease, opacity .2s ease;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .nav-links {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(78vw, 300px);
+    background: var(--ink); border-left: 4px solid var(--gold);
+    flex-direction: column; align-items: flex-start; justify-content: center;
+    gap: 8px; padding: 90px 32px 32px;
+    transform: translateX(100%); transition: transform .28s ease;
+    z-index: 200; overflow-y: auto;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 12px 4px; font-size: 1.3rem; border-bottom: 2px dashed rgba(223,199,143,.2); }
+  .nav-links a::after { display: none; }
+}
+@media (min-width: 861px) {
+  .nav-burger { display: none; }
+}
+@media (max-width: 860px) {
+  .nav-overlay {
+    display: block; position: fixed; inset: 0; z-index: 190;
+    background: rgba(10,6,2,.6); opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  .nav-overlay.open { opacity: 1; pointer-events: all; }
+}
+@media (min-width: 861px) {
+  .nav-overlay { display: none; }
+}
+
+@media (max-width: 860px) {
+  .section-wrap { padding: 56px 18px; }
+  .section-header { gap: 14px; margin-bottom: 32px; }
+  .section-num { font-size: 3rem; }
+}
+@media (max-width: 480px) {
+  .section-wrap { padding: 44px 14px; }
+}
+
+@media (max-width: 420px) {
+  .games-grid { grid-template-columns: 1fr; gap: 22px; }
+  .art-grid { grid-template-columns: 1fr; gap: 22px; }
+  .art-card-wide, .art-card-narrow { grid-column: span 1; }
+  .skills-grid { grid-template-columns: 1fr; gap: 18px; }
+}
+
+@media (max-width: 600px) {
+  .ticker-item { font-size: 1rem; padding: 0 18px; letter-spacing: 2px; }
+}
+
+@media (max-width: 700px) {
+  .tool-card { flex-direction: column; align-items: stretch; padding: 22px 20px; }
+  .tool-body { border-right: none; padding-right: 0; padding-bottom: 16px; border-bottom: 2px dashed rgba(26,16,8,.2); }
+  .tool-footer { padding-left: 0; }
+  .tool-footer .btn { width: 100%; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .contact-card { padding: 20px; }
+  .contact-title { font-size: 1.5rem; }
+  .contact-row { font-size: 0.92rem; }
+}
+
+@media (max-width: 480px) {
+  .game-body { padding: 16px 16px 0; }
+  .game-title { font-size: 1.6rem; }
+  .game-links { gap: 10px; }
+  .game-btn { flex: 1 1 auto; justify-content: center; }
+  .card-click-hint { display: none; }
+}
+
+@media (max-width: 480px) {
+  .breakdown-backdrop { padding: 0; }
+  .breakdown-modal { max-height: 100vh; overflow-y: auto; }
+  .bd-header { min-height: 0; }
+  .bd-header-content { flex-direction: column; }
+  .bd-header-left { padding: 30px 20px 20px; }
+  .bd-game-title { font-size: clamp(2.6rem, 12vw, 4rem); }
+  .bd-speaker-side { width: 44px; padding: 10px 4px; }
+  .bd-speaker-text { font-size: 0.8rem; letter-spacing: 2px; }
+  .bd-speech-bubble-wrap { padding: 14px 14px 14px 22px; gap: 10px; }
+  .bd-speech-bubble { padding: 10px 12px; font-size: 0.88rem; }
+  .bd-speech-bubble::before { left: -10px; top: 13px; border-right-width: 10px; border-top-width: 6px; border-bottom-width: 6px; }
+  .bd-speech-bubble::after { left: -13px; top: 11px; border-right-width: 13px; border-top-width: 8px; border-bottom-width: 8px; }
+  .bd-diff-item { flex-direction: column; }
+  .bd-challenge { flex-direction: column; }
+  .bd-challenge-num { width: 100%; height: 40px; border-right: none; border-bottom: 3px solid var(--ink); }
+}
+
+@media (max-width: 480px) {
+  footer { padding: 24px 18px; }
+  footer p { font-size: 0.95rem; letter-spacing: 2px; }
+}
+
+@media (max-width: 767px) {
+  .breakdown-modal,
+  .breakdown-backdrop.open .breakdown-modal {
+    transform: none !important;
+    animation: none !important;
+  }
+  .bd-close {
+    position: fixed;
+    top: max(16px, calc(env(safe-area-inset-top, 0px) + 12px));
+    right: max(16px, calc(env(safe-area-inset-right, 0px) + 12px));
+    z-index: 9500;
+  }
+}
 </style>
 </head>
 
@@ -943,7 +1070,10 @@ box-shadow: 5px 5px 0 var(--ink);
 
 <nav>
   <a href="#hero" id="nav-logo-greet" class="nav-logo wiggle-slow">H<span class="small-letter">ello!</span></a>
-  <ul class="nav-links">
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#games">GAMES</a></li>
     <li><a href="#tools">TOOLS</a></li>
     <li><a href="#art">ART</a></li>
@@ -951,6 +1081,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <li><a href="#about">CONTACT</a></li>
   </ul>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 
 <!-- HERO -->
@@ -2826,7 +2957,6 @@ obj = bpy.context.active_object
 </script>
 
 <script>
-
 (function() {
   const DESIGN_W = 1200, DESIGN_H = 900, NAV_H = 64;
   const canvas  = document.getElementById('heroCanvas');
@@ -2841,6 +2971,23 @@ obj = bpy.context.active_object
   }
   scaleHero();
   window.addEventListener('resize', scaleHero);
+})();
+
+(function() {
+  const burger = document.getElementById('navBurger');
+  const links  = document.getElementById('navLinks');
+  if (!burger || !links) return;
+  const overlay = document.getElementById('navOverlay');
+  function setOpen(isOpen) {
+    links.classList.toggle('open', isOpen);
+    burger.classList.toggle('open', isOpen);
+    if (overlay) overlay.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+  if (overlay) overlay.addEventListener('click', () => setOpen(false));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
 })();
 
 document.querySelectorAll('.game-photos, .art-photos').forEach(carousel => {
@@ -2905,7 +3052,6 @@ function openBreakdown(id) {
   el.classList.add('open');
   document.body.style.overflow = 'hidden';
   el.scrollTop = 0;
-  // Load embeds lazily: only fetch YouTube iframes / videos once this breakdown is actually opened
   el.querySelectorAll('iframe[data-src]').forEach(iframe => {
     iframe.setAttribute('src', iframe.getAttribute('data-src'));
   });
@@ -2919,7 +3065,6 @@ function closeBreakdown(id) {
   if (!el) return;
   el.classList.remove('open');
   document.body.style.overflow = '';
-  // Unload embeds on close: stops playback/downloads and frees memory until reopened
   el.querySelectorAll('iframe[data-src]').forEach(iframe => {
     iframe.removeAttribute('src');
   });
