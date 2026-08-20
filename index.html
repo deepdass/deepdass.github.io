@@ -166,6 +166,7 @@ section { position:relative; z-index:1; }
 .year-divider { font-family:'Permanent Marker',cursive; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; padding:6px 20px; border:3px solid var(--gold); box-shadow:4px 4px 0 rgba(0,0,0,.4); margin-bottom:24px; margin-top:30px; transform:rotate(-1.5deg); }
 .games-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:28px; overflow:visible; padding-bottom:28px; }
 .game-card { background:var(--paper); border:4px solid var(--gold); box-shadow:6px 6px 0 rgba(0,0,0,.5); position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; display:flex; flex-direction:column; margin-bottom: 24px;}
+.game-card[data-breakdown] { cursor:pointer; }
 .game-card:hover { animation:pop .14s ease forwards; transform:translate(-4px,-4px) rotate(-0.5deg); box-shadow:10px 10px 0 rgba(0,0,0,.5); }
 .game-card:hover .game-title { animation:wiggle 1.5s ease-in-out infinite; }
 .game-corner { position:absolute; top:-14px; right:16px; font-family:'Bangers',cursive; font-size:0.8rem; letter-spacing:2px; background:var(--red); color:var(--white); padding:3px 12px; border:2px solid var(--ink); box-shadow:2px 2px 0 var(--ink); }
@@ -208,7 +209,7 @@ section { position:relative; z-index:1; }
   position: relative;
   flex-wrap: wrap;
 }
-.btn-breakdown {
+/* .btn-breakdown {
   font-family: 'Bangers', cursive;
   font-size: 1rem;
   letter-spacing: 1.5px;
@@ -248,7 +249,7 @@ section { position:relative; z-index:1; }
   content: '';
   position: absolute;
   inset: -16px;
-}
+} */
 
 .card-click-hint {
   position: absolute;
@@ -264,7 +265,7 @@ section { position:relative; z-index:1; }
   transform: translateY(4px);
   transition: opacity .25s ease, transform .25s ease;
 }
-.game-card:has(.btn-breakdown:hover) .card-click-hint {
+.game-card[data-breakdown]:hover .card-click-hint {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1148,7 +1149,7 @@ box-shadow: 5px 5px 0 var(--ink);
     <div class="games-grid">
 
       <!-- PIXSPELL -->
-      <div class="game-card reveal">
+      <div class="game-card reveal" data-breakdown="pixspell">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/PixSpell/1.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -1163,7 +1164,6 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">PixSpell</div>
-            <button class="btn-breakdown" onclick="openBreakdown('pixspell')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">WORKSHOP</span></div>
           <p class="game-desc">A Simple Game I made for Codeday Lucknow 2026 Workshop about basic of Game Development and demonstration in Godot.</p>
@@ -1184,7 +1184,7 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
       <!-- DEVSANDBOX -->
-      <div class="game-card reveal">
+      <div class="game-card reveal" data-breakdown="devsandbox">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/DevSandbox/1.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -1198,7 +1198,6 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">DevSandbox</div>
-            <button class="btn-breakdown" onclick="openBreakdown('devsandbox')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">Blueprint</span><span class="engine-tag">Sandbox</span></div>
           <p class="game-desc">A multiplayer gameplay sandbox focused on modular, data-driven systems, AI, networking and performance. Planning to make this into a evergrowing sandbox containing my game dev shenanigans.</p>
@@ -1219,7 +1218,7 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
       <!-- TOKYO DRIFT -->
-      <div class="game-card reveal">
+      <div class="game-card reveal" data-breakdown="tokyodrift">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Tokyodrift/img1jpg.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -1233,7 +1232,6 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">Tokyo Drift</div>
-            <button class="btn-breakdown" onclick="openBreakdown('tokyodrift')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
           <p class="game-desc">A drifting game with a mix of real life and arcadey fun, with scoring system and dynamic assisted drifting. Got inspired to make a drifting game by Japanese car culture.</p>
@@ -1254,7 +1252,7 @@ box-shadow: 5px 5px 0 var(--ink);
 
       
       <!-- NOROI --> 
-      <div class="game-card reveal">
+      <div class="game-card reveal" data-breakdown="noroi">
         <div class="game-corner">2026</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Noroi/1.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -1269,7 +1267,6 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">Noroi</div>
-            <button class="btn-breakdown" onclick="openBreakdown('noroi')" title="Full breakdown"><span class="btn-text">➜</span></button> 
           </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
           <p class="game-desc">Fixed-camera survival horror inspired by original Resident Evil &amp; Silent Hill. Game simulates visuals similar to ps1 games and other limitations they had which gives it that unique visuals.</p>
@@ -1294,7 +1291,7 @@ box-shadow: 5px 5px 0 var(--ink);
 
       
       <!-- SKULLWARD -->
-      <div class="game-card reveal">
+      <div class="game-card reveal" data-breakdown="skullward">
         <div class="game-corner">2025</div>
         <div class="game-photos">
           <div class="photo-slide active"><img src="GameImgs/Skullward/1.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -1310,7 +1307,6 @@ box-shadow: 5px 5px 0 var(--ink);
         <div class="game-body">
           <div class="game-title-row">
             <div class="game-title">SkullWard</div>
-            <button class="btn-breakdown" onclick="openBreakdown('skullward')" title="Full breakdown"><span class="btn-text">➜</span></button>
           </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">OPTIMIZATION</span></div>
           <p class="game-desc">3D Pixelated dungeon crawler with procedural generation, optimized to run on Raspberry Pi. Showcased at Hack Club Shiba in a physical arcade cabinet!</p>
@@ -1589,7 +1585,7 @@ box-shadow: 5px 5px 0 var(--ink);
         </div>
       </div>
 
-      <div class="art-card reveal art-card-narrow ">
+      <div class="art-card reveal art-card-narrow"> 
         <div class="game-corner">2024</div>
         <div class="art-photos">
           <div class="photo-slide active"><img src="3D Models/someblends/cannon.webp" alt="screenshot" loading="lazy" decoding="async"></div>
@@ -2927,7 +2923,7 @@ obj = bpy.context.active_object
 
 
 <!-- Comment -->
-<script type="text/plain" id="commented-out-section"></script> 
+<script type="text/plain" id="commented-out-section"><button class="btn-breakdown" onclick="openBreakdown('pixspell')" title="Full breakdown"><span class="btn-text">➜</span></button></script> 
 
 
 
@@ -3067,9 +3063,11 @@ function closeBreakdown(id) {
   });
 }
 document.querySelectorAll('.game-card').forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('a, button, .dot')) return;
     card.style.animation = 'shake 0.4s ease-in-out';
     setTimeout(() => card.style.animation = '', 400);
+    if (card.dataset.breakdown) openBreakdown(card.dataset.breakdown);
   });
 });
 
