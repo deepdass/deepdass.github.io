@@ -3,6 +3,13 @@ A gamified comic style game development portfolio with detailed breakdown of gam
 
 Live Link - https://deepdass.github.io/
 
+## How To Setup and Run it Locally
+First clone this repo using 
+```bash
+git clone https://github.com/deepdass/deepdass.github.io.git
+```
+Then Open it in any code editor like VS code, rider etc, then install a extensions called Live Server and enable it, now right click the index.html in the file explorer of the code editor and press open with Live Server - It should start locally in your browser.
+
 <img width="1675" height="850" alt="Screenshot 2026-05-07 062140" src="https://github.com/user-attachments/assets/1ccbe401-1031-4a1b-a4c0-18211a21abe9" />
 
 ## Features
