@@ -4,14 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game Dev Portfolio - Deep Das</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
 <link rel="dns-prefetch" href="https://i.ytimg.com">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.clarity.ms">
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Bangers';
+  src: url('fonts/Bangers-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('fonts/ComicNeue-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('fonts/ComicNeue-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url('fonts/PermanentMarker-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --ink: #1a1008; --paper: #f5eedc; --gold: #DFC78F; --red: #e63030;
@@ -322,18 +347,56 @@ section { position:relative; z-index:1; }
 }
 
 #skills { background:var(--paper); }
-.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:26px; }
-.skill-panel { background:var(--white); border:3px solid var(--ink); box-shadow:3px 3px 0 var(--ink); padding:22px; position:relative; transition:transform .15s,box-shadow .15s; overflow:visible; }
-.skill-panel:hover { animation:pop .1s ease forwards; transform:translate(-3px,-3px) rotate(0.5deg); box-shadow:6px 6px 0 var(--ink); }
-.skill-panel:hover .skill-icon { transform:rotate(-6deg) scale(1.08); }
-.skill-header-row { display:flex; align-items:center; gap:12px; border-bottom:0.21rem dashed rgba(26,16,8,.2); padding-bottom:11px; margin-bottom:16px; }
-.skill-icon { width:42px; height:42px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Bangers',cursive; font-size:1.3rem; color:var(--white); background:var(--red); border:2px solid var(--ink); filter: drop-shadow(2px 2px 0 var(--ink)); transition:transform .2s; }
-.skill-header { font-family:'Bangers',cursive; font-size:1.35rem; letter-spacing:2px; color:var(--ink); line-height:1.1; }
+.skills-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:40px 30px; position:relative; }
+
+.skill-panel {
+  --accent: var(--red); --accent-ink: var(--white);
+  background:var(--white); border:3px solid var(--ink); box-shadow:5px 5px 0 var(--ink);
+  padding:26px 22px 24px; position:relative; overflow:visible;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.skill-panel:nth-child(4n+1) { --accent: var(--red); --accent-ink: var(--white); transform:rotate(-1.4deg); }
+.skill-panel:nth-child(4n+2) { --accent: var(--blue); --accent-ink: var(--white); transform:rotate(1deg); }
+.skill-panel:nth-child(4n+3) { --accent: var(--gold); --accent-ink: var(--ink); transform:rotate(-0.8deg); }
+.skill-panel:nth-child(4n+4) { --accent: var(--panel); --accent-ink: var(--gold); transform:rotate(1.5deg); }
+.skill-panel:hover {
+  transform:translate(-4px,-6px) rotate(0deg) !important;
+  box-shadow:8px 8px 0 var(--ink);
+  z-index:5;
+}
+.skill-panel:hover .skill-icon { transform:rotate(0deg) scale(1.1); }
+
+.skill-tape {
+  position:absolute; top:-15px; left:50%; transform:translateX(-50%) rotate(-3deg);
+  width:88px; height:26px; background:repeating-linear-gradient(-45deg, rgba(26,16,8,.06), rgba(26,16,8,.06) 5px, rgba(255,255,255,.35) 5px, rgba(255,255,255,.35) 10px), var(--gold);
+  border:2px solid var(--ink); box-shadow:2px 2px 0 rgba(26,16,8,.4);
+  transition:transform .18s ease; z-index:2;
+}
+.skill-panel:nth-child(even) .skill-tape { transform:translateX(-50%) rotate(4deg); }
+
+.skill-header-row { display:flex; align-items:center; gap:14px; border-bottom:0.21rem dashed rgba(26,16,8,.25); padding-bottom:13px; margin-bottom:16px; }
+.skill-icon {
+  width:48px; height:48px; flex-shrink:0; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Bangers',cursive; font-size:1.35rem; color:var(--accent-ink); background:var(--accent);
+  border:3px solid var(--ink); filter:drop-shadow(3px 3px 0 var(--ink)); transform:rotate(-8deg);
+  transition:transform .2s ease;
+}
+.skill-header { font-family:'Bangers',cursive; font-size:1.4rem; letter-spacing:2px; color:var(--ink); line-height:1.1; }
+
 .skill-list { list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
-.skill-list li { font-size:0.8rem; font-weight:700; color:var(--ink); background:var(--paper); border:2px solid var(--ink); padding:5px 12px; filter:drop-shadow(2px 2px 0 var(--ink)); transition:transform .12s,filter .12s; }
-.skill-list li:nth-child(odd) { transform:rotate(-1deg); }
-.skill-list li:nth-child(even) { transform:rotate(1deg); }
-.skill-list li:hover { transform:translate(-2px,-2px) rotate(0deg); filter:drop-shadow(4px 4px 0 var(--ink)); background:var(--yellow);}
+.skill-list li {
+  font-size:0.8rem; font-weight:700; color:var(--ink); background:var(--paper);
+  border:2px solid var(--ink); padding:5px 12px; position:relative;
+  filter:drop-shadow(2px 2px 0 var(--ink)); transition:transform .12s ease,filter .12s ease,background .12s ease;
+}
+.skill-list li:nth-child(odd) { transform:rotate(-1.5deg); }
+.skill-list li:nth-child(even) { transform:rotate(1.5deg); }
+.skill-list li:hover {
+  transform:translate(-2px,-3px) rotate(0deg) scale(1.05);
+  filter:drop-shadow(4px 4px 0 var(--ink));
+  background:var(--accent); color:var(--accent-ink);
+}
 
 #about { background:var(--yellow); }
 #about .section-title { color:var(--ink); }
@@ -1000,7 +1063,11 @@ box-shadow: 5px 5px 0 var(--ink);
   .games-grid { grid-template-columns: 1fr; gap: 22px; }
   .art-grid { grid-template-columns: 1fr; gap: 22px; }
   .art-card-wide, .art-card-narrow { grid-column: span 1; }
-  .skills-grid { grid-template-columns: 1fr; gap: 18px; }
+}
+
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: 1fr; gap: 34px; }
+  .skill-panel { transform:rotate(0deg) !important; }
 }
 
 @media (max-width: 600px) {
@@ -1528,7 +1595,7 @@ box-shadow: 5px 5px 0 var(--ink);
           <button class="carousel-btn carousel-next">›</button>
           <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
           <div class="photo-count">1 / 4</div>
-          <div class="art-overlay"><div class="art-card-title">Game-ready AKM</div><div class="art-card-meta">Blender · Substance Painter · GIMP · Pure Ref</div></div>
+          <div class="art-overlay"><div class="art-card-title">Game-ready AKM</div><div class="art-card-meta">Blender · Substance Painter · Krita · GIMP · Pure Ref</div></div>
         </div>
       </div>
 
@@ -1555,9 +1622,9 @@ box-shadow: 5px 5px 0 var(--ink);
           <button class="carousel-btn carousel-prev">‹</button>
           <button class="carousel-btn carousel-next">›</button>
           <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
-          <div class="photo-count">1 / 4</div>
+          <div class="photo-count">1 / 2</div>
           <div class="art-tag">WIP</div>
-          <div class="art-overlay"><div class="art-card-title">eggdrill</div><div class="art-card-meta">Blender</div></div>
+          <div class="art-overlay"><div class="art-card-title">eggdrill</div><div class="art-card-meta">Blender · GIMP · Pure Ref</div></div>
         </div>
       </div>
 
@@ -1625,6 +1692,7 @@ box-shadow: 5px 5px 0 var(--ink);
     </div>
     <div class="skills-grid">
       <div class="skill-panel reveal">
+        <div class="skill-tape"></div>
         <div class="skill-header-row">
           <div class="skill-icon">⚒︎</div>
           <div class="skill-header">ENGINES</div>
@@ -1632,26 +1700,30 @@ box-shadow: 5px 5px 0 var(--ink);
         <ul class="skill-list"><li>Unreal Engine 5</li><li>Godot</li><li>Unity</li></ul>
       </div>
       <div class="skill-panel reveal">
+        <div class="skill-tape"></div>
         <div class="skill-header-row">
           <div class="skill-icon">&lt;/&gt;</div>
           <div class="skill-header">LANGUAGES</div>
         </div>
         <ul class="skill-list"><li>C++</li><li>C#</li><li>GDScript</li><li>UE5 Blueprints</li><li>Python</li><li>C</li><li>GDShader</li><li>HLSL</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul>
       </div>
+
       <div class="skill-panel reveal">
-        <div class="skill-header-row">
-          <div class="skill-icon">◆</div>
-          <div class="skill-header">ART &amp; ASSETS</div>
-        </div>
-        <ul class="skill-list"><li>Blender</li><li>Aseprite</li><li>Substance Painter</li><li>Pure Ref</li><li>GIMP</li><li>Krita</li><li>Audacity</li></ul>
-      </div>
-      <div class="skill-panel reveal">
+        <div class="skill-tape"></div>
         <div class="skill-header-row">
           <div class="skill-icon">▲</div>
           <div class="skill-header">Tools</div>
         </div>
-        <ul class="skill-list"><li>Git / GitHub</li><li>Slack</li><li>Discord</li><li>Unreal Insights</li><li>Rider</li><li>Visual Studio</li><li>VS Code</li><li>CLI</li></ul>
+        <ul class="skill-list"><li>Git / GitHub</li><li>Slack</li><li>Discord</li><li>Unreal Insights</li><li>JetBrains Rider</li><li>CLI</li><li>Visual Studio</li><li>VS Code</li></ul>
       </div>
+      <!-- <div class="skill-panel reveal">
+        <div class="skill-tape"></div>
+        <div class="skill-header-row">
+          <div class="skill-icon"></div>
+          <div class="skill-header">Gameplay Systems</div>
+        </div>
+        <ul class="skill-list"><li>Gameplay Ability System</li><li>AI</li><li>EQS</li><li>Replication &amp; Networking</li><li>Save / Load Systems</li><li>Cheat Manager &amp; Console Commands</li><li>State Machines</li><li>Vehicle Physics</li><li>Physics Related Systems</li></ul>
+      </div> -->
     </div>
   </div>
 </section>
@@ -1747,7 +1819,7 @@ box-shadow: 5px 5px 0 var(--ink);
       </div>
       <div class="bd-yt-sidebar">
         <div class="bd-yt-label">GAMEPLAY VIDEO</div>
-        <p class="bd-yt-desc">Gameplay footage showing the different bits that we made for workshop, environment with pixelation and water shaders.</p> 
+        <p class="bd-yt-desc">Gameplay footage showing the different bits that we made for workshop, environment with pixelation and water shaders.</p>
       </div>
     </div>
 
