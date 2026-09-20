@@ -45,57 +45,8 @@
 }
 html { scroll-behavior: smooth; }
 
-::-webkit-scrollbar { width: 18px; }
-::-webkit-scrollbar-track {
-  background: var(--ink);
-  border-left: 3px solid var(--gold);
-  background-image:
-    repeating-linear-gradient(
-      180deg,
-      transparent, transparent 10px,
-      rgba(223,199,143,0.08) 10px, rgba(223,199,143,0.08) 11px
-    );
-}
-::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border: 3px solid var(--ink);
-  border-radius: 0;
-  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.25), inset -2px -2px 0 rgba(0,0,0,0.35);
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent, transparent 4px,
-      rgba(26,16,8,0.12) 4px, rgba(26,16,8,0.12) 5px
-    );
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--yellow);
-  border-color: var(--ink);
-}
-::-webkit-scrollbar-thumb:active {
-  background: var(--red);
-  border-color: var(--ink);
-}
-::-webkit-scrollbar-button {
-  display: block;
-  height: 18px;
-  background: var(--ink);
-  border: 3px solid var(--gold);
-}
-::-webkit-scrollbar-button:vertical:decrement {
-  background-color: var(--ink);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpolygon points='6,0 12,8 0,8' fill='%23DFC78F' stroke='%231a1008' stroke-width='1'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-::-webkit-scrollbar-button:vertical:increment {
-  background-color: var(--ink);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpolygon points='6,8 12,0 0,0' fill='%23DFC78F' stroke='%231a1008' stroke-width='1'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
+* { scrollbar-width: auto; scrollbar-color: var(--gold) var(--ink); }
 
-* { scrollbar-width: thin; scrollbar-color: var(--gold) var(--ink); }
 body {
   background: var(--paper);
   background-image:
@@ -775,6 +726,34 @@ footer p a {color: inherit; text-decoration: none; }
   margin: 0; white-space: pre;
   max-width: 100%;
 }
+.bd-code-block::-webkit-scrollbar { height: 22px; }
+.bd-code-block::-webkit-scrollbar-track {
+  background: var(--ink);
+  border-top: 3px solid var(--gold);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent, transparent 10px,
+      rgba(223,199,143,0.1) 10px, rgba(223,199,143,0.1) 11px
+    );
+}
+.bd-code-block::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border: 4px solid var(--ink);
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,.3), inset -2px -2px 0 rgba(0,0,0,.4);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent, transparent 5px,
+      rgba(26,16,8,0.15) 5px, rgba(26,16,8,0.15) 6px
+    );
+}
+.bd-code-block::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
+.bd-code-block::-webkit-scrollbar-thumb:active { background: var(--red); }
+.bd-code-block::-webkit-scrollbar-corner { background: var(--ink); }
+.bd-code-block { scrollbar-width: auto; scrollbar-color: var(--gold) var(--ink); }
+
 .bd-code-comment { color: #6b8a6b; font-style: italic; }
 .bd-code-keyword { color: #DFC78F; font-weight: bold; }
 .bd-code-func { color: #ffe94a; }
@@ -1131,6 +1110,54 @@ box-shadow: 5px 5px 0 var(--ink);
     z-index: 9500;
   }
 }
+
+.featured-strip { position:relative; z-index:1;}
+.featured-inner { max-width:1100px; margin:0 auto; padding:64px 24px 70px; }
+.featured-head { display:flex; align-items:center; gap:16px; margin-bottom:30px; }
+.featured-tag { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.4rem; color:var(--yellow); background:var(--red); display:inline-block; flex-shrink:0; padding:6px 20px; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); transform:rotate(-1.5deg); }
+.featured-line { flex:1; height:5px; background:var(--ink); box-shadow:3px 3px 0 rgba(0,0,0,.2); }
+.featured-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
+
+.feat-card { --rot:0deg; position:relative; display:flex; flex-direction:column; background:var(--panel); border:4px solid var(--ink); filter: drop-shadow(4px 4px 0 var(--ink)); cursor:pointer; transform:rotate(var(--rot)); transition:transform .15s, filter .15s; }
+.feat-card:nth-child(1) { --rot:-.7deg; }
+.feat-card:nth-child(2) { --rot:.5deg; }
+.feat-card:nth-child(3) { --rot:-.6deg; }
+.feat-card:hover { transform:translate(-4px,-4px) rotate(0deg); filter: drop-shadow(8px 8px 0 var(--ink));}
+.feat-card:has(:focus-visible) { transform:translate(-4px,-4px) rotate(0deg); filter: drop-shadow(8px 8px 0 var(--ink));}
+.feat-card:hover .feat-title { animation:wiggle 1.5s ease-in-out infinite; }
+
+.feat-media { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--ink); border-bottom:3px solid var(--gold); }
+.feat-media img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
+.feat-card:hover .feat-media img { transform:scale(1.05); }
+.feat-tags { position:absolute; left:10px; bottom:10px; display:flex; gap:6px; flex-wrap:wrap; pointer-events:none; }
+
+.feat-info { padding:16px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.feat-title { font-family:'Bangers',cursive; font-weight:400; font-size:2rem; letter-spacing:2px; line-height:1.1; color:var(--gold); text-shadow:2px 2px 0 var(--ink); display:inline-block; align-self:flex-start; }
+.feat-hook { font-size:.92rem; line-height:1.55; font-weight:700; color:var(--paper); flex:1; }
+.feat-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:4px; }
+.feat-btn-open { background:var(--gold); color:var(--ink); } 
+.feat-card .game-btn:focus-visible { outline:3px solid var(--yellow); outline-offset:2px; }
+
+@media (max-width: 860px) {
+  .featured-inner { padding:32px 18px 48px; }
+  .featured-head { margin-bottom:24px; }
+  .featured-row {
+    grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:min(80%, 340px); gap:20px;
+    overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 8px;
+    padding:8px 8px 22px; margin:-8px -8px 0; -webkit-overflow-scrolling:touch;
+  }
+  .feat-card { --rot:0deg !important; scroll-snap-align:start; }
+}
+@media (max-width: 480px) {
+  .featured-inner { padding:28px 14px 44px; }
+  .featured-tag { font-size:1.15rem; padding:5px 14px; }
+  .feat-title { font-size:1.7rem; }
+  .feat-info { padding:14px 14px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feat-card, .feat-media img { transition:none; }
+  .feat-card:hover .feat-title { animation:none; }
+}
 </style>
 </head>
 
@@ -1204,6 +1231,74 @@ box-shadow: 5px 5px 0 var(--ink);
 
 
 
+<!-- FEATURED GAMES -->
+<div class="featured-strip" id="featured">
+  <div class="featured-inner">
+    <div class="featured-head reveal">
+      <h2 class="featured-tag">★ FEATURED GAMES</h2>
+      <div class="featured-line" aria-hidden="true"></div>
+    </div>
+    <div class="featured-row reveal">
+      <div class="feat-card" data-breakdown="devsandbox">
+        <div class="feat-media">
+          <img src="GameImgs/DevSandbox/1.webp" alt="DevSandbox screenshot" loading="lazy" decoding="async">
+          <div class="feat-tags"><span class="engine-tag">UE5</span><span class="engine-tag">SANDBOX</span></div>
+        </div>
+        <div class="feat-info">
+          <h3 class="feat-title">DevSandbox</h3>
+          <p class="feat-hook">Multiplayer gameplay sandbox built on modular, data-driven systems: AI, networking and performance.</p>
+          <div class="feat-actions">
+            <button type="button" class="game-btn feat-btn-open">FULL BREAKDOWN ➜</button>
+            <a href="https://deepdass.itch.io/devsandbox" target="_blank" rel="noopener" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card" data-breakdown="skullward">
+        <div class="feat-media">
+          <img src="GameImgs/Skullward/1.webp" alt="SkullWard screenshot" loading="lazy" decoding="async">
+          <div class="feat-tags"><span class="engine-tag">GODOT</span><span class="engine-tag">OPTIMIZATION</span></div>
+        </div>
+        <div class="feat-info">
+          <h3 class="feat-title">SkullWard</h3>
+          <p class="feat-hook">3D pixelated dungeon crawler with procedural generation, running on a Raspberry Pi arcade cabinet.</p>
+          <div class="feat-actions">
+            <button type="button" class="game-btn feat-btn-open">FULL BREAKDOWN ➜</button>
+            <a href="https://deepdass.itch.io/skullward" target="_blank" rel="noopener" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+          </div>
+        </div>
+      </div>
+      <div class="feat-card" data-breakdown="noroi">
+        <div class="feat-media">
+          <img src="GameImgs/Noroi/1.webp" alt="Noroi screenshot" loading="lazy" decoding="async">
+          <div class="feat-tags"><span class="engine-tag">GODOT</span><span class="engine-tag">SURVIVAL HORROR</span></div>
+        </div>
+        <div class="feat-info">
+          <h3 class="feat-title">Noroi</h3>
+          <p class="feat-hook">Fixed-camera survival horror with PS1-era visuals, inspired by Resident Evil and Silent Hill.</p>
+          <div class="feat-actions">
+            <button type="button" class="game-btn feat-btn-open">FULL BREAKDOWN ➜</button>
+            <a href="https://deepdass.itch.io/noroi" target="_blank" rel="noopener" class="game-btn game-btn-itch">▶ ITCH.IO</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
+    <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
+    <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
+    <span class="ticker-item">DEVSANDBOX</span><span class="ticker-item">PIXSPELL</span>
+    <span class="ticker-item">TOKYO DRIFT</span><span class="ticker-item">SKULLWARD</span>
+    <span class="ticker-item">NOROI</span><span class="ticker-item">GASPFORNOW</span>
+    <span class="ticker-item">RUIN KINGDOM</span><span class="ticker-item">ISLAND OF DEAD</span><span class="ticker-item">FPS LEARN</span>
+    <span class="ticker-item">DEVSANDBOX</span><span class="ticker-item">PIXSPELL</span>
+  </div>
+</div>
+
+
 <!-- ALL GAMES -->
 <section id="games">
   <div class="section-wrap" style="padding-bottom: 20px;">
@@ -1233,7 +1328,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">PixSpell</div>
           </div>
           <div class="game-engine"><span class="engine-tag">GODOT</span><span class="engine-tag">GDSCRIPT</span><span class="engine-tag">WORKSHOP</span></div>
-          <p class="game-desc">A Simple Game I made for Codeday Lucknow 2026 Workshop about basic of Game Development and demonstration in Godot.</p>
+          <p class="game-desc">Simple Game I made for Codeday Lucknow 2026 Workshop about basic of Game Development and demonstration in Godot.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/pixspell" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1267,7 +1362,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">DevSandbox</div>
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">Blueprint</span><span class="engine-tag">Sandbox</span></div>
-          <p class="game-desc">A multiplayer gameplay sandbox focused on modular, data-driven systems, AI, networking and performance. Planning to make this into a evergrowing sandbox containing my game dev shenanigans.</p>
+          <p class="game-desc">Multiplayer gameplay sandbox focused on modular, data-driven systems, AI, networking and performance. Planning to make this into a evergrowing sandbox containing my game dev shenanigans.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/devsandbox" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -1301,7 +1396,7 @@ box-shadow: 5px 5px 0 var(--ink);
             <div class="game-title">Tokyo Drift</div>
           </div>
           <div class="game-engine"><span class="engine-tag">UE5</span><span class="engine-tag">C++</span><span class="engine-tag">ARCADE DRIFTING</span><span class="engine-tag">inspired</span></div>
-          <p class="game-desc">A drifting game with a mix of real life and arcadey fun, with scoring system and dynamic assisted drifting. Got inspired to make a drifting game by Japanese car culture.</p>
+          <p class="game-desc">Drifting game with a mix of real life and arcadey fun, with scoring system and dynamic assisted drifting. Got inspired to make a drifting game by Japanese car culture.</p>
           <div class="game-links">
             <div class="game-links-left">
               <a href="https://deepdass.itch.io/tokyodrift" target="_blank" class="game-btn game-btn-itch">▶ ITCH.IO</a>
@@ -2995,7 +3090,7 @@ obj = bpy.context.active_object
 
 
 <!-- Comment -->
-<script type="text/plain" id="commented-out-section"><button class="btn-breakdown" onclick="openBreakdown('pixspell')" title="Full breakdown"><span class="btn-text">➜</span></button></script> 
+<script type="text/plain" id="commented-out-section"><button class="btn-breakdown" onclick="openBreakdown('pixspell')" title="Full breakdown"><span class="btn-text">➜</span></button></script>
 
 
 
@@ -3140,6 +3235,13 @@ document.querySelectorAll('.game-card').forEach(card => {
     card.style.animation = 'shake 0.4s ease-in-out';
     setTimeout(() => card.style.animation = '', 400);
     if (card.dataset.breakdown) openBreakdown(card.dataset.breakdown);
+  });
+});
+
+document.querySelectorAll('.feat-card').forEach(card => {
+  card.addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    openBreakdown(card.dataset.breakdown);
   });
 });
 
