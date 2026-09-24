@@ -1146,11 +1146,9 @@ box-shadow: 5px 5px 0 var(--ink);
   .featured-inner { padding:32px 18px 48px; }
   .featured-head { margin-bottom:24px; }
   .featured-row {
-    grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:min(80%, 340px); gap:20px;
-    overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 8px;
-    padding:8px 8px 22px; margin:-8px -8px 0; -webkit-overflow-scrolling:touch;
+    grid-template-columns: 1fr; gap:22px;
   }
-  .feat-card { --rot:0deg !important; scroll-snap-align:start; }
+  .feat-card { --rot:0deg !important; }
 }
 @media (max-width: 480px) {
   .featured-inner { padding:28px 14px 44px; }
@@ -2343,7 +2341,7 @@ UCLASS()
           </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">Gameplay Tags</div>
-            <div class="bd-learn-desc">Use of Gameplay Tags to handle state management for buffs, blocking abilities, interaction rules. Which is much better and more manageable the just separate bools.</div>
+            <div class="bd-learn-desc">Use of Gameplay Tags to handle state management for buffs, blocking abilities, interaction rules. Which is much better and more manageable than just separate bools.</div>
           </div>
           <div class="bd-learn-card">
             <div class="bd-learn-title">Event based logic</div>
